@@ -13,6 +13,7 @@ target 'DealApp' do
   pod 'SDWebImage'
   pod 'SVProgressHUD'
   pod 'IQKeyboardManagerSwift'
+  pod 'RNCryptor', '~> 5.0'
   # Pods for DealApp
 
 end
