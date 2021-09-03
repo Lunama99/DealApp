@@ -10,18 +10,29 @@ import UIKit
 class BaseTextField: UITextField {
     
     // Const
-    let padding = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 16)
-    
     let attributes = [
         NSAttributedString.Key.foregroundColor: UIColor.init(hexString: "#BAC7D2"),
         NSAttributedString.Key.font : R.font.poppinsRegular(size: 14)
     ]
 
-    // Observe
+    // Variable
+    var padding = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 16)
     var didChangeValue: ((String)->Void)?
     var didEndEditing: ((String)->Void)?
     
     // Design UI
+    @IBInspectable var style: Int = 0 {
+        didSet {
+            switch style {
+            case 0:
+                padding = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 16)
+            case 1:
+                padding = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
+            default: break
+            }
+        }
+    }
+    
     @IBInspectable var cornerRadius: CGFloat = 0 {
         didSet {
             self.layer.cornerRadius = cornerRadius
@@ -47,7 +58,6 @@ class BaseTextField: UITextField {
     
     required override init(frame: CGRect) {
         super.init(frame: frame)
-
         setupView()
     }
     

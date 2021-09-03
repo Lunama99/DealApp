@@ -9,7 +9,6 @@ import UIKit
 import SVProgressHUD
 
 class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
-    
     enum State {
       case normal
       case loading
@@ -36,6 +35,7 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
         
         navigationController?.isTransparent()
         navigationController?.hideSeparator()
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: R.font.poppinsMedium(size: 16)!]
     }
 }
 

@@ -39,11 +39,10 @@ import UIKit
 //            case 2: // Cold Wallet
 //                backgroundColor = .systemYellow
 //                setTitleColor(.white, for: .normal)
-//            // Navigation
-//            case 3: // Back button black
-//                frame = CGRect(x: 0, y: 0, width: 20, height: 30)
-//                setImage(R.image.ic_back(), for: .normal)
-//                tintColor = .black
+            case 4: // Back button black
+                frame = CGRect(x: 0, y: 0, width: 20, height: 30)
+                setImage(R.image.ic_back(), for: .normal)
+                tintColor = .black
 //            case 4: // Header title
 //                isUserInteractionEnabled = false
 //                titleLabel?.font = .systemFont(ofSize: 18, weight: .bold)

@@ -67,6 +67,9 @@ import UIKit
             case 2: // Check box
                 font = R.font.poppinsRegular(size: 14)
                 textColor = UIColor.init(hexString: "#374957")
+            case 3: // title home
+                font = R.font.poppinsMedium(size: 14)
+                textColor = UIColor.init(hexString: "#374957")
             default: break
             }
         }

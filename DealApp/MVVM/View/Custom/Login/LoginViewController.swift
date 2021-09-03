@@ -32,4 +32,8 @@ class LoginViewController: BaseViewController {
         showHideBtn.setImage(passwordTfx.isSecureTextEntry ? UIImage(systemName: "eye.slash")
                                 : UIImage(systemName: "eye"), for: .normal)
     }
+    
+    @IBAction func continueAction(_ sender: Any) {
+        navigationController?.returnRootViewController()
+    }
 }

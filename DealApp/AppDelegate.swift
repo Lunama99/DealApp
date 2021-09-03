@@ -24,6 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         
+        UITabBar.appearance().barTintColor = .white
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: R.font.poppinsMedium(size: 10)!], for: .normal)
+        
         return true
     }
 
