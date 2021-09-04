@@ -25,7 +25,6 @@ import UIKit
                 titleLabel?.font = R.font.poppinsRegular(size: 14)
                 setTitleColor(UIColor.init(hexString: "#374957"), for: .normal)
             case 2: // Default
-                titleLabel?.font = R.font.poppinsMedium(size: 14)
                 setTitleColor(UIColor.init(hexString: "#FFFFFF"), for: .normal)
                 applyGradient(colors: [UIColor.init(hexString: "#00AAF2 -0.17%").cgColor, UIColor.init(hexString: "#64DCFC 99.81").cgColor])
             case 3: // Social-login
@@ -33,12 +32,6 @@ import UIKit
                 titleLabel?.font = R.font.poppinsRegular(size: 14)
                 setTitleColor(UIColor.init(hexString: "#374957"), for: .normal)
                 layer.borderColor = UIColor.init(hexString: "#D0CCCC").cgColor
-//            case 1: // Import account
-//                backgroundColor = .systemBlue
-//                setTitleColor(.white, for: .normal)
-//            case 2: // Cold Wallet
-//                backgroundColor = .systemYellow
-//                setTitleColor(.white, for: .normal)
             case 4: // Back button black
                 frame = CGRect(x: 0, y: 0, width: 20, height: 30)
                 setImage(R.image.ic_back(), for: .normal)

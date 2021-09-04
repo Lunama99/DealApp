@@ -4,8 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -29,21 +27,15 @@
             </objects>
             <point key="canvasLocation" x="-199" y="1227"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="8yM-4p-uyQ">
+        <!--PointCenter-->
+        <scene sceneID="3rq-uB-Mae">
             <objects>
-                <viewController id="1Lr-ue-0j4" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="3z8-Ne-4cJ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="4eV-NW-TiM"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="aQb-H5-rbF"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5DD-tL-YwO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="PointCenter" id="ZiS-9M-lDD" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="AzL-lB-Jck"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GIk-DQ-HEX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="590" y="1549"/>
+            <point key="canvasLocation" x="591" y="1227"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="jEM-vd-bh8">
@@ -103,26 +95,10 @@
             </objects>
             <point key="canvasLocation" x="-199" y="802"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="48F-Pp-ScH">
-            <objects>
-                <viewController id="Hie-JA-hF0" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="9ov-7q-VOB">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="8dd-R7-RdF"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="fGH-Ma-1Qb"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WAy-4v-tAd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1380" y="1549"/>
-        </scene>
         <!--Point Center-->
         <scene sceneID="hPO-Ph-2a3">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="T1z-9N-3rT" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="T1z-9N-3rT" customClass="BaseNavigationController" customModule="DealApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Point Center" image="ic_point_center" id="dgJ-3E-6VN"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="x2U-eK-kdF">
@@ -131,7 +107,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="1Lr-ue-0j4" kind="relationship" relationship="rootViewController" id="XXH-ed-uZB"/>
+                        <segue destination="ZiS-9M-lDD" kind="relationship" relationship="rootViewController" id="urf-1z-Z5V"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lzp-iO-qQE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -141,7 +117,7 @@
         <!--Transaction-->
         <scene sceneID="249-F4-Oal">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PAV-SK-bEs" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PAV-SK-bEs" customClass="BaseNavigationController" customModule="DealApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Transaction" image="ic_transaction" id="n7R-OK-Gjd"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="zG2-nq-8tm">
@@ -150,7 +126,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Hie-JA-hF0" kind="relationship" relationship="rootViewController" id="9A4-da-MeM"/>
+                        <segue destination="W4e-ba-VGJ" kind="relationship" relationship="rootViewController" id="HXB-iR-J1X"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FMk-pZ-IUi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -176,6 +152,16 @@
             </objects>
             <point key="canvasLocation" x="2196" y="802"/>
         </scene>
+        <!--Transaction-->
+        <scene sceneID="oIn-X2-mfl">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Transaction" id="W4e-ba-VGJ" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="URe-bk-T3w"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sXb-DC-CuS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1380" y="1227"/>
+        </scene>
         <!--MyWallet-->
         <scene sceneID="htW-jW-dxh">
             <objects>
@@ -193,8 +179,5 @@
         <image name="ic_point_center" width="25" height="25"/>
         <image name="ic_transaction" width="25" height="25"/>
         <image name="ic_vendor" width="25" height="25"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

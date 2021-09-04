@@ -22,6 +22,8 @@
 		FA2815A926E23481001FC5ED /* VendorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2815A826E23481001FC5ED /* VendorCollectionViewCell.swift */; };
 		FA3802A326E20865003E3FF5 /* MyWallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA3802A226E20865003E3FF5 /* MyWallet.storyboard */; };
 		FA3802A526E20880003E3FF5 /* MyWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3802A426E20880003E3FF5 /* MyWalletViewController.swift */; };
+		FA41F4A526E360A20012B9B8 /* Transaction.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA41F4A426E360A20012B9B8 /* Transaction.storyboard */; };
+		FA41F4A726E360BC0012B9B8 /* TransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA41F4A626E360BC0012B9B8 /* TransactionViewController.swift */; };
 		FA5BEF3826DE469100B0AA1B /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA5BEF2826DE468B00B0AA1B /* Poppins-Light.ttf */; };
 		FA5BEF3B26DE469100B0AA1B /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA5BEF2B26DE468B00B0AA1B /* Poppins-Medium.ttf */; };
 		FA5BEF4126DE469100B0AA1B /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA5BEF2F26DE468C00B0AA1B /* Poppins-SemiBold.ttf */; };
@@ -58,6 +60,12 @@
 		FAC8756526DFC919006DE739 /* SuggestionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC8756426DFC919006DE739 /* SuggestionCollectionViewCell.swift */; };
 		FAC8756826DFDCDE006DE739 /* CategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAC8756726DFDCDE006DE739 /* CategoryCollectionViewCell.xib */; };
 		FAC8756A26DFDCEB006DE739 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC8756926DFDCEB006DE739 /* CategoryCollectionViewCell.swift */; };
+		FADD604526E364E20002FF2D /* TransactionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FADD604426E364E20002FF2D /* TransactionTableViewCell.xib */; };
+		FADD604726E367960002FF2D /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADD604626E367960002FF2D /* TransactionTableViewCell.swift */; };
+		FADD604A26E37A660002FF2D /* PointCenter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FADD604926E37A660002FF2D /* PointCenter.storyboard */; };
+		FADD604C26E37A7B0002FF2D /* PointCenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADD604B26E37A7B0002FF2D /* PointCenterViewController.swift */; };
+		FADD604F26E380480002FF2D /* PointCenterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADD604E26E380480002FF2D /* PointCenterCollectionViewCell.swift */; };
+		FADD605126E380530002FF2D /* PointCenterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FADD605026E380530002FF2D /* PointCenterCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +88,8 @@
 		FA2815A826E23481001FC5ED /* VendorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorCollectionViewCell.swift; sourceTree = "<group>"; };
 		FA3802A226E20865003E3FF5 /* MyWallet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyWallet.storyboard; sourceTree = "<group>"; };
 		FA3802A426E20880003E3FF5 /* MyWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWalletViewController.swift; sourceTree = "<group>"; };
+		FA41F4A426E360A20012B9B8 /* Transaction.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Transaction.storyboard; sourceTree = "<group>"; };
+		FA41F4A626E360BC0012B9B8 /* TransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewController.swift; sourceTree = "<group>"; };
 		FA5BEF2226DE468B00B0AA1B /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		FA5BEF2826DE468B00B0AA1B /* Poppins-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Light.ttf"; sourceTree = "<group>"; };
 		FA5BEF2B26DE468B00B0AA1B /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
@@ -116,6 +126,12 @@
 		FAC8756426DFC919006DE739 /* SuggestionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionCollectionViewCell.swift; sourceTree = "<group>"; };
 		FAC8756726DFDCDE006DE739 /* CategoryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCollectionViewCell.xib; sourceTree = "<group>"; };
 		FAC8756926DFDCEB006DE739 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		FADD604426E364E20002FF2D /* TransactionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransactionTableViewCell.xib; sourceTree = "<group>"; };
+		FADD604626E367960002FF2D /* TransactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewCell.swift; sourceTree = "<group>"; };
+		FADD604926E37A660002FF2D /* PointCenter.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PointCenter.storyboard; sourceTree = "<group>"; };
+		FADD604B26E37A7B0002FF2D /* PointCenterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointCenterViewController.swift; sourceTree = "<group>"; };
+		FADD604E26E380480002FF2D /* PointCenterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointCenterCollectionViewCell.swift; sourceTree = "<group>"; };
+		FADD605026E380530002FF2D /* PointCenterCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PointCenterCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +233,16 @@
 			path = "My Wallet";
 			sourceTree = "<group>";
 		};
+		FA41F4A326E3608C0012B9B8 /* Transaction */ = {
+			isa = PBXGroup;
+			children = (
+				FADD604326E364CB0002FF2D /* TransactionTableViewCell */,
+				FA41F4A426E360A20012B9B8 /* Transaction.storyboard */,
+				FA41F4A626E360BC0012B9B8 /* TransactionViewController.swift */,
+			);
+			path = Transaction;
+			sourceTree = "<group>";
+		};
 		FA5BEF1F26DE465A00B0AA1B /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -311,6 +337,8 @@
 				FAC8755526DF6CEC006DE739 /* Home */,
 				FA3802A126E2084F003E3FF5 /* My Wallet */,
 				FA2815A026E22DF1001FC5ED /* Vendor */,
+				FA41F4A326E3608C0012B9B8 /* Transaction */,
+				FADD604826E37A450002FF2D /* Point Center */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -407,6 +435,34 @@
 			path = CetegoryCollectionViewCell;
 			sourceTree = "<group>";
 		};
+		FADD604326E364CB0002FF2D /* TransactionTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				FADD604426E364E20002FF2D /* TransactionTableViewCell.xib */,
+				FADD604626E367960002FF2D /* TransactionTableViewCell.swift */,
+			);
+			path = TransactionTableViewCell;
+			sourceTree = "<group>";
+		};
+		FADD604826E37A450002FF2D /* Point Center */ = {
+			isa = PBXGroup;
+			children = (
+				FADD604D26E380280002FF2D /* PointCenterCollectionViewCell */,
+				FADD604926E37A660002FF2D /* PointCenter.storyboard */,
+				FADD604B26E37A7B0002FF2D /* PointCenterViewController.swift */,
+			);
+			path = "Point Center";
+			sourceTree = "<group>";
+		};
+		FADD604D26E380280002FF2D /* PointCenterCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				FADD605026E380530002FF2D /* PointCenterCollectionViewCell.xib */,
+				FADD604E26E380480002FF2D /* PointCenterCollectionViewCell.swift */,
+			);
+			path = PointCenterCollectionViewCell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -467,6 +523,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FADD604A26E37A660002FF2D /* PointCenter.storyboard in Resources */,
 				FAC8755E26DF81DA006DE739 /* CustomSearchBar.xib in Resources */,
 				FAC8755726DF6D38006DE739 /* Tabbar.storyboard in Resources */,
 				FAC8755926DF6D71006DE739 /* Home.storyboard in Resources */,
@@ -478,11 +535,14 @@
 				FA5BEF4126DE469100B0AA1B /* Poppins-SemiBold.ttf in Resources */,
 				FAC8756826DFDCDE006DE739 /* CategoryCollectionViewCell.xib in Resources */,
 				FAC3710726DE3438003B993D /* Login.storyboard in Resources */,
+				FA41F4A526E360A20012B9B8 /* Transaction.storyboard in Resources */,
+				FADD605126E380530002FF2D /* PointCenterCollectionViewCell.xib in Resources */,
 				FA16C3DF26DE1DA600692CFD /* LaunchScreen.storyboard in Resources */,
 				FA16C3DC26DE1DA600692CFD /* Assets.xcassets in Resources */,
 				FAC8756326DFC847006DE739 /* SuggestionCollectionViewCell.xib in Resources */,
 				FA5BEF4426DE469100B0AA1B /* Poppins-Regular.ttf in Resources */,
 				FA16C3DA26DE1DA500692CFD /* Main.storyboard in Resources */,
+				FADD604526E364E20002FF2D /* TransactionTableViewCell.xib in Resources */,
 				FA3802A326E20865003E3FF5 /* MyWallet.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -556,6 +616,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA28159F26E21CD2001FC5ED /* PersonalInformationViewController.swift in Sources */,
+				FADD604726E367960002FF2D /* TransactionTableViewCell.swift in Sources */,
 				FAC370FF26DE30FE003B993D /* Observable.swift in Sources */,
 				FA2815A426E22E13001FC5ED /* VendorViewController.swift in Sources */,
 				FAC370E226DE2E32003B993D /* UILabel.swift in Sources */,
@@ -573,11 +634,13 @@
 				FAC370DC26DE2E32003B993D /* UIImage.swift in Sources */,
 				FAC370E726DE2E32003B993D /* UINavigationController.swift in Sources */,
 				FA16C3D326DE1DA500692CFD /* AppDelegate.swift in Sources */,
+				FADD604F26E380480002FF2D /* PointCenterCollectionViewCell.swift in Sources */,
 				FAC370F526DE2FDB003B993D /* Network.swift in Sources */,
 				FAC8756026DF8201006DE739 /* CustomSearchBar.swift in Sources */,
 				FAC8755B26DF6D80006DE739 /* HomeViewController.swift in Sources */,
 				FA16C3D526DE1DA500692CFD /* SceneDelegate.swift in Sources */,
 				FAC370E526DE2E32003B993D /* UIViewController.swift in Sources */,
+				FADD604C26E37A7B0002FF2D /* PointCenterViewController.swift in Sources */,
 				FAC370F626DE2FDB003B993D /* API.swift in Sources */,
 				FAC370DF26DE2E32003B993D /* UITableViewCell.swift in Sources */,
 				FAC370E026DE2E32003B993D /* UIAlert.swift in Sources */,
@@ -586,6 +649,7 @@
 				FAC370E126DE2E32003B993D /* UIButton.swift in Sources */,
 				FAC370EE26DE2E43003B993D /* Double.swift in Sources */,
 				FAC3710926DE3446003B993D /* LoginViewController.swift in Sources */,
+				FA41F4A726E360BC0012B9B8 /* TransactionViewController.swift in Sources */,
 				FAC370E426DE2E32003B993D /* UITextField.swift in Sources */,
 				FA3802A526E20880003E3FF5 /* MyWalletViewController.swift in Sources */,
 			);

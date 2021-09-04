@@ -8,6 +8,11 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Medium.ttf">
+            <string>Poppins-Medium</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Login View Controller-->
         <scene sceneID="s0d-6b-0kx">
@@ -21,10 +26,10 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Kb-Cr-LeQ">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="704.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="718"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login / Sign Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wc5-SH-VDL" customClass="BaseLabel" customModule="DealApp" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="50" width="115.5" height="20.5"/>
+                                                <rect key="frame" x="20" y="50" width="180.5" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -35,7 +40,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XLc-r0-38G" customClass="BaseTextField" customModule="DealApp" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="130.5" width="374" height="50"/>
+                                                <rect key="frame" x="20" y="144" width="374" height="50"/>
                                                 <color key="backgroundColor" red="0.93725490199999995" green="0.95294117649999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="MfS-hG-fPq"/>
@@ -49,7 +54,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email / Phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hp6-Mq-Lmg" customClass="BaseLabel" customModule="DealApp" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="102.5" width="102.5" height="20"/>
+                                                <rect key="frame" x="20" y="116" width="97.5" height="20"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -60,7 +65,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mXQ-US-chP" customClass="BaseTextField" customModule="DealApp" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="224.5" width="374" height="50"/>
+                                                <rect key="frame" x="20" y="238" width="374" height="50"/>
                                                 <color key="backgroundColor" red="0.93725490199999995" green="0.95294117649999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="sfl-R8-qUQ"/>
@@ -74,7 +79,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lvc-oV-ztM" customClass="BaseLabel" customModule="DealApp" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="196.5" width="73.5" height="20"/>
+                                                <rect key="frame" x="20" y="210" width="69.5" height="20"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -85,7 +90,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GoE-fo-wME" customClass="BaseButton" customModule="DealApp" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="291.5" width="16" height="16"/>
+                                                <rect key="frame" x="20" y="305" width="16" height="16"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="16" id="0IL-4h-4aO"/>
                                                     <constraint firstAttribute="height" constant="16" id="TCT-HP-SAs"/>
@@ -100,7 +105,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eaN-8s-wjk" customClass="BaseButton" customModule="DealApp" customModuleProvider="target">
-                                                <rect key="frame" x="52" y="290.5" width="100" height="18"/>
+                                                <rect key="frame" x="52" y="304" width="105" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="18" id="NZM-Va-xi1"/>
                                                 </constraints>
@@ -112,7 +117,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="97w-1R-Qxn" customClass="BaseButton" customModule="DealApp" customModuleProvider="target">
-                                                <rect key="frame" x="271" y="290.5" width="123" height="18"/>
+                                                <rect key="frame" x="270" y="304" width="124" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="18" id="6fl-lC-EI2"/>
                                                 </constraints>
@@ -124,10 +129,11 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gfC-Vw-vEm" customClass="BaseButton" customModule="DealApp" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="332.5" width="374" height="56"/>
+                                                <rect key="frame" x="20" y="346" width="374" height="56"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="56" id="jHv-KG-jsd"/>
                                                 </constraints>
+                                                <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="14"/>
                                                 <state key="normal" title="Continue"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -142,7 +148,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T55-GV-zrT" customClass="BaseLabel" customModule="DealApp" customModuleProvider="target">
-                                                <rect key="frame" x="195.5" y="420.5" width="23.5" height="20"/>
+                                                <rect key="frame" x="197" y="434" width="20" height="20"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -153,7 +159,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hWL-kB-C0a" userLabel="Separator">
-                                                <rect key="frame" x="20" y="430" width="167.5" height="1"/>
+                                                <rect key="frame" x="20" y="443.5" width="169" height="1"/>
                                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="l5w-cx-NBO"/>
@@ -163,7 +169,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4i2-1i-2Zd" userLabel="Separator">
-                                                <rect key="frame" x="227" y="430" width="167" height="1"/>
+                                                <rect key="frame" x="225" y="443.5" width="169" height="1"/>
                                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="nwE-eS-ehZ"/>
@@ -173,10 +179,10 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z0T-Kl-xnX">
-                                                <rect key="frame" x="20" y="472.5" width="374" height="56"/>
+                                                <rect key="frame" x="20" y="486" width="374" height="56"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Continue with Google" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LQc-Q0-Uuc" customClass="BaseLabel" customModule="DealApp" customModuleProvider="target">
-                                                        <rect key="frame" x="65" y="18" width="164" height="20"/>
+                                                        <rect key="frame" x="65" y="18" width="151" height="20"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -223,10 +229,10 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G9F-XU-Eyr">
-                                                <rect key="frame" x="20" y="544.5" width="374" height="56"/>
+                                                <rect key="frame" x="20" y="558" width="374" height="56"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Continue with Facebook" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4VF-rA-XUk" customClass="BaseLabel" customModule="DealApp" customModuleProvider="target">
-                                                        <rect key="frame" x="65" y="18" width="183.5" height="20"/>
+                                                        <rect key="frame" x="65" y="18" width="169" height="20"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -273,10 +279,10 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tmq-vx-fww">
-                                                <rect key="frame" x="20" y="616.5" width="374" height="56"/>
+                                                <rect key="frame" x="20" y="630" width="374" height="56"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Continue with Twitter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vmq-nu-J8F" customClass="BaseLabel" customModule="DealApp" customModuleProvider="target">
-                                                        <rect key="frame" x="65" y="18" width="162" height="20"/>
+                                                        <rect key="frame" x="65" y="18" width="147" height="20"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -323,7 +329,7 @@
                                                 </constraints>
                                             </view>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UNB-6G-yid" customClass="BaseButton" customModule="DealApp" customModuleProvider="target">
-                                                <rect key="frame" x="358" y="238.5" width="26" height="22"/>
+                                                <rect key="frame" x="358" y="252" width="26" height="22"/>
                                                 <color key="tintColor" red="0.10980392156862745" green="0.12156862745098039" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <state key="normal" image="eye.slash" catalog="system"/>
                                                 <connections>
@@ -427,49 +433,49 @@
     </scenes>
     <designables>
         <designable name="4VF-rA-XUk">
-            <size key="intrinsicContentSize" width="183.5" height="20.5"/>
+            <size key="intrinsicContentSize" width="169" height="20"/>
         </designable>
         <designable name="97w-1R-Qxn">
-            <size key="intrinsicContentSize" width="123" height="30"/>
+            <size key="intrinsicContentSize" width="124" height="32"/>
         </designable>
         <designable name="GoE-fo-wME">
             <size key="intrinsicContentSize" width="30" height="30"/>
         </designable>
         <designable name="LQc-Q0-Uuc">
-            <size key="intrinsicContentSize" width="164" height="20.5"/>
+            <size key="intrinsicContentSize" width="151" height="20"/>
         </designable>
         <designable name="Lvc-oV-ztM">
-            <size key="intrinsicContentSize" width="73.5" height="20.5"/>
+            <size key="intrinsicContentSize" width="69.5" height="20"/>
         </designable>
         <designable name="Ml6-pM-wPX">
-            <size key="intrinsicContentSize" width="30" height="34"/>
+            <size key="intrinsicContentSize" width="30" height="32"/>
         </designable>
         <designable name="T55-GV-zrT">
-            <size key="intrinsicContentSize" width="23.5" height="20.5"/>
+            <size key="intrinsicContentSize" width="20" height="20"/>
         </designable>
         <designable name="UNB-6G-yid">
             <size key="intrinsicContentSize" width="26" height="22"/>
         </designable>
         <designable name="Vmq-nu-J8F">
-            <size key="intrinsicContentSize" width="162" height="20.5"/>
+            <size key="intrinsicContentSize" width="147" height="20"/>
         </designable>
         <designable name="Wc5-SH-VDL">
-            <size key="intrinsicContentSize" width="115.5" height="20.5"/>
+            <size key="intrinsicContentSize" width="180.5" height="34"/>
         </designable>
         <designable name="eaN-8s-wjk">
-            <size key="intrinsicContentSize" width="100" height="30"/>
+            <size key="intrinsicContentSize" width="105" height="32"/>
         </designable>
         <designable name="fOl-GM-qfZ">
-            <size key="intrinsicContentSize" width="30" height="34"/>
+            <size key="intrinsicContentSize" width="30" height="32"/>
         </designable>
         <designable name="gfC-Vw-vEm">
-            <size key="intrinsicContentSize" width="62" height="30"/>
+            <size key="intrinsicContentSize" width="65" height="32"/>
         </designable>
         <designable name="hp6-Mq-Lmg">
-            <size key="intrinsicContentSize" width="102.5" height="20.5"/>
+            <size key="intrinsicContentSize" width="97.5" height="20"/>
         </designable>
         <designable name="pNn-Xf-Tbl">
-            <size key="intrinsicContentSize" width="30" height="34"/>
+            <size key="intrinsicContentSize" width="30" height="32"/>
         </designable>
     </designables>
     <resources>

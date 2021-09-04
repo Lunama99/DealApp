@@ -10,5 +10,4 @@ import UIKit
 class VendorCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var titleLbl: BaseLabel!
     @IBOutlet weak var imgView: UIImageView!
-    
 }
