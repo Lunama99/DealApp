@@ -26,5 +26,13 @@ class CustomSearchBar: UIView {
         content.frame = self.bounds
         content.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         self.addSubview(content)
+    
+//        contentView.layer.shadowColor = UIColor.gray.cgColor
+//        contentView.layer.shadowOpacity = 0.3
+//        contentView.layer.shadowOffset = CGSize.zero
+//        contentView.layer.shadowRadius = 6
+//        contentView.layer.masksToBounds = true
+//        contentView.layer.borderWidth = 1.5
+//        contentView.layer.borderColor = UIColor.white.cgColor
     }
 }

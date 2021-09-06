@@ -24,22 +24,17 @@ class VendorViewController: BaseViewController {
     
     func setupView() {
         // Setup icon
-        let noticeView = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
-        let noticeImg = UIImageView(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
-        noticeImg.center = noticeView.center
-        noticeImg.image = R.image.ic_notification()
-        noticeImg.contentMode = .scaleAspectFit
-        noticeView.layer.cornerRadius = 4
-        noticeView.backgroundColor = .systemGray6
-        noticeView.addSubview(noticeImg)
-        let noticeRightBarButton = UIBarButtonItem(customView: noticeView)
-        
-        navigationItem.rightBarButtonItem = noticeRightBarButton
+        showNoticeButton()
         
         collectionView.register(R.nib.vendorCollectionViewCell)
         collectionView.contentInset = contentInsetCV
         collectionView.delegate = self
         collectionView.dataSource = self
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
     func setupCell(_ cell: VendorCollectionViewCell, indexPath: IndexPath) {
@@ -82,6 +77,10 @@ extension VendorViewController: UICollectionViewDelegate, UICollectionViewDataSo
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.nib.vendorCollectionViewCell.identifier, for: indexPath) as? VendorCollectionViewCell else { return UICollectionViewCell() }
         setupCell(cell, indexPath: indexPath)
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: R.segue.vendorViewController.showVendorDetail, sender: self)
     }
 }
 

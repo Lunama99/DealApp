@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Regular.ttf">
+            <string>Poppins-Regular</string>
+        </array>
+        <array key="Poppins-SemiBold.ttf">
+            <string>Poppins-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NotificationTableViewCell" rowHeight="118" id="WCN-Hn-Frc" customClass="NotificationTableViewCell" customModule="DealApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="118"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WCN-Hn-Frc" id="aKz-kQ-lFc">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="118"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ie7-Nc-w8i">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="117"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Black Friday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NVa-JL-lEC">
+                                <rect key="frame" x="20" y="16" width="87" height="20"/>
+                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="14"/>
+                                <color key="textColor" red="0.21568627450980393" green="0.28627450980392155" blue="0.3411764705882353" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eZr-RG-Lw8" customClass="BaseLabel" customModule="DealApp" customModuleProvider="target">
+                                <rect key="frame" x="20" y="44" width="384" height="57"/>
+                                <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ornare elit tellus, ut venenatis dui pretium ut. Aenean dictum ac ante et aliquet.</string>
+                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
+                                <color key="textColor" red="0.2156862745" green="0.28627450980000002" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="paddingLeft">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="paddingRight">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="paddingTop">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="paddingBottom">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="eZr-RG-Lw8" secondAttribute="bottom" constant="16" id="2eg-4O-VtJ"/>
+                            <constraint firstAttribute="trailing" secondItem="eZr-RG-Lw8" secondAttribute="trailing" constant="10" id="9YQ-AK-TEm"/>
+                            <constraint firstItem="eZr-RG-Lw8" firstAttribute="leading" secondItem="Ie7-Nc-w8i" secondAttribute="leading" constant="20" id="Atm-Fp-1Mc"/>
+                            <constraint firstItem="NVa-JL-lEC" firstAttribute="top" secondItem="Ie7-Nc-w8i" secondAttribute="top" constant="16" id="KfS-fj-FDI"/>
+                            <constraint firstItem="eZr-RG-Lw8" firstAttribute="top" secondItem="NVa-JL-lEC" secondAttribute="bottom" constant="8" id="rba-v8-RTn"/>
+                            <constraint firstItem="NVa-JL-lEC" firstAttribute="leading" secondItem="Ie7-Nc-w8i" secondAttribute="leading" constant="20" id="wuS-Wm-x2F"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="Ie7-Nc-w8i" secondAttribute="trailing" id="HU9-1O-2Y6"/>
+                    <constraint firstItem="Ie7-Nc-w8i" firstAttribute="leading" secondItem="aKz-kQ-lFc" secondAttribute="leading" id="dgz-GN-hiO"/>
+                    <constraint firstAttribute="bottom" secondItem="Ie7-Nc-w8i" secondAttribute="bottom" constant="1" id="drB-mz-b17"/>
+                    <constraint firstItem="Ie7-Nc-w8i" firstAttribute="top" secondItem="aKz-kQ-lFc" secondAttribute="top" id="pAb-LZ-YLr"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="182.60869565217394" y="121.20535714285714"/>
+        </tableViewCell>
+    </objects>
+    <designables>
+        <designable name="eZr-RG-Lw8">
+            <size key="intrinsicContentSize" width="981.5" height="20"/>
+        </designable>
+    </designables>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

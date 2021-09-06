@@ -435,19 +435,7 @@
                             <constraint firstItem="qZq-jE-oGM" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="u4E-iP-Ba8"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Personal Information" id="JHt-G0-Iby">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="zSb-0f-kNg">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="XCQ-4f-tQn" customClass="BaseButton" customModule="DealApp" customModuleProvider="target">
-                                <rect key="frame" x="20" y="7" width="20" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="style">
-                                        <integer key="value" value="4"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </button>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Personal Information" id="JHt-G0-Iby"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -488,9 +476,6 @@
         </designable>
         <designable name="P1l-S5-SNn">
             <size key="intrinsicContentSize" width="91.5" height="22.5"/>
-        </designable>
-        <designable name="XCQ-4f-tQn">
-            <size key="intrinsicContentSize" width="10" height="18"/>
         </designable>
         <designable name="Xno-1s-KE3">
             <size key="intrinsicContentSize" width="127.5" height="20"/>

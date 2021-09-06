@@ -154,6 +154,7 @@
                         <outlet property="collectionView" destination="2aB-uN-QoH" id="afr-wy-WhR"/>
                         <outlet property="hotDealView" destination="Y6j-bf-R8d" id="1Qd-e5-fwH"/>
                         <outlet property="vendorView" destination="pjj-ca-ALx" id="QdI-pS-Eow"/>
+                        <segue destination="eP7-hi-ZYC" kind="show" identifier="showVendorDetail" id="mrO-Pc-qKQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -169,6 +170,16 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="81.696428571428569"/>
+        </scene>
+        <!--VendorDetail-->
+        <scene sceneID="GG0-4b-m3K">
+            <objects>
+                <viewControllerPlaceholder storyboardName="VendorDetail" id="eP7-hi-ZYC" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="MxX-RD-JzJ"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Eeo-1y-Fva" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="138" y="479"/>
         </scene>
     </scenes>
     <resources>

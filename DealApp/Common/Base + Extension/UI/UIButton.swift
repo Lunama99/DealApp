@@ -33,9 +33,9 @@ import UIKit
                 setTitleColor(UIColor.init(hexString: "#374957"), for: .normal)
                 layer.borderColor = UIColor.init(hexString: "#D0CCCC").cgColor
             case 4: // Back button black
-                frame = CGRect(x: 0, y: 0, width: 20, height: 30)
+                frame = CGRect(x: 0, y: 0, width: 30, height: 30)
                 setImage(R.image.ic_back(), for: .normal)
-                tintColor = .black
+                sizeToFit()
 //            case 4: // Header title
 //                isUserInteractionEnabled = false
 //                titleLabel?.font = .systemFont(ofSize: 18, weight: .bold)

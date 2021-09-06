@@ -47,17 +47,7 @@ class HomeViewController: BaseViewController {
         navigationItem.leftBarButtonItems = [avatarLeftBarButton, titleLeftBarButton]
         
         // Setup icon
-        let noticeView = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
-        let noticeImg = UIImageView(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
-        noticeImg.center = noticeView.center
-        noticeImg.image = R.image.ic_notification()
-        noticeImg.contentMode = .scaleAspectFit
-        noticeView.layer.cornerRadius = 4
-        noticeView.backgroundColor = .systemGray6
-        noticeView.addSubview(noticeImg)
-        let noticeRightBarButton = UIBarButtonItem(customView: noticeView)
-        
-        navigationItem.rightBarButtonItem = noticeRightBarButton
+        showNoticeButton()
         
         suggestionCollectionView.register(R.nib.suggestionCollectionViewCell)
         suggestionCollectionView.delegate = self
@@ -76,6 +66,14 @@ class HomeViewController: BaseViewController {
         newsCollectionView.dataSource = self
         newsCollectionView.contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         suggestionCollectionView.alwaysBounceHorizontal = true
+        
+//        searchView.layer.shadowColor = UIColor.gray.cgColor
+//        searchView.layer.shadowOpacity = 0.8
+//        searchView.layer.shadowOffset = CGSize.zero
+//        searchView.layer.shadowRadius = 6
+//        searchView.layer.masksToBounds = true
+//        searchView.layer.borderWidth = 1.5
+//        searchView.layer.borderColor = UIColor.white.cgColor
     }
     
     func setupSuggestionCell(_ cell: SuggestionCollectionViewCell, indexPath: IndexPath) {
