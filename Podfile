@@ -14,6 +14,7 @@ target 'DealApp' do
   pod 'SVProgressHUD'
   pod 'IQKeyboardManagerSwift'
   pod 'RNCryptor', '~> 5.0'
+  pod 'FBSDKLoginKit'
   # Pods for DealApp
 
 end

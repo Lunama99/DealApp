@@ -60,12 +60,12 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
         navigationItem.leftBarButtonItem = backLeftBarButton
     }
     
-    @objc func showNoticeView() {
+    @objc private func showNoticeView() {
         guard let notiveVC = R.storyboard.notification.instantiateInitialViewController() else { return }
         navigationController?.pushViewController(notiveVC, animated: true)
     }
     
-    @objc func back() {
+    @objc private func back() {
         navigationController?.popViewController(animated: true)
     }
 }

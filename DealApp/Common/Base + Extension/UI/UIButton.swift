@@ -104,12 +104,12 @@ import UIKit
         layer.masksToBounds = true
     }
     
-//    func setRadiusAndShadow() {
-//        self.clipsToBounds = true
-//        self.layer.masksToBounds = false
-//        self.layer.shadowColor = UIColor.lightGray.cgColor
-//        self.layer.shadowOpacity = 0.3
-//        self.layer.shadowRadius = 10
-//        self.layer.shadowOffset = .zero
-//    }
+    func setRadiusAndShadow() {
+        clipsToBounds = true
+        layer.masksToBounds = false
+        layer.shadowColor = UIColor.lightGray.cgColor
+        layer.shadowOpacity = 0.3
+        layer.shadowRadius = 10
+        layer.shadowOffset = .zero
+    }
 }

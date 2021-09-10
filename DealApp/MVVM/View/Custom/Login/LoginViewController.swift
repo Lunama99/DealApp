@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FBSDKLoginKit
 
 class LoginViewController: BaseViewController {
 
@@ -13,6 +14,7 @@ class LoginViewController: BaseViewController {
     @IBOutlet weak var passwordTfx: BaseTextField!
     @IBOutlet weak var showHideBtn: BaseButton!
     
+    let facebookBtn = FBLoginButton(frame: .zero, permissions: [.publicProfile])
     var password: String = ""
     
     override func viewDidLoad() {
@@ -25,6 +27,10 @@ class LoginViewController: BaseViewController {
         passwordTfx.didChangeValue = { [weak self] string in
             self?.showHideBtn.isHidden = string.count == 0
         }
+        
+        facebookBtn.delegate = self
+        facebookBtn.permissions = ["public_profile", "email"]
+        facebookBtn.isHidden = true
     }
     
     @IBAction func showHideAction(_ sender: Any) {
@@ -35,5 +41,21 @@ class LoginViewController: BaseViewController {
     
     @IBAction func continueAction(_ sender: Any) {
         navigationController?.returnRootViewController()
+    }
+    
+    @IBAction func facebookLoginAction(_ sender: Any) {
+        facebookBtn.sendActions(for: .touchUpInside)
+    }
+}
+
+extension LoginViewController: LoginButtonDelegate {
+    func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
+        Helper.shared.getFaceBookUser(result: result) { [weak self] in
+            self?.navigationController?.returnRootViewController()
+        }
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
+        print("Log out")
     }
 }

@@ -1,5 +1,5 @@
 //
-//  TransactionTableViewCell.swift
+//  ShoppingTableViewCell.swift
 //  DealApp
 //
 //  Created by Macbook on 04/09/2021.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TransactionTableViewCell: BaseTableViewCell {
+class ShoppingTableViewCell: BaseTableViewCell {
 
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var pointView: UIView!

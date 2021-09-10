@@ -13,6 +13,12 @@ class TransactionViewController: BaseViewController {
     @IBOutlet weak var topUpView: BaseView!
     @IBOutlet weak var tableView: UITableView!
     
+    var tableDisplay: CollectionDisplay = .Shopping {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -22,12 +28,13 @@ class TransactionViewController: BaseViewController {
         // Setup icon
         showNoticeButton()
         
-        tableView.register(R.nib.transactionTableViewCell)
+        tableView.register(R.nib.shoppingTableViewCell)
+        tableView.register(R.nib.topUpTableViewCell)
         tableView.delegate = self
         tableView.dataSource = self
     }
     
-    func setupCell(_ cell: TransactionTableViewCell, indexPath: IndexPath) {
+    func setupShoppingCell(_ cell: ShoppingTableViewCell, indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
             cell.imgView.image = R.image.img_transaction_demo_4()
@@ -55,14 +62,19 @@ class TransactionViewController: BaseViewController {
         cell.imgView.layer.masksToBounds = true
     }
     
+    func setupTopUpCell(_ cell: TopUpTableViewCell, indexPath: IndexPath) {
+    }
+    
     @IBAction func shoppingAction(_ sender: Any) {
         topUpView.backgroundColor = UIColor.init(hexString: "EFF3F6")
         shoppingView.backgroundColor = .white
+        tableDisplay = .Shopping
     }
     
     @IBAction func topUpAction(_ sender: Any) {
         topUpView.backgroundColor = .white
         shoppingView.backgroundColor = UIColor.init(hexString: "EFF3F6")
+        tableDisplay = .TopUp
     }
 }
 
@@ -72,12 +84,25 @@ extension TransactionViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: R.nib.transactionTableViewCell.identifier, for: indexPath) as? TransactionTableViewCell else { return UITableViewCell() }
-        setupCell(cell, indexPath: indexPath)
-        return cell
+        if tableDisplay == .Shopping {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: R.nib.shoppingTableViewCell.identifier, for: indexPath) as? ShoppingTableViewCell else { return UITableViewCell() }
+            setupShoppingCell(cell, indexPath: indexPath)
+            return cell
+        } else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: R.nib.topUpTableViewCell.identifier, for: indexPath) as? TopUpTableViewCell else { return UITableViewCell() }
+            setupTopUpCell(cell, indexPath: indexPath)
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
+    }
+}
+
+extension TransactionViewController {
+    enum CollectionDisplay {
+        case Shopping
+        case TopUp
     }
 }

@@ -263,6 +263,9 @@
                                                                 <integer key="value" value="3"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="facebookLoginAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="CeA-aP-i7I"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -446,9 +449,6 @@
         </designable>
         <designable name="Lvc-oV-ztM">
             <size key="intrinsicContentSize" width="69.5" height="20"/>
-        </designable>
-        <designable name="Ml6-pM-wPX">
-            <size key="intrinsicContentSize" width="30" height="32"/>
         </designable>
         <designable name="T55-GV-zrT">
             <size key="intrinsicContentSize" width="20" height="20"/>

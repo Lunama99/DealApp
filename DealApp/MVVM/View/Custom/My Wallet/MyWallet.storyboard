@@ -50,19 +50,20 @@
                                 <rect key="frame" x="0.0" y="166" width="414" height="730"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8VT-Iz-fwW">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="470"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="482"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kp9-7H-mm2">
-                                                <rect key="frame" x="0.0" y="16" width="414" height="96"/>
+                                                <rect key="frame" x="0.0" y="16" width="414" height="100"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_avatar" translatesAutoresizingMaskIntoConstraints="NO" id="gYg-HA-jKB">
-                                                        <rect key="frame" x="20" y="16" width="64" height="64"/>
+                                                        <rect key="frame" x="20" y="16" width="68" height="68"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" secondItem="gYg-HA-jKB" secondAttribute="height" id="qJt-kV-ETe"/>
+                                                            <constraint firstAttribute="width" constant="68" id="7BU-mB-eW4"/>
+                                                            <constraint firstAttribute="height" constant="68" id="dkL-cf-XLD"/>
                                                         </constraints>
                                                     </imageView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EWw-fi-sUy">
-                                                        <rect key="frame" x="100" y="26" width="264" height="44"/>
+                                                        <rect key="frame" x="104" y="28" width="260" height="44"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TAM PHAN THI NGOC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Fq-qz-MKg" customClass="BaseLabel" customModule="DealApp" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="161.5" height="19"/>
@@ -87,7 +88,7 @@
                                                         </constraints>
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EHz-hn-bGY">
-                                                        <rect key="frame" x="384" y="37" width="10" height="22"/>
+                                                        <rect key="frame" x="384" y="39" width="10" height="22"/>
                                                         <state key="normal" image="ic_next"/>
                                                     </button>
                                                 </subviews>
@@ -109,16 +110,16 @@
                                                 </connections>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cHw-ey-cUI">
-                                                <rect key="frame" x="0.0" y="112" width="414" height="96"/>
+                                                <rect key="frame" x="0.0" y="116" width="414" height="100"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Member" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="avU-yB-QCX" customClass="BaseLabel" customModule="DealApp" customModuleProvider="target">
-                                                        <rect key="frame" x="20" y="16" width="89.5" height="35"/>
+                                                        <rect key="frame" x="20" y="16" width="89.5" height="39"/>
                                                         <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="24"/>
                                                         <color key="textColor" red="0.0" green="0.70588235290000001" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jfw-gR-ZKb" customClass="BaseLabel" customModule="DealApp" customModuleProvider="target">
-                                                        <rect key="frame" x="20" y="59" width="41" height="21"/>
+                                                        <rect key="frame" x="20" y="63" width="41" height="21"/>
                                                         <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="18"/>
                                                         <color key="textColor" red="0.2156862745" green="0.28627450980000002" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <nil key="highlightedColor"/>
@@ -141,7 +142,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="points" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aVN-lg-v8A" customClass="BaseLabel" customModule="DealApp" customModuleProvider="target">
-                                                        <rect key="frame" x="65" y="59" width="39" height="21"/>
+                                                        <rect key="frame" x="65" y="63" width="39" height="21"/>
                                                         <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
                                                         <color key="textColor" red="0.2156862745" green="0.28627450980000002" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <nil key="highlightedColor"/>
@@ -164,7 +165,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I8Z-19-KZt" customClass="BaseButton" customModule="DealApp" customModuleProvider="target">
-                                                        <rect key="frame" x="294" y="20" width="100" height="56"/>
+                                                        <rect key="frame" x="294" y="22" width="100" height="56"/>
                                                         <color key="backgroundColor" red="0.30980392159999998" green="0.81960784310000001" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="56" id="UVd-d8-198"/>
@@ -179,6 +180,9 @@
                                                                 <real key="value" value="4"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <segue destination="BZk-1s-qZK" kind="show" identifier="showTopUp" id="97z-Pf-OCa"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.89019607840000003" green="0.93725490199999995" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -196,17 +200,17 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qKY-PI-pT9">
-                                                <rect key="frame" x="0.0" y="208" width="414" height="96"/>
+                                                <rect key="frame" x="0.0" y="216" width="414" height="100"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="enC-U6-ews">
-                                                        <rect key="frame" x="0.0" y="0.0" width="4" height="96"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="4" height="100"/>
                                                         <color key="backgroundColor" red="0.84705882352941175" green="0.59999999999999998" blue="0.20784313725490194" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="4" id="ljE-o1-br7"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H4s-BR-Q7B">
-                                                        <rect key="frame" x="20" y="26.5" width="234" height="43"/>
+                                                        <rect key="frame" x="20" y="28.5" width="234" height="43"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Be partner" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TH5-7M-WS9" customClass="BaseLabel" customModule="DealApp" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="75.5" height="19"/>
@@ -249,7 +253,7 @@
                                                         </constraints>
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aFA-5x-zJg" customClass="BaseButton" customModule="DealApp" customModuleProvider="target">
-                                                        <rect key="frame" x="274" y="24" width="120" height="48"/>
+                                                        <rect key="frame" x="274" y="26" width="120" height="48"/>
                                                         <color key="backgroundColor" red="0.9691874385" green="0.80015259979999998" blue="0.4548207521" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="48" id="G2o-el-bxy"/>
@@ -279,7 +283,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3p5-bL-RmN">
-                                                <rect key="frame" x="0.0" y="312" width="414" height="70"/>
+                                                <rect key="frame" x="0.0" y="324" width="414" height="70"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Partner Area" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oaX-Gn-bAL">
                                                         <rect key="frame" x="20" y="27" width="78.5" height="16.5"/>
@@ -293,6 +297,7 @@
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="70" id="9r1-fx-4Zv"/>
                                                     <constraint firstItem="oaX-Gn-bAL" firstAttribute="centerY" secondItem="3p5-bL-RmN" secondAttribute="centerY" id="NcG-wM-1bo"/>
@@ -300,9 +305,12 @@
                                                     <constraint firstItem="Ujh-gN-jdh" firstAttribute="centerY" secondItem="3p5-bL-RmN" secondAttribute="centerY" id="bxt-Og-wYZ"/>
                                                     <constraint firstItem="oaX-Gn-bAL" firstAttribute="leading" secondItem="3p5-bL-RmN" secondAttribute="leading" constant="20" id="lfZ-6i-S03"/>
                                                 </constraints>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="oAD-A2-Gdp" appends="YES" id="KEX-d7-jnN"/>
+                                                </connections>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gpD-Ku-vmG">
-                                                <rect key="frame" x="0.0" y="390" width="414" height="80"/>
+                                                <rect key="frame" x="0.0" y="402" width="414" height="80"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E2P-1S-eMj">
                                                         <rect key="frame" x="384" y="29" width="10" height="22"/>
@@ -382,6 +390,8 @@
                     <navigationItem key="navigationItem" title="Wallet" id="IVV-Zn-bAB"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="userImg" destination="gYg-HA-jKB" id="NoJ-Zr-Z9w"/>
+                        <outlet property="userName" destination="7Fq-qz-MKg" id="0E3-Qz-41L"/>
                         <segue destination="mzu-jU-5wJ" kind="show" identifier="showPerson" id="iHS-fO-msD"/>
                     </connections>
                 </viewController>
@@ -389,6 +399,11 @@
                 <tapGestureRecognizer id="tZP-43-ksU">
                     <connections>
                         <action selector="showPersonalInfomationAction:" destination="Y6W-OH-hqX" id="HXJ-iE-JVG"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="oAD-A2-Gdp">
+                    <connections>
+                        <segue destination="SGo-MS-dvq" kind="show" identifier="showPartnerArea" id="goW-00-nJJ"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -402,7 +417,27 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z8B-KB-BI5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="28" y="475"/>
+            <point key="canvasLocation" x="318" y="528"/>
+        </scene>
+        <!--TopUp-->
+        <scene sceneID="ZWF-hd-adU">
+            <objects>
+                <viewControllerPlaceholder storyboardName="TopUp" id="BZk-1s-qZK" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="QfV-Zj-7El"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kIL-ZW-gRj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="28" y="528"/>
+        </scene>
+        <!--PartnerArea-->
+        <scene sceneID="Zdf-Gb-9Ca">
+            <objects>
+                <viewControllerPlaceholder storyboardName="PartnerArea" id="SGo-MS-dvq" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="hU3-Ue-Tv5"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="shV-Ga-bH8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-224" y="528"/>
         </scene>
     </scenes>
     <designables>

@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		B22889345B9A4A2E0EE2E5EF /* libPods-DealApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E6C3CD512BFBC5AC88643526 /* libPods-DealApp.a */; };
+		FA04FA0626E7620E002DDD09 /* TopUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA04FA0526E7620E002DDD09 /* TopUp.storyboard */; };
+		FA04FA0826E7621E002DDD09 /* TopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA04FA0726E7621E002DDD09 /* TopUpViewController.swift */; };
+		FA04FA0B26E77268002DDD09 /* TopUpCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA04FA0A26E77268002DDD09 /* TopUpCollectionViewCell.xib */; };
+		FA04FA0D26E7727A002DDD09 /* TopUpCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA04FA0C26E7727A002DDD09 /* TopUpCollectionViewCell.swift */; };
 		FA0CD53F26E62636004F958F /* VendorDetailImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA0CD53E26E62636004F958F /* VendorDetailImageView.xib */; };
 		FA0CD54126E6264B004F958F /* VendorDetailImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0CD54026E6264B004F958F /* VendorDetailImageView.swift */; };
 		FA0CD54426E62C8E004F958F /* Notification.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA0CD54326E62C8E004F958F /* Notification.storyboard */; };
@@ -36,9 +40,17 @@
 		FA5BEF3B26DE469100B0AA1B /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA5BEF2B26DE468B00B0AA1B /* Poppins-Medium.ttf */; };
 		FA5BEF4126DE469100B0AA1B /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA5BEF2F26DE468C00B0AA1B /* Poppins-SemiBold.ttf */; };
 		FA5BEF4426DE469100B0AA1B /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA5BEF2226DE468B00B0AA1B /* Poppins-Regular.ttf */; };
+		FA9EB5D626E8A13800733EEC /* HotDealCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA9EB5D526E8A13800733EEC /* HotDealCollectionViewCell.xib */; };
+		FA9EB5D826E8A14E00733EEC /* HotDealCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9EB5D726E8A14E00733EEC /* HotDealCollectionViewCell.swift */; };
+		FA9EB5DB26E8B65F00733EEC /* TopUpTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA9EB5DA26E8B65F00733EEC /* TopUpTableViewCell.xib */; };
+		FA9EB5DD26E8B67D00733EEC /* TopUpTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9EB5DC26E8B67D00733EEC /* TopUpTableViewCell.swift */; };
+		FA9EB5E026E8D62D00733EEC /* PartnerArea.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA9EB5DF26E8D62D00733EEC /* PartnerArea.storyboard */; };
+		FA9EB5E226E8D65000733EEC /* PartnerAreaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9EB5E126E8D65000733EEC /* PartnerAreaViewController.swift */; };
+		FA9EB5E526E8D91200733EEC /* PartnerAreaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA9EB5E426E8D91200733EEC /* PartnerAreaTableViewCell.xib */; };
+		FA9EB5E726E8D92300733EEC /* PartnerAreaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9EB5E626E8D92300733EEC /* PartnerAreaTableViewCell.swift */; };
 		FAC370DC26DE2E32003B993D /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC370D026DE2E31003B993D /* UIImage.swift */; };
 		FAC370DD26DE2E32003B993D /* UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC370D126DE2E31003B993D /* UIScrollView.swift */; };
-		FAC370DF26DE2E32003B993D /* UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC370D326DE2E31003B993D /* UITableViewCell.swift */; };
+		FAC370DF26DE2E32003B993D /* UICell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC370D326DE2E31003B993D /* UICell.swift */; };
 		FAC370E026DE2E32003B993D /* UIAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC370D426DE2E31003B993D /* UIAlert.swift */; };
 		FAC370E126DE2E32003B993D /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC370D526DE2E31003B993D /* UIButton.swift */; };
 		FAC370E226DE2E32003B993D /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC370D626DE2E31003B993D /* UILabel.swift */; };
@@ -70,18 +82,24 @@
 		FAC8756A26DFDCEB006DE739 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC8756926DFDCEB006DE739 /* CategoryCollectionViewCell.swift */; };
 		FAC9A27826E5F4B7006BDBD1 /* VendorDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAC9A27726E5F4B7006BDBD1 /* VendorDetail.storyboard */; };
 		FAC9A27A26E5F4CA006BDBD1 /* VendorDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC9A27926E5F4CA006BDBD1 /* VendorDetailViewController.swift */; };
-		FADD604526E364E20002FF2D /* TransactionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FADD604426E364E20002FF2D /* TransactionTableViewCell.xib */; };
-		FADD604726E367960002FF2D /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADD604626E367960002FF2D /* TransactionTableViewCell.swift */; };
+		FADD604526E364E20002FF2D /* ShoppingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FADD604426E364E20002FF2D /* ShoppingTableViewCell.xib */; };
+		FADD604726E367960002FF2D /* ShoppingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADD604626E367960002FF2D /* ShoppingTableViewCell.swift */; };
 		FADD604A26E37A660002FF2D /* PointCenter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FADD604926E37A660002FF2D /* PointCenter.storyboard */; };
 		FADD604C26E37A7B0002FF2D /* PointCenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADD604B26E37A7B0002FF2D /* PointCenterViewController.swift */; };
 		FADD604F26E380480002FF2D /* PointCenterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADD604E26E380480002FF2D /* PointCenterCollectionViewCell.swift */; };
 		FADD605126E380530002FF2D /* PointCenterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FADD605026E380530002FF2D /* PointCenterCollectionViewCell.xib */; };
+		FAEE79B526EA0B6E000B7A42 /* FaceBookUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEE79B426EA0B6E000B7A42 /* FaceBookUser.swift */; };
+		FAEE79B726EA0FE1000B7A42 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEE79B626EA0FE1000B7A42 /* Helper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E3FD4F7943E70B053CB910CE /* Pods-DealApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DealApp.release.xcconfig"; path = "Target Support Files/Pods-DealApp/Pods-DealApp.release.xcconfig"; sourceTree = "<group>"; };
 		E6C3CD512BFBC5AC88643526 /* libPods-DealApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DealApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8D043735E9A648D1480E1AC /* Pods-DealApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DealApp.debug.xcconfig"; path = "Target Support Files/Pods-DealApp/Pods-DealApp.debug.xcconfig"; sourceTree = "<group>"; };
+		FA04FA0526E7620E002DDD09 /* TopUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TopUp.storyboard; sourceTree = "<group>"; };
+		FA04FA0726E7621E002DDD09 /* TopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopUpViewController.swift; sourceTree = "<group>"; };
+		FA04FA0A26E77268002DDD09 /* TopUpCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopUpCollectionViewCell.xib; sourceTree = "<group>"; };
+		FA04FA0C26E7727A002DDD09 /* TopUpCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopUpCollectionViewCell.swift; sourceTree = "<group>"; };
 		FA0CD53E26E62636004F958F /* VendorDetailImageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VendorDetailImageView.xib; sourceTree = "<group>"; };
 		FA0CD54026E6264B004F958F /* VendorDetailImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorDetailImageView.swift; sourceTree = "<group>"; };
 		FA0CD54326E62C8E004F958F /* Notification.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Notification.storyboard; sourceTree = "<group>"; };
@@ -112,9 +130,17 @@
 		FA5BEF2826DE468B00B0AA1B /* Poppins-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Light.ttf"; sourceTree = "<group>"; };
 		FA5BEF2B26DE468B00B0AA1B /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		FA5BEF2F26DE468C00B0AA1B /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
+		FA9EB5D526E8A13800733EEC /* HotDealCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HotDealCollectionViewCell.xib; sourceTree = "<group>"; };
+		FA9EB5D726E8A14E00733EEC /* HotDealCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotDealCollectionViewCell.swift; sourceTree = "<group>"; };
+		FA9EB5DA26E8B65F00733EEC /* TopUpTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopUpTableViewCell.xib; sourceTree = "<group>"; };
+		FA9EB5DC26E8B67D00733EEC /* TopUpTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopUpTableViewCell.swift; sourceTree = "<group>"; };
+		FA9EB5DF26E8D62D00733EEC /* PartnerArea.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PartnerArea.storyboard; sourceTree = "<group>"; };
+		FA9EB5E126E8D65000733EEC /* PartnerAreaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerAreaViewController.swift; sourceTree = "<group>"; };
+		FA9EB5E426E8D91200733EEC /* PartnerAreaTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PartnerAreaTableViewCell.xib; sourceTree = "<group>"; };
+		FA9EB5E626E8D92300733EEC /* PartnerAreaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerAreaTableViewCell.swift; sourceTree = "<group>"; };
 		FAC370D026DE2E31003B993D /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		FAC370D126DE2E31003B993D /* UIScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScrollView.swift; sourceTree = "<group>"; };
-		FAC370D326DE2E31003B993D /* UITableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCell.swift; sourceTree = "<group>"; };
+		FAC370D326DE2E31003B993D /* UICell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICell.swift; sourceTree = "<group>"; };
 		FAC370D426DE2E31003B993D /* UIAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlert.swift; sourceTree = "<group>"; };
 		FAC370D526DE2E31003B993D /* UIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		FAC370D626DE2E31003B993D /* UILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
@@ -146,12 +172,14 @@
 		FAC8756926DFDCEB006DE739 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		FAC9A27726E5F4B7006BDBD1 /* VendorDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = VendorDetail.storyboard; sourceTree = "<group>"; };
 		FAC9A27926E5F4CA006BDBD1 /* VendorDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorDetailViewController.swift; sourceTree = "<group>"; };
-		FADD604426E364E20002FF2D /* TransactionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransactionTableViewCell.xib; sourceTree = "<group>"; };
-		FADD604626E367960002FF2D /* TransactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewCell.swift; sourceTree = "<group>"; };
+		FADD604426E364E20002FF2D /* ShoppingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShoppingTableViewCell.xib; sourceTree = "<group>"; };
+		FADD604626E367960002FF2D /* ShoppingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingTableViewCell.swift; sourceTree = "<group>"; };
 		FADD604926E37A660002FF2D /* PointCenter.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PointCenter.storyboard; sourceTree = "<group>"; };
 		FADD604B26E37A7B0002FF2D /* PointCenterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointCenterViewController.swift; sourceTree = "<group>"; };
 		FADD604E26E380480002FF2D /* PointCenterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointCenterCollectionViewCell.swift; sourceTree = "<group>"; };
 		FADD605026E380530002FF2D /* PointCenterCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PointCenterCollectionViewCell.xib; sourceTree = "<group>"; };
+		FAEE79B426EA0B6E000B7A42 /* FaceBookUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceBookUser.swift; sourceTree = "<group>"; };
+		FAEE79B626EA0FE1000B7A42 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +209,25 @@
 				E3FD4F7943E70B053CB910CE /* Pods-DealApp.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		FA04FA0426E761FB002DDD09 /* Top Up */ = {
+			isa = PBXGroup;
+			children = (
+				FA04FA0926E76CF5002DDD09 /* TopUpCollectionViewCell */,
+				FA04FA0526E7620E002DDD09 /* TopUp.storyboard */,
+				FA04FA0726E7621E002DDD09 /* TopUpViewController.swift */,
+			);
+			path = "Top Up";
+			sourceTree = "<group>";
+		};
+		FA04FA0926E76CF5002DDD09 /* TopUpCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				FA04FA0A26E77268002DDD09 /* TopUpCollectionViewCell.xib */,
+				FA04FA0C26E7727A002DDD09 /* TopUpCollectionViewCell.swift */,
+			);
+			path = TopUpCollectionViewCell;
 			sourceTree = "<group>";
 		};
 		FA0CD53D26E6260A004F958F /* VendorDetailImageView */ = {
@@ -267,6 +314,7 @@
 			children = (
 				FAC9A27626E5F467006BDBD1 /* VendorDetail */,
 				FA2815A526E2339C001FC5ED /* VendorCollectionViewCell */,
+				FA9EB5D426E8A0FE00733EEC /* HotDealCollectionViewCell */,
 				FA2815A126E22E09001FC5ED /* Vendor.storyboard */,
 				FA2815A326E22E13001FC5ED /* VendorViewController.swift */,
 			);
@@ -285,7 +333,9 @@
 		FA3802A126E2084F003E3FF5 /* My Wallet */ = {
 			isa = PBXGroup;
 			children = (
+				FA04FA0426E761FB002DDD09 /* Top Up */,
 				FA28159B26E21C96001FC5ED /* Personal Information */,
+				FA9EB5DE26E8D5A500733EEC /* Partner Area */,
 				FA3802A226E20865003E3FF5 /* MyWallet.storyboard */,
 				FA3802A426E20880003E3FF5 /* MyWalletViewController.swift */,
 			);
@@ -295,7 +345,8 @@
 		FA41F4A326E3608C0012B9B8 /* Transaction */ = {
 			isa = PBXGroup;
 			children = (
-				FADD604326E364CB0002FF2D /* TransactionTableViewCell */,
+				FADD604326E364CB0002FF2D /* ShoppingTableViewCell */,
+				FA9EB5D926E8B5B000733EEC /* TopUpTableViewCell */,
 				FA41F4A426E360A20012B9B8 /* Transaction.storyboard */,
 				FA41F4A626E360BC0012B9B8 /* TransactionViewController.swift */,
 			);
@@ -321,9 +372,47 @@
 			path = Poppins;
 			sourceTree = "<group>";
 		};
+		FA9EB5D426E8A0FE00733EEC /* HotDealCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				FA9EB5D526E8A13800733EEC /* HotDealCollectionViewCell.xib */,
+				FA9EB5D726E8A14E00733EEC /* HotDealCollectionViewCell.swift */,
+			);
+			path = HotDealCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		FA9EB5D926E8B5B000733EEC /* TopUpTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				FA9EB5DA26E8B65F00733EEC /* TopUpTableViewCell.xib */,
+				FA9EB5DC26E8B67D00733EEC /* TopUpTableViewCell.swift */,
+			);
+			path = TopUpTableViewCell;
+			sourceTree = "<group>";
+		};
+		FA9EB5DE26E8D5A500733EEC /* Partner Area */ = {
+			isa = PBXGroup;
+			children = (
+				FA9EB5E326E8D8FF00733EEC /* PartnerAreaTableViewCell */,
+				FA9EB5DF26E8D62D00733EEC /* PartnerArea.storyboard */,
+				FA9EB5E126E8D65000733EEC /* PartnerAreaViewController.swift */,
+			);
+			path = "Partner Area";
+			sourceTree = "<group>";
+		};
+		FA9EB5E326E8D8FF00733EEC /* PartnerAreaTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				FA9EB5E426E8D91200733EEC /* PartnerAreaTableViewCell.xib */,
+				FA9EB5E626E8D92300733EEC /* PartnerAreaTableViewCell.swift */,
+			);
+			path = PartnerAreaTableViewCell;
+			sourceTree = "<group>";
+		};
 		FAC370C926DE2C3E003B993D /* MVVM */ = {
 			isa = PBXGroup;
 			children = (
+				FAEE79B326EA0B59000B7A42 /* Model */,
 				FAC370CA26DE2C4F003B993D /* View */,
 			);
 			path = MVVM;
@@ -430,7 +519,7 @@
 				FAC370D626DE2E31003B993D /* UILabel.swift */,
 				FAC370DB26DE2E32003B993D /* UINavigationController.swift */,
 				FAC370D126DE2E31003B993D /* UIScrollView.swift */,
-				FAC370D326DE2E31003B993D /* UITableViewCell.swift */,
+				FAC370D326DE2E31003B993D /* UICell.swift */,
 				FAC370D826DE2E31003B993D /* UITextField.swift */,
 				FAC370D726DE2E31003B993D /* UIView.swift */,
 				FAC370D926DE2E32003B993D /* UIViewController.swift */,
@@ -441,6 +530,7 @@
 		FAC370FB26DE30E0003B993D /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				FAEE79B626EA0FE1000B7A42 /* Helper.swift */,
 				FAC370FD26DE30FE003B993D /* Const.swift */,
 				FAC370FE26DE30FE003B993D /* Notification.swift */,
 				FAC370FC26DE30FE003B993D /* Observable.swift */,
@@ -461,7 +551,7 @@
 			isa = PBXGroup;
 			children = (
 				FAC8756126DFC82B006DE739 /* SuggestionCollectionViewCell */,
-				FAC8756626DFDCC0006DE739 /* CetegoryCollectionViewCell */,
+				FAC8756626DFDCC0006DE739 /* CategoryCollectionViewCell */,
 				FAC8755826DF6D71006DE739 /* Home.storyboard */,
 				FAC8755A26DF6D80006DE739 /* HomeViewController.swift */,
 			);
@@ -486,13 +576,13 @@
 			path = SuggestionCollectionViewCell;
 			sourceTree = "<group>";
 		};
-		FAC8756626DFDCC0006DE739 /* CetegoryCollectionViewCell */ = {
+		FAC8756626DFDCC0006DE739 /* CategoryCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
 				FAC8756726DFDCDE006DE739 /* CategoryCollectionViewCell.xib */,
 				FAC8756926DFDCEB006DE739 /* CategoryCollectionViewCell.swift */,
 			);
-			path = CetegoryCollectionViewCell;
+			path = CategoryCollectionViewCell;
 			sourceTree = "<group>";
 		};
 		FAC9A27626E5F467006BDBD1 /* VendorDetail */ = {
@@ -505,13 +595,13 @@
 			path = VendorDetail;
 			sourceTree = "<group>";
 		};
-		FADD604326E364CB0002FF2D /* TransactionTableViewCell */ = {
+		FADD604326E364CB0002FF2D /* ShoppingTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				FADD604426E364E20002FF2D /* TransactionTableViewCell.xib */,
-				FADD604626E367960002FF2D /* TransactionTableViewCell.swift */,
+				FADD604426E364E20002FF2D /* ShoppingTableViewCell.xib */,
+				FADD604626E367960002FF2D /* ShoppingTableViewCell.swift */,
 			);
-			path = TransactionTableViewCell;
+			path = ShoppingTableViewCell;
 			sourceTree = "<group>";
 		};
 		FADD604826E37A450002FF2D /* Point Center */ = {
@@ -531,6 +621,14 @@
 				FADD604E26E380480002FF2D /* PointCenterCollectionViewCell.swift */,
 			);
 			path = PointCenterCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		FAEE79B326EA0B59000B7A42 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FAEE79B426EA0B6E000B7A42 /* FaceBookUser.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -596,7 +694,9 @@
 				FA0CD54926E6356E004F958F /* NotificationTableViewCell.xib in Resources */,
 				FADD604A26E37A660002FF2D /* PointCenter.storyboard in Resources */,
 				FAC8755E26DF81DA006DE739 /* CustomSearchBar.xib in Resources */,
+				FA9EB5E026E8D62D00733EEC /* PartnerArea.storyboard in Resources */,
 				FA0CD53F26E62636004F958F /* VendorDetailImageView.xib in Resources */,
+				FA9EB5E526E8D91200733EEC /* PartnerAreaTableViewCell.xib in Resources */,
 				FAC8755726DF6D38006DE739 /* Tabbar.storyboard in Resources */,
 				FAC8755926DF6D71006DE739 /* Home.storyboard in Resources */,
 				FA0CD54426E62C8E004F958F /* Notification.storyboard in Resources */,
@@ -605,19 +705,23 @@
 				FA28159D26E21CBC001FC5ED /* PersonalInformation.storyboard in Resources */,
 				FA2815A726E233BD001FC5ED /* VendorCollectionViewCell.xib in Resources */,
 				FA2815A226E22E09001FC5ED /* Vendor.storyboard in Resources */,
+				FA9EB5DB26E8B65F00733EEC /* TopUpTableViewCell.xib in Resources */,
 				FA5BEF4126DE469100B0AA1B /* Poppins-SemiBold.ttf in Resources */,
 				FAC8756826DFDCDE006DE739 /* CategoryCollectionViewCell.xib in Resources */,
 				FAC3710726DE3438003B993D /* Login.storyboard in Resources */,
 				FA41F4A526E360A20012B9B8 /* Transaction.storyboard in Resources */,
+				FA9EB5D626E8A13800733EEC /* HotDealCollectionViewCell.xib in Resources */,
+				FA04FA0626E7620E002DDD09 /* TopUp.storyboard in Resources */,
 				FADD605126E380530002FF2D /* PointCenterCollectionViewCell.xib in Resources */,
 				FA0CD54E26E63A06004F958F /* NotificationHeaderTableView.xib in Resources */,
+				FA04FA0B26E77268002DDD09 /* TopUpCollectionViewCell.xib in Resources */,
 				FA16C3DF26DE1DA600692CFD /* LaunchScreen.storyboard in Resources */,
 				FAC9A27826E5F4B7006BDBD1 /* VendorDetail.storyboard in Resources */,
 				FA16C3DC26DE1DA600692CFD /* Assets.xcassets in Resources */,
 				FAC8756326DFC847006DE739 /* SuggestionCollectionViewCell.xib in Resources */,
 				FA5BEF4426DE469100B0AA1B /* Poppins-Regular.ttf in Resources */,
 				FA16C3DA26DE1DA500692CFD /* Main.storyboard in Resources */,
-				FADD604526E364E20002FF2D /* TransactionTableViewCell.xib in Resources */,
+				FADD604526E364E20002FF2D /* ShoppingTableViewCell.xib in Resources */,
 				FA3802A326E20865003E3FF5 /* MyWallet.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -692,7 +796,7 @@
 			files = (
 				FAC9A27A26E5F4CA006BDBD1 /* VendorDetailViewController.swift in Sources */,
 				FA28159F26E21CD2001FC5ED /* PersonalInformationViewController.swift in Sources */,
-				FADD604726E367960002FF2D /* TransactionTableViewCell.swift in Sources */,
+				FADD604726E367960002FF2D /* ShoppingTableViewCell.swift in Sources */,
 				FAC370FF26DE30FE003B993D /* Observable.swift in Sources */,
 				FA2815A426E22E13001FC5ED /* VendorViewController.swift in Sources */,
 				FAC370E226DE2E32003B993D /* UILabel.swift in Sources */,
@@ -706,32 +810,40 @@
 				FAC370DD26DE2E32003B993D /* UIScrollView.swift in Sources */,
 				FAC370EC26DE2E43003B993D /* Date.swift in Sources */,
 				FAC8756526DFC919006DE739 /* SuggestionCollectionViewCell.swift in Sources */,
+				FA9EB5DD26E8B67D00733EEC /* TopUpTableViewCell.swift in Sources */,
+				FA9EB5E726E8D92300733EEC /* PartnerAreaTableViewCell.swift in Sources */,
 				FAC370E326DE2E32003B993D /* UIView.swift in Sources */,
 				FA16C3D726DE1DA500692CFD /* MainViewController.swift in Sources */,
 				FAC370DC26DE2E32003B993D /* UIImage.swift in Sources */,
 				FAC370E726DE2E32003B993D /* UINavigationController.swift in Sources */,
+				FA9EB5D826E8A14E00733EEC /* HotDealCollectionViewCell.swift in Sources */,
 				FA16C3D326DE1DA500692CFD /* AppDelegate.swift in Sources */,
 				FADD604F26E380480002FF2D /* PointCenterCollectionViewCell.swift in Sources */,
 				FAC370F526DE2FDB003B993D /* Network.swift in Sources */,
 				FAC8756026DF8201006DE739 /* CustomSearchBar.swift in Sources */,
 				FA0CD54B26E63582004F958F /* NotificationTableViewCell.swift in Sources */,
 				FAC8755B26DF6D80006DE739 /* HomeViewController.swift in Sources */,
+				FA9EB5E226E8D65000733EEC /* PartnerAreaViewController.swift in Sources */,
 				FA16C3D526DE1DA500692CFD /* SceneDelegate.swift in Sources */,
 				FAC370E526DE2E32003B993D /* UIViewController.swift in Sources */,
 				FA0CD54126E6264B004F958F /* VendorDetailImageView.swift in Sources */,
+				FAEE79B526EA0B6E000B7A42 /* FaceBookUser.swift in Sources */,
 				FADD604C26E37A7B0002FF2D /* PointCenterViewController.swift in Sources */,
 				FAC370F626DE2FDB003B993D /* API.swift in Sources */,
-				FAC370DF26DE2E32003B993D /* UITableViewCell.swift in Sources */,
+				FAC370DF26DE2E32003B993D /* UICell.swift in Sources */,
 				FAC370E026DE2E32003B993D /* UIAlert.swift in Sources */,
 				FAC370ED26DE2E43003B993D /* String.swift in Sources */,
 				FAC3710126DE30FE003B993D /* Notification.swift in Sources */,
 				FAC370E126DE2E32003B993D /* UIButton.swift in Sources */,
 				FAC370EE26DE2E43003B993D /* Double.swift in Sources */,
 				FAC3710926DE3446003B993D /* LoginViewController.swift in Sources */,
+				FA04FA0826E7621E002DDD09 /* TopUpViewController.swift in Sources */,
 				FA41F4A726E360BC0012B9B8 /* TransactionViewController.swift in Sources */,
 				FAC370E426DE2E32003B993D /* UITextField.swift in Sources */,
 				FA3802A526E20880003E3FF5 /* MyWalletViewController.swift in Sources */,
+				FAEE79B726EA0FE1000B7A42 /* Helper.swift in Sources */,
 				FA0CD55026E63A17004F958F /* NotificationHeaderTableView.swift in Sources */,
+				FA04FA0D26E7727A002DDD09 /* TopUpCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

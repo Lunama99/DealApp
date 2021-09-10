@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class HomeViewController: BaseViewController {
     
@@ -32,7 +33,7 @@ class HomeViewController: BaseViewController {
         
         // Setup avatar
         let avatarImg = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
-        avatarImg.image = R.image.img_avatar()?.resizeImageWith(newSize: CGSize(width: 30, height: 30))
+        avatarImg.sd_setImage(with: URL(string: Helper.shared.user?.imageURL ?? ""), placeholderImage: nil)
         avatarImg.contentMode = .scaleAspectFit
         avatarImg.layer.cornerRadius = 15
         avatarImg.layer.masksToBounds = true
@@ -41,7 +42,12 @@ class HomeViewController: BaseViewController {
         // Setup title
         let titleLbl = BaseLabel()
         titleLbl.style = 3
-        titleLbl.text = "Good Everning, Tam!"
+        if let userName = Helper.shared.user?.name {
+            titleLbl.text = "Good Everning, \(userName)!"
+        } else {
+            titleLbl.text = "Good Everning"
+        }
+        
         let titleLeftBarButton = UIBarButtonItem(customView: titleLbl)
         
         navigationItem.leftBarButtonItems = [avatarLeftBarButton, titleLeftBarButton]
@@ -101,17 +107,7 @@ class HomeViewController: BaseViewController {
             attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 1, range: NSMakeRange(0, attributeString.length))
         
         cell.discountLbl.attributedText = attributeString
-        
-        cell.layer.shadowColor = UIColor.lightGray.cgColor
-        cell.layer.shadowOffset = CGSize(width: 0, height: 2.0)
-        cell.layer.shadowRadius = 5.0
-        cell.layer.shadowOpacity = 1.0
-        cell.layer.masksToBounds = false
-        cell.layer.shadowPath = UIBezierPath(roundedRect: cell.bounds, cornerRadius: cell.contentView.layer.cornerRadius).cgPath
-        cell.layer.backgroundColor = UIColor.clear.cgColor
-        
-        cell.contentView.layer.masksToBounds = true
-        cell.layer.cornerRadius = 4
+        cell.setShadow()
     }
     
     func setupNewsCell(_ cell: SuggestionCollectionViewCell, indexPath: IndexPath) {
@@ -139,17 +135,7 @@ class HomeViewController: BaseViewController {
             attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 1, range: NSMakeRange(0, attributeString.length))
         
         cell.discountLbl.attributedText = attributeString
-        
-        cell.layer.shadowColor = UIColor.lightGray.cgColor
-        cell.layer.shadowOffset = CGSize(width: 0, height: 2.0)
-        cell.layer.shadowRadius = 5.0
-        cell.layer.shadowOpacity = 1.0
-        cell.layer.masksToBounds = false
-        cell.layer.shadowPath = UIBezierPath(roundedRect: cell.bounds, cornerRadius: cell.contentView.layer.cornerRadius).cgPath
-        cell.layer.backgroundColor = UIColor.clear.cgColor
-        
-        cell.contentView.layer.masksToBounds = true
-        cell.layer.cornerRadius = 4
+        cell.setShadow()
     }
     
     func setupCategoryCell(_ cell: CategoryCollectionViewCell, indexPath: IndexPath) {

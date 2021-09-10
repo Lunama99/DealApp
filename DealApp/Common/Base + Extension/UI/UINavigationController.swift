@@ -39,7 +39,6 @@ class BaseNavigationController: UINavigationController, UIGestureRecognizerDeleg
 extension UINavigationController {
     func returnRootViewController() {
         if let mainViewController = R.storyboard.main.instantiateInitialViewController() {
-            mainViewController.isLogin = true
             viewControllers = [mainViewController]
         }
     }
