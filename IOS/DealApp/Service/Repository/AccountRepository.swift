@@ -45,8 +45,8 @@ class AccountRepository: NetworkManager {
         }
     }
     
-    func formVerifyUser(FullName: String, CardNumber: String, CardPlace: String, IssuedOn: String, Birthday: String, Gender: String, FontImage: String, BackImage: String, PortraitImage: String, completion: @escaping (Result<Response, MoyaError>) -> Void) {
-        provider.request(.FormVerifyUser(FullName: FullName, CardNumber: CardNumber, CardPlace: CardPlace, IssuedOn: IssuedOn, Birthday: Birthday, Gender: Gender, FontImage: FontImage, BackImage: BackImage, PortraitImage: PortraitImage)) { result in
+    func formVerifyUser(User: FormVerifyUser, completion: @escaping (Result<Response, MoyaError>) -> Void) {
+        provider.request(.FormVerifyUser(User: User)) { result in
             completion(result)
         }
     }

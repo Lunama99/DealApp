@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MSw-Nw-6d2">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-SemiBold.ttf">
+            <string>Poppins-SemiBold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Select Address View Controller-->
+        <scene sceneID="71Z-qe-3cc">
+            <objects>
+                <viewController id="MSw-Nw-6d2" customClass="SelectAddressViewController" customModule="DealApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AYL-q5-CUP">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q3d-RE-ZsP" customClass="BaseView" customModule="DealApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="496" width="414" height="400"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vxu-oK-K8a">
+                                        <rect key="frame" x="0.0" y="52" width="414" height="348"/>
+                                        <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </tableView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y4R-p6-ouW">
+                                        <rect key="frame" x="154.5" y="16" width="105.5" height="20"/>
+                                        <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="14"/>
+                                        <color key="textColor" red="0.21568627450980393" green="0.28627450980392155" blue="0.3411764705882353" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Y4R-p6-ouW" firstAttribute="centerX" secondItem="q3d-RE-ZsP" secondAttribute="centerX" id="2JA-C9-oIZ"/>
+                                    <constraint firstItem="vxu-oK-K8a" firstAttribute="top" secondItem="Y4R-p6-ouW" secondAttribute="bottom" constant="16" id="XiW-EH-7Pe"/>
+                                    <constraint firstAttribute="height" constant="400" id="jUw-Km-Wk1"/>
+                                    <constraint firstAttribute="trailing" secondItem="vxu-oK-K8a" secondAttribute="trailing" id="oYl-fu-nP9"/>
+                                    <constraint firstAttribute="bottom" secondItem="vxu-oK-K8a" secondAttribute="bottom" id="pK6-fl-ZJy"/>
+                                    <constraint firstItem="vxu-oK-K8a" firstAttribute="leading" secondItem="q3d-RE-ZsP" secondAttribute="leading" id="qqb-FA-kXX"/>
+                                    <constraint firstItem="Y4R-p6-ouW" firstAttribute="top" secondItem="q3d-RE-ZsP" secondAttribute="top" constant="16" id="zuw-cJ-qXF"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ion-MR-Ehx">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="496"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="aLS-rp-vei" appends="YES" id="7nH-eP-xC3"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="d5P-l1-o3w"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="q3d-RE-ZsP" firstAttribute="top" secondItem="Ion-MR-Ehx" secondAttribute="bottom" id="TVM-ld-SLg"/>
+                            <constraint firstItem="q3d-RE-ZsP" firstAttribute="leading" secondItem="d5P-l1-o3w" secondAttribute="leading" id="Xxu-xz-YWX"/>
+                            <constraint firstItem="Ion-MR-Ehx" firstAttribute="top" secondItem="AYL-q5-CUP" secondAttribute="top" id="cHm-eg-Xg4"/>
+                            <constraint firstItem="Ion-MR-Ehx" firstAttribute="trailing" secondItem="d5P-l1-o3w" secondAttribute="trailing" id="ggc-eg-P1n"/>
+                            <constraint firstItem="q3d-RE-ZsP" firstAttribute="trailing" secondItem="d5P-l1-o3w" secondAttribute="trailing" id="hze-XY-eU9"/>
+                            <constraint firstItem="Ion-MR-Ehx" firstAttribute="leading" secondItem="d5P-l1-o3w" secondAttribute="leading" id="tuA-Cg-b1L"/>
+                            <constraint firstAttribute="bottom" secondItem="q3d-RE-ZsP" secondAttribute="bottom" id="yCc-ae-Kbl"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="TPu-QR-InS"/>
+                    <connections>
+                        <outlet property="balanceLbl" destination="Y4R-p6-ouW" id="Hht-33-YgP"/>
+                        <outlet property="mainView" destination="q3d-RE-ZsP" id="PaP-wC-Evr"/>
+                        <outlet property="tableView" destination="vxu-oK-K8a" id="db8-3C-zaA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iRx-Sf-62t" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="aLS-rp-vei">
+                    <connections>
+                        <action selector="tapOutsideAction:" destination="MSw-Nw-6d2" id="0aX-oW-Nns"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1047.8260869565217" y="77.678571428571431"/>
+        </scene>
+    </scenes>
+</document>

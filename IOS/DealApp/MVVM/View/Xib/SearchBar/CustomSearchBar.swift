@@ -9,6 +9,7 @@ import UIKit
 
 class CustomSearchBar: UIView {
     @IBOutlet var contentView: UIView!
+    @IBOutlet weak var searchTfx: BaseTextField!
     
     override init(frame: CGRect) {
         super.init(frame: frame)

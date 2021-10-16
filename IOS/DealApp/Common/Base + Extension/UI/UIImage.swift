@@ -180,3 +180,15 @@ extension UIImage {
         return newImage!
     }
 }
+
+extension UIImageView {
+    func setwWarning(_ isShow: Bool) {
+        if isShow {
+            layer.borderWidth = 1
+            layer.borderColor = UIColor.red.cgColor
+        } else {
+            layer.borderWidth = 0
+            layer.borderColor = UIColor.clear.cgColor
+        }
+    }
+}

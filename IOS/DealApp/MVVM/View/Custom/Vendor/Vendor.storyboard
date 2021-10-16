@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -57,7 +57,7 @@
                                                     <constraint firstAttribute="width" constant="20" id="rLG-ce-wNz"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hot Deal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OcJ-GS-Heo">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Voucher" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OcJ-GS-Heo">
                                                 <rect key="frame" x="44" y="16" width="60" height="20"/>
                                                 <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="14"/>
                                                 <nil key="textColor"/>
@@ -80,7 +80,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <outletCollection property="gestureRecognizers" destination="cEJ-Mq-NxS" appends="YES" id="IzP-Pg-ZDV"/>
+                                            <outletCollection property="gestureRecognizers" destination="mLn-NY-Xua" appends="YES" id="ja6-KK-wzd"/>
                                         </connections>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pjj-ca-ALx" customClass="BaseView" customModule="DealApp" customModuleProvider="target">
@@ -107,7 +107,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <outletCollection property="gestureRecognizers" destination="mLn-NY-Xua" appends="YES" id="bcL-O9-Oaj"/>
+                                            <outletCollection property="gestureRecognizers" destination="cEJ-Mq-NxS" appends="YES" id="HJc-jR-tmO"/>
                                         </connections>
                                     </view>
                                 </subviews>
@@ -152,20 +152,20 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="collectionView" destination="2aB-uN-QoH" id="afr-wy-WhR"/>
-                        <outlet property="hotDealView" destination="Y6j-bf-R8d" id="1Qd-e5-fwH"/>
                         <outlet property="vendorView" destination="pjj-ca-ALx" id="QdI-pS-Eow"/>
+                        <outlet property="voucherView" destination="Y6j-bf-R8d" id="OqU-gm-NyP"/>
                         <segue destination="eP7-hi-ZYC" kind="show" identifier="showVendorDetail" id="mrO-Pc-qKQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="cEJ-Mq-NxS">
+                <tapGestureRecognizer id="mLn-NY-Xua" userLabel="VoucherTap">
                     <connections>
-                        <action selector="hotDealAction:" destination="Y6W-OH-hqX" id="mrg-sq-QGB"/>
+                        <action selector="voucherAction:" destination="Y6W-OH-hqX" id="KYk-bb-sP8"/>
                     </connections>
                 </tapGestureRecognizer>
-                <tapGestureRecognizer id="mLn-NY-Xua">
+                <tapGestureRecognizer id="cEJ-Mq-NxS" userLabel="VendorTap">
                     <connections>
-                        <action selector="vendorAction:" destination="Y6W-OH-hqX" id="sX3-6U-E2k"/>
+                        <action selector="vendorAction:" destination="Y6W-OH-hqX" id="l81-Ix-ekf"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>

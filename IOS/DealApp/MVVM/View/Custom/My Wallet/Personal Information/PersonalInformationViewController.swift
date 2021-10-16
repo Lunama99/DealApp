@@ -22,7 +22,7 @@ class PersonalInformationViewController: BaseViewController {
     @IBOutlet weak var idLbl: BaseLabel!
     @IBOutlet weak var verifyBtn: BaseButton!
     
-    let user = Helper.shared.user
+    
     let facebookBtn = FBLoginButton(frame: .zero, permissions: [.publicProfile])
 
     override func viewDidLoad() {
@@ -37,12 +37,16 @@ class PersonalInformationViewController: BaseViewController {
     func setupView() {
         showBackButton()
         
+        let user = Helper.shared.user
+        
         idLbl.text = "#\(user.id?.split(separator: "-").first ?? "")"
         userImg.layer.cornerRadius = 34
         userImg.layer.masksToBounds = true
         userImg.sd_setImage(with: URL(string: Helper.shared.user.avatar ?? ""), completed: nil)
         userName.text = Helper.shared.user.fullName
         createDateLbl.text = user.dateCreate?.toDate(format: .format3)?.toString(format: .format4)
+        birthDayLbl.text = user.birthday?.toDate(format: .format5)?.toString(format: .format4)
+        geneLbl.text = user.gender
         phoneLbl.text =  user.phoneNumber ?? "N/A"
         emailLbl.text = user.email ?? "N/A"
         addressLbl.text = user.fullAddress ?? "N/A"
@@ -50,10 +54,19 @@ class PersonalInformationViewController: BaseViewController {
         facebookBtn.delegate = self
         facebookBtn.isHidden = true
         
+        verifyBtn.setTitle(user.verify, for: .normal)
         verifyBtn.layer.cornerRadius = 4
         verifyBtn.layer.masksToBounds = true
-        verifyBtn.setTitleColor(UIColor.init(hexString: "#D89935"), for: .normal)
-        verifyBtn.backgroundColor = UIColor.init(hexString: "#F7CC74")
+        
+        if user.verify?.lowercased() == "verified" {
+            verifyBtn.setTitleColor(UIColor.init(hexString: "#48A500"), for: .normal)
+            verifyBtn.backgroundColor = UIColor.init(hexString: "#F2FFE9")
+            verifyBtn.setBorderButton(color: UIColor.init(hexString: "#48A500"))
+        } else {
+            verifyBtn.setTitleColor(UIColor.init(hexString: "#D89935"), for: .normal)
+            verifyBtn.backgroundColor = UIColor.init(hexString: "#F7CC74")
+            verifyBtn.setBorderButton(color: UIColor.init(hexString: "#D89935"))
+        }
     }
 
     @IBAction func signOutAction(_ sender: Any) {

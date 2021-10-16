@@ -10,14 +10,16 @@ import UIKit
 class VendorViewController: BaseViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var hotDealView: BaseView!
+    @IBOutlet weak var voucherView: BaseView!
     @IBOutlet weak var vendorView: BaseView!
     
     private let contentInsetCV = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
     private let numberOfColumn: CGFloat = 2
     private let spacing: CGFloat = 16
     
-    var collectionDisplay: CollectionDisplay = .HotDeal {
+    private let viewModel = VendorViewModel()
+    
+    var collectionDisplay: CollectionDisplay = .Voucher {
         didSet {
             collectionView.reloadData()
         }
@@ -26,11 +28,12 @@ class VendorViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        setupObservable()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: false)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchData()
     }
     
     override func viewDidLayoutSubviews() {
@@ -49,7 +52,19 @@ class VendorViewController: BaseViewController {
         collectionView.dataSource = self
     }
     
-    func setupHotDealCell(_ cell: HotDealCollectionViewCell, indexPath: IndexPath) {
+    func setupObservable() {
+        viewModel.listVendor.bind { [weak self] string in
+            self?.collectionView.reloadData()
+        }
+    }
+    
+    func fetchData() {
+        viewModel.getListVendor { [weak self] in
+            self?.stateView = .ready
+        }
+    }
+    
+    func setupVoucherCell(_ cell: HotDealCollectionViewCell, indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
             cell.imgView.image = R.image.img_demo1()?.resizeImageWith(newSize: CGSize(width: cell.frame.width, height: 0))
@@ -78,47 +93,43 @@ class VendorViewController: BaseViewController {
     }
     
     func setupVendorCell(_ cell: VendorCollectionViewCell, indexPath: IndexPath) {
-        switch indexPath.row {
-        case 0:
-            cell.imgView.image = R.image.img_the_coffee_house()?.resizeImageWith(newSize: CGSize(width: cell.frame.width, height: cell.frame.width))
-            cell.titleLbl.text = "The Coffee House"
-        case 1:
-            cell.imgView.image = R.image.img_starbucks_coffee()?.resizeImageWith(newSize: CGSize(width: cell.frame.width, height: cell.frame.width))
-            cell.titleLbl.text = "StarBucks Coffee"
-        case 2:
-            cell.imgView.image = R.image.img_texas()?.resizeImageWith(newSize: CGSize(width: cell.frame.width, height: cell.frame.width))
-            cell.titleLbl.text = "Texas Chircken"
-        default:
-            cell.imgView.image = R.image.img_macdonald()?.resizeImageWith(newSize: CGSize(width: cell.frame.width, height: cell.frame.width))
-            cell.titleLbl.text = "MacDonald"
-        }
+        let item = viewModel.listVendor.value?[indexPath.row]
+        
+        let currWidth = cell.widthAnchor.constraint(equalToConstant: cell.bounds.width)
+        currWidth.isActive = true
+        let currHeight = cell.heightAnchor.constraint(equalToConstant: cell.bounds.height)
+        currHeight.isActive = true
+        
+        cell.imgView.contentMode = .scaleAspectFill
+        cell.imgView.sd_setImage(with: URL(string: item?.avatar ?? ""), placeholderImage: R.image.img_placeholder()?.resizeImageWith(newSize: CGSize(width: cell.bounds.width, height: cell.bounds.width)))
+        cell.titleLbl.text = item?.name
         
         cell.contentView.layer.masksToBounds = true
         cell.layer.cornerRadius = 4
     }
     
-    @IBAction func hotDealAction(_ sender: Any) {
+    @IBAction func voucherAction(_ sender: Any) {
         vendorView.backgroundColor = UIColor.init(hexString: "EFF3F6")
-        hotDealView.backgroundColor = .white
-        collectionDisplay = .HotDeal
+        voucherView.backgroundColor = .white
+        collectionDisplay = .Voucher
     }
     
     @IBAction func vendorAction(_ sender: Any) {
         vendorView.backgroundColor = .white
-        hotDealView.backgroundColor = UIColor.init(hexString: "EFF3F6")
+        voucherView.backgroundColor = UIColor.init(hexString: "EFF3F6")
         collectionDisplay = .Vendor
     }
 }
 
 extension VendorViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return collectionDisplay == .Voucher ? 4 : (viewModel.listVendor.value?.count ?? 0)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if collectionDisplay == .HotDeal {
+        if collectionDisplay == .Voucher {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.nib.hotDealCollectionViewCell.identifier, for: indexPath) as? HotDealCollectionViewCell else { return UICollectionViewCell() }
-            setupHotDealCell(cell, indexPath: indexPath)
+            setupVoucherCell(cell, indexPath: indexPath)
             return cell
         } else {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: R.nib.vendorCollectionViewCell.identifier, for: indexPath) as? VendorCollectionViewCell else { return UICollectionViewCell() }
@@ -134,7 +145,7 @@ extension VendorViewController: UICollectionViewDelegate, UICollectionViewDataSo
 
 extension VendorViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if collectionDisplay == .HotDeal {
+        if collectionDisplay == .Voucher {
             let width = (collectionView.bounds.width - (contentInsetCV.left + contentInsetCV.right + spacing))/numberOfColumn - 1
             return CGSize(width: width, height: width/2*2.7)
         } else {
@@ -158,7 +169,7 @@ extension VendorViewController: UICollectionViewDelegateFlowLayout {
 
 extension VendorViewController {
     enum CollectionDisplay {
-        case HotDeal
+        case Voucher
         case Vendor
     }
 }

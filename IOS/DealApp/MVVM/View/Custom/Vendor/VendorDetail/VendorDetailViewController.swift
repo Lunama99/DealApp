@@ -9,7 +9,6 @@ import UIKit
 
 class VendorDetailViewController: BaseViewController {
 
-    @IBOutlet weak var backBtn: BaseButton!
     @IBOutlet weak var indicatorBtn: BaseLabel!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var imgScrollView: UIScrollView!
@@ -25,15 +24,15 @@ class VendorDetailViewController: BaseViewController {
         super.viewDidLoad()
         setupView()
     }
-
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
-    
+
     func setupView() {
-        scrollView.contentInsetAdjustmentBehavior = .never
+        showBackButton()
         
-        navigationController?.setNavigationBarHidden(true, animated: false)
+        scrollView.contentInsetAdjustmentBehavior = .never
         
         let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: "120 points")
             attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 1, range: NSMakeRange(0, attributeString.length))
@@ -69,10 +68,7 @@ class VendorDetailViewController: BaseViewController {
         }
         
         imgScrollView.contentSize = CGSize(width: (imgScrollView.frame.size.width * CGFloat(numberImg)), height: imgScrollView.frame.size.height)
-//        imgScrollView.contentOffset.x = imgScrollView.frame.width * CGFloat(0)
-        
-        backBtn.backgroundColor = .black.withAlphaComponent(0.2)
-        backBtn.bringSubviewToFront(imgScrollView)
+
         indicatorBtn.backgroundColor = .black.withAlphaComponent(0.2)
         indicatorBtn.bringSubviewToFront(imgScrollView)
     }

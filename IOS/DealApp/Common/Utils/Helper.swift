@@ -31,17 +31,33 @@ class Helper {
         }
     }
     
-    var topViewController: UIViewController? {
-        if let topController = UIApplication.shared.windows.first?.rootViewController {
-            while let presentedViewController = topController.presentedViewController {
-                return presentedViewController
-            }
+    func getTopViewController(base: UIViewController? = UIApplication.shared.windows.first?.rootViewController) -> UIViewController? {
+        
+        if let nav = base as? UINavigationController {
+            return getTopViewController(base: nav.visibleViewController)
+            
+        } else if let tab = base as? UITabBarController, let selected = tab.selectedViewController {
+            return getTopViewController(base: selected)
+            
+        } else if let presented = base?.presentedViewController {
+            return getTopViewController(base: presented)
         }
-        return nil
+        return base
     }
     
     func clearUserInfor() {
+        user = User()
         keyChain.clear()
+    }
+    
+    func expire(message: String) {
+        let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel) { action in
+            self.clearUserInfor()
+            self.getTopViewController()?.navigationController?.returnRootViewController()
+        })
+
+        getTopViewController()?.present(alert, animated: true, completion: nil)
     }
     
     func getFaceBookUser(result: LoginManagerLoginResult?, completion: @escaping(()->Void)) {
@@ -80,40 +96,29 @@ class Helper {
             }
         }
     }
-//    var isLogin: Bool {
-//        return RealmService.shared.getWallet().count > 0
-//    }
-//
-//    var currentChain: (name: String,symbol: String) {
-//        return (Default.shared.getCurrentChain().name ?? "", Default.shared.getCurrentChain().symbol ?? "")
-//    }
-//
-//    var isHiddenValue: Bool {
-//        return Default.shared.isHiddenValue()
-//    }
-//
-//    func generateQRCode(from string: String) -> UIImage? {
-//        let data = string.data(using: String.Encoding.ascii)
-//
-//        if let filter = CIFilter(name: "CIQRCodeGenerator") {
-//            filter.setValue(data, forKey: "inputMessage")
-//            let transform = CGAffineTransform(scaleX: 3, y: 3)
-//
-//            if let output = filter.outputImage?.transformed(by: transform) {
-//                return UIImage(ciImage: output)
-//            }
-//        }
-//
-//        return nil
-//    }
-//
-//    func showWebView(title: String, url: String, parent: BaseViewController) {
-//        guard let webViewController = R.storyboard.webView.instantiateInitialViewController() else { return }
-//        webViewController.webViewTitle = title
-//        webViewController.stringURL = url
-//        parent.navigationController?.pushViewController(webViewController, animated: true)
-//    }
-//
+
+    func generateQRCode(from string: String) -> UIImage? {
+        let data = string.data(using: String.Encoding.ascii)
+
+        if let filter = CIFilter(name: "CIQRCodeGenerator") {
+            filter.setValue(data, forKey: "inputMessage")
+            let transform = CGAffineTransform(scaleX: 3, y: 3)
+
+            if let output = filter.outputImage?.transformed(by: transform) {
+                return UIImage(ciImage: output)
+            }
+        }
+
+        return nil
+    }
+
+    func showWebView(title: String, url: String, parent: BaseViewController) {
+        guard let webViewController = R.storyboard.webView.instantiateInitialViewController() else { return }
+        webViewController.webViewTitle = title
+        webViewController.stringURL = url
+        parent.navigationController?.pushViewController(webViewController, animated: true)
+    }
+
 //    func showScan(parent: BaseViewController, completion: @escaping(String)->Void) {
 //        guard let scanViewController = R.storyboard.scan.instantiateInitialViewController() else { return }
 //        scanViewController.modalPresentationStyle = .fullScreen
@@ -123,12 +128,12 @@ class Helper {
 //        parent.navigationController?.present(scanViewController, animated: true, completion: nil)
 //    }
 //
-//    func copyString(string: String) {
-//        let pasteboard = UIPasteboard.general
-//        pasteboard.string = string
-//        ShowAlert.shared.showCopySuccessful()
-//    }
-//
+    func copyString(string: String) {
+        let pasteboard = UIPasteboard.general
+        pasteboard.string = string
+        ShowAlert.shared.showCopySuccessful()
+    }
+
 //    func showInputPopup(_ displayStyle: InputPopupViewController.InputPopupStyle, parent: BaseViewController, completion: @escaping()->Void) {
 //        guard let inputPopupViewController = R.storyboard.inputPopup.instantiateInitialViewController() else { return }
 //        inputPopupViewController.displayStyle = displayStyle
@@ -138,12 +143,12 @@ class Helper {
 //        parent.navigationController?.present(inputPopupViewController, animated: true, completion: nil)
 //    }
 //
-//    func showQRCode(string: String, parent: BaseViewController) {
-//        guard let receiveViewController = R.storyboard.receive.instantiateInitialViewController() else { return }
-//        receiveViewController.stringValue = string
-//        parent.navigationController?.pushViewController(receiveViewController, animated: true)
-//    }
-//
+    func showQRCode(wallet: WalletAddress?, parent: BaseViewController) {
+        guard let receiveViewController = R.storyboard.receive.instantiateInitialViewController() else { return }
+        receiveViewController.wallet = wallet
+        parent.navigationController?.pushViewController(receiveViewController, animated: true)
+    }
+
 //    func currentWalllet() -> WalletModel? {
 //        return RealmService.shared.getWallet().filter({$0.Mnemonic.decryptMessage() == Default.shared.getMnemonic()}).first
 //    }

@@ -38,9 +38,9 @@ class HomeViewController: BaseViewController {
         
         navigationController?.tabBarController?.tabBar.items?[0].selectedImage = R.image.ic_home_filled()?.withRenderingMode(.alwaysOriginal)
         navigationController?.tabBarController?.tabBar.items?[1].selectedImage = R.image.ic_vendor_filled()?.withRenderingMode(.alwaysOriginal)
-        navigationController?.tabBarController?.tabBar.items?[2].selectedImage = R.image.ic_point_center_filled()?.withRenderingMode(.alwaysOriginal)
-        navigationController?.tabBarController?.tabBar.items?[3].selectedImage = R.image.ic_transaction_filled()?.withRenderingMode(.alwaysOriginal)
-        navigationController?.tabBarController?.tabBar.items?[4].selectedImage = R.image.ic_my_wallet_filled()?.withRenderingMode(.alwaysOriginal)
+//        navigationController?.tabBarController?.tabBar.items?[2].selectedImage = R.image.ic_point_center_filled()?.withRenderingMode(.alwaysOriginal)
+        navigationController?.tabBarController?.tabBar.items?[2].selectedImage = R.image.ic_transaction_filled()?.withRenderingMode(.alwaysOriginal)
+        navigationController?.tabBarController?.tabBar.items?[3].selectedImage = R.image.ic_my_wallet_filled()?.withRenderingMode(.alwaysOriginal)
         
         // Setup avatar
         avatarImg.contentMode = .scaleAspectFill
@@ -105,7 +105,7 @@ class HomeViewController: BaseViewController {
             cell.imgView.image = R.image.img_demo5()
         }
         
-        cell.imgView.contentMode = .scaleToFill
+        cell.imgView.contentMode = .scaleAspectFill
         cell.imgView.layer.cornerRadius = 4
         cell.imgView.layer.masksToBounds = true
         
@@ -138,7 +138,7 @@ class HomeViewController: BaseViewController {
     
     func fetchData() {
         stateView = .loading
-        viewModel.getUser { [weak self] in
+        viewModel.getUser { [weak self]  in
             self?.stateView = .ready
             self?.updateUserInfor()
         }
@@ -165,7 +165,7 @@ class HomeViewController: BaseViewController {
             cell.imgView.image = R.image.img_demo5()
         }
         
-        cell.imgView.contentMode = .scaleToFill
+        cell.imgView.contentMode = .scaleAspectFill
         cell.imgView.layer.cornerRadius = 4
         cell.imgView.layer.masksToBounds = true
         

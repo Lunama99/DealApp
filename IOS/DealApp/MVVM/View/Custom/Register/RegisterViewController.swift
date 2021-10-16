@@ -9,8 +9,7 @@ import UIKit
 
 class RegisterViewController: BaseViewController {
 
-    @IBOutlet weak var firstNameTfx: BaseTextField!
-    @IBOutlet weak var lastNameTfx: BaseTextField!
+    @IBOutlet weak var fullNameTfx: BaseTextField!
     @IBOutlet weak var userNameTfx: BaseTextField!
     @IBOutlet weak var emailTfx: BaseTextField!
     @IBOutlet weak var passwordTfx: BaseTextField!
@@ -24,12 +23,8 @@ class RegisterViewController: BaseViewController {
     }
     
     func setupView() {
-        firstNameTfx.didChangeValue = { [weak self] string in
-            if string.count > 0 { self?.firstNameTfx.setwWarning(false) }
-        }
-        
-        lastNameTfx.didChangeValue = { [weak self] string in
-            if string.count > 0 { self?.lastNameTfx.setwWarning(false) }
+        fullNameTfx.didChangeValue = { [weak self] string in
+            if string.count > 0 { self?.fullNameTfx.setwWarning(false) }
         }
         
         emailTfx.didChangeValue = { [weak self] string in
@@ -50,15 +45,13 @@ class RegisterViewController: BaseViewController {
     }
     
     func verifyTfx() -> Bool {
-        firstNameTfx.setwWarning((firstNameTfx.text?.count ?? 0) <= 0)
-        lastNameTfx.setwWarning((lastNameTfx.text?.count ?? 0) <= 0)
+        fullNameTfx.setwWarning((fullNameTfx.text?.count ?? 0) <= 0)
         emailTfx.setwWarning((emailTfx.text?.count ?? 0) <= 0)
         userNameTfx.setwWarning((userNameTfx.text?.count ?? 0) <= 0)
         passwordTfx.setwWarning((passwordTfx.text?.count ?? 0) <= 0)
         confirmPasswordTfx.setwWarning((confirmPasswordTfx.text?.count ?? 0) <= 0)
         
-        guard firstNameTfx.text != "" && firstNameTfx.text != nil else { return false }
-        guard lastNameTfx.text != "" && lastNameTfx.text != nil else { return false }
+        guard fullNameTfx.text != "" && fullNameTfx.text != nil else { return false }
         guard emailTfx.text != "" && emailTfx.text != nil else { return false }
         guard userNameTfx.text != "" && userNameTfx.text != nil else { return false }
         guard passwordTfx.text != "" && passwordTfx.text != nil else { return false }
@@ -78,7 +71,7 @@ class RegisterViewController: BaseViewController {
         guard verifyTfx() else { return }
         
         stateView = .loading
-        accountRepo.register(FullName: "\(firstNameTfx.text ?? "") \(lastNameTfx.text ?? "")" , Sponsor: nil, Email: emailTfx.text ?? "", UserName: userNameTfx.text ?? "", Password: passwordTfx.text ?? "", Type: nil) { [weak self] result in
+        accountRepo.register(FullName: (fullNameTfx.text ?? "") , Sponsor: nil, Email: emailTfx.text ?? "", UserName: userNameTfx.text ?? "", Password: passwordTfx.text ?? "", Type: nil) { [weak self] result in
             self?.stateView = .ready
             switch result {
             case .success(let response):

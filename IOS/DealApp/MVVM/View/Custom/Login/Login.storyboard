@@ -95,6 +95,7 @@
                                                     <constraint firstAttribute="width" constant="16" id="0IL-4h-4aO"/>
                                                     <constraint firstAttribute="height" constant="16" id="TCT-HP-SAs"/>
                                                 </constraints>
+                                                <state key="normal" image="ic_check"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="style">
                                                         <integer key="value" value="0"/>
@@ -530,7 +531,7 @@
             <size key="intrinsicContentSize" width="124" height="32"/>
         </designable>
         <designable name="GoE-fo-wME">
-            <size key="intrinsicContentSize" width="30" height="34"/>
+            <size key="intrinsicContentSize" width="25" height="25"/>
         </designable>
         <designable name="LQc-Q0-Uuc">
             <size key="intrinsicContentSize" width="151" height="20"/>
@@ -577,6 +578,7 @@
     </designables>
     <resources>
         <image name="eye.slash" catalog="system" width="128" height="86"/>
+        <image name="ic_check" width="25" height="25"/>
         <image name="ic_facebook" width="25" height="25"/>
         <image name="ic_google" width="25" height="25"/>
         <image name="ic_twitter" width="25" height="25"/>

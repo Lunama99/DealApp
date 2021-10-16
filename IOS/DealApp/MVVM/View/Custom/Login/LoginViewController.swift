@@ -18,7 +18,8 @@ class LoginViewController: BaseViewController {
     
     let facebookBtn = FBLoginButton(frame: .zero, permissions: [.publicProfile])
     let accountRepo = AccountRepository()
-    var remember: Bool = false
+    var remember: Bool = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -59,7 +60,7 @@ class LoginViewController: BaseViewController {
                 do {
                     let model = try response.map(DefaultResponse.self)
                     if let token = model.result, model.status == true  {
-                        print(token)
+                        print("token: \(token)")
                         Helper.shared.userToken = token
                         self?.navigationController?.returnRootViewController()
                     } else {
@@ -94,7 +95,7 @@ class LoginViewController: BaseViewController {
     
     @IBAction func rememberAction(_ sender: Any) {
         remember = !remember
-        checkBtn.setImage(remember ? UIImage(systemName: "checkmark") : nil, for: .normal)
+        checkBtn.setImage(remember ? R.image.ic_check() : nil, for: .normal)
     }
 }
 

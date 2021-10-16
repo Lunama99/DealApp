@@ -6,19 +6,25 @@
 //
 
 import UIKit
+import SDWebImage
 
 class TopUpViewController: BaseViewController {
 
     @IBOutlet weak var cryptoCollectionView: UICollectionView!
     @IBOutlet weak var bankCollectionView: UICollectionView!
+    @IBOutlet weak var cryptoSearchBar: CustomSearchBar!
     
     private let contentInsetCV = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
-    private let numberOfColumn: CGFloat = 3
-    private let spacing: CGFloat = 16
+    private let cellWidth: CGFloat = 60
+    private let numberOfColumn: CGFloat = 4
+    
+    private let viewModel = TopUpViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        fetchData()
+        setupObservable()
     }
     
     func setupView() {
@@ -34,32 +40,42 @@ class TopUpViewController: BaseViewController {
         bankCollectionView.contentInset = contentInsetCV
         bankCollectionView.delegate = self
         bankCollectionView.dataSource = self
+        
+        cryptoSearchBar.searchTfx.didChangeValue = { [weak self] string in
+            self?.viewModel.searchBarText = string
+            self?.cryptoCollectionView.reloadData()
+        }
+    }
+    
+    func fetchData() {
+        stateView = .loading
+        viewModel.getCoinDeposit { [weak self] in
+            self?.cryptoCollectionView.reloadData()
+            self?.stateView = .ready
+        }
+    }
+    
+    func setupObservable() {
+        viewModel.coinDeposit.bind { [weak self] string in
+            self?.cryptoCollectionView.reloadData()
+        }
     }
     
     func setupCryptoCell(_ cell: TopUpCollectionViewCell, indexPath: IndexPath) {
-        cell.imgLeadingConstraint.constant = 10
-        cell.imgTrailingConstraint.constant = 10
-        cell.imgTopConstraint.constant = 10
-        cell.imgBotConstraint.constant = 10
+        let item = viewModel.filterDepositCoin()[indexPath.row]
+        cell.widthAnchor.constraint(equalToConstant: cellWidth).isActive = true
         
-        switch indexPath.row {
-        case 0:
-            cell.imgView.image = R.image.img_vdt()?.resizeImageWith(newSize: CGSize(width: cell.frame.width - 20, height: cell.frame.width - 20))
-            cell.titleLbl.text = "VDT"
-        case 1:
-            cell.imgView.image = R.image.img_tron()?.resizeImageWith(newSize: CGSize(width: cell.frame.width - 20, height: cell.frame.width - 20))
-            cell.titleLbl.text = "TRON"
-        default:
-            cell.imgView.image = R.image.img_bitcoin()?.resizeImageWith(newSize: CGSize(width: cell.frame.width - 20, height: cell.frame.width - 20))
-            cell.titleLbl.text = "BITCOIN"
-        }
-        
+        cell.imgView.sd_setImage(with: URL(string: item.logo ?? ""), completed: nil)
+        cell.imgBackground.layer.cornerRadius = cell.imgBackground.frame.size.height/2
+        cell.imgBackground.layer.masksToBounds = true
+        cell.titleLbl.text = item.currency
         
         cell.contentView.layer.masksToBounds = true
         cell.layer.cornerRadius = 4
     }
     
     func setupBankCell(_ cell: TopUpCollectionViewCell, indexPath: IndexPath) {
+        cell.widthAnchor.constraint(equalToConstant: cellWidth).isActive = true
         switch indexPath.row {
         case 0:
             cell.imgView.image = R.image.img_visa()?.resizeImageWith(newSize: CGSize(width: cell.frame.width, height: cell.frame.width))
@@ -75,11 +91,25 @@ class TopUpViewController: BaseViewController {
         cell.contentView.layer.masksToBounds = true
         cell.layer.cornerRadius = 4
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == R.segue.topUpViewController.showSelectAddress.identifier,
+           let selectAddressViewController = segue.destination as? SelectAddressViewController {
+            selectAddressViewController.viewModel.listAdress.value = viewModel.listAdress.value
+            if let selectedInndex = cryptoCollectionView.indexPathsForSelectedItems?.first, let item = cryptoCollectionView.cellForItem(at: selectedInndex) as? TopUpCollectionViewCell {
+                selectAddressViewController.chainImg = item.imgView.image
+            }
+            selectAddressViewController.addressSelected = { [weak self] value in
+                guard let strongSelf = self else { return }
+                Helper.shared.showQRCode(wallet: value, parent: strongSelf)
+            }
+        }
+    }
 }
 
 extension TopUpViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return collectionView == cryptoCollectionView ? (viewModel.filterDepositCoin().count) : 3
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -95,15 +125,19 @@ extension TopUpViewController: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        performSegue(withIdentifier: R.segue.vendorViewController.showVendorDetail, sender: self)
+        if collectionView == cryptoCollectionView {
+            let item = viewModel.filterDepositCoin()[indexPath.row]
+            viewModel.getAddress(symbol: item.currency ?? "") { [weak self] in
+                self?.performSegue(withIdentifier: R.segue.topUpViewController.showSelectAddress, sender: self)
+            }
+        }
     }
 }
 
 extension TopUpViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let height = collectionView.bounds.height
-        let width = (collectionView.bounds.width - (contentInsetCV.left + contentInsetCV.right + spacing*(numberOfColumn-1)))/numberOfColumn - 1
-        return CGSize(width: width, height: height)
+        return CGSize(width: cellWidth, height: height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -111,11 +145,17 @@ extension TopUpViewController: UICollectionViewDelegateFlowLayout {
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-            return spacing
+        let padding = contentInsetCV.left + contentInsetCV.right
+        let totalCellWidth = cellWidth*numberOfColumn
+        let avalableWidth = collectionView.bounds.width - totalCellWidth - padding
+        return avalableWidth/(numberOfColumn - 1)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return spacing
+        let padding = contentInsetCV.left + contentInsetCV.right
+        let totalCellWidth = cellWidth*numberOfColumn
+        let avalableWidth = collectionView.bounds.width - totalCellWidth - padding
+        return avalableWidth/(numberOfColumn - 1)
     }
 }
 

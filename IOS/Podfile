@@ -20,5 +20,6 @@ target 'DealApp' do
   pod 'DropDown'
   pod 'FSCalendar'
   pod "Popover"
+  pod 'BRYXBanner'
   # Pods for DealApp
 end

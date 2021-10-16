@@ -7,6 +7,12 @@
 
 import Foundation
 
+public class GetUserResponse: Codable {
+    var status: Bool?
+    var message: String?
+    var result: User?
+}
+
 public class User: Codable {
     var id: String?
     var fullName: String?
@@ -20,7 +26,8 @@ public class User: Codable {
     var avatar: String?
     var avatarBase64: String?
     var country: String?
-    var state: String?
+    var ward: String?
+    var district: String?
     var city: String?
     var street: String?
     var fullAddress: String?
@@ -31,14 +38,21 @@ public class User: Codable {
     var lockWithdraw: Bool?
     var activity: Bool?
     var lock: Bool?
+    var verify: String?
+    var type: [UserType]?
     var dateCreate: String?
     var agencyActive: Bool?
     var agencySetting: Bool?
     var agencyBonus: Int?
     var percentDiscount: Int?
-    var type: Int?
     var lat: String?
     var lng: String?
+}
+
+class UserType: Codable {
+    var type: Int?
+    var name: String?
+    var status: Int?
 }
 
 public class FormVerifyUser: Codable {

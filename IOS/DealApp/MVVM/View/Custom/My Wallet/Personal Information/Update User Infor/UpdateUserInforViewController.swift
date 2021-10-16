@@ -14,9 +14,10 @@ class UpdateUserInforViewController: BaseViewController {
     @IBOutlet weak var phoneNumberTfx: BaseTextField!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var countryTfx: BaseTextField!
-    @IBOutlet weak var stateTfx: BaseTextField!
     @IBOutlet weak var cityTfx: BaseTextField!
     @IBOutlet weak var streetTfx: BaseTextField!
+    @IBOutlet weak var districtTfx: BaseTextField!
+    @IBOutlet weak var wardTfx: BaseTextField!
     @IBOutlet weak var avatarImg: UIImageView!
     
     let userInfor = Helper.shared.DetachedCopy(of: Helper.shared.user)!
@@ -39,9 +40,10 @@ class UpdateUserInforViewController: BaseViewController {
         emailTfx.text = userInfor.email
         phoneNumberTfx.text = userInfor.phoneNumber
         cityTfx.text = userInfor.city
-        stateTfx.text = userInfor.state
         countryTfx.text = userInfor.country
         streetTfx.text = userInfor.street
+        wardTfx.text = userInfor.ward
+        districtTfx.text = userInfor.district
         
         fullNameTfx.didChangeValue = { [weak self] string in
             if string.count > 0 { self?.fullNameTfx.setwWarning(false) }
@@ -62,31 +64,28 @@ class UpdateUserInforViewController: BaseViewController {
         }
         
         countryTfx.didChangeValue = { [weak self] string in
-            if string.count > 0 {
-                self?.countryTfx.setwWarning(false)
-                self?.userInfor.country = string
-            }
+            self?.countryTfx.setwWarning(false)
+            self?.userInfor.country = string
         }
         
-        stateTfx.didChangeValue = { [weak self] string in
-            if string.count > 0 {
-                self?.stateTfx.setwWarning(false)
-                self?.userInfor.state = string
-            }
+        districtTfx.didChangeValue = { [weak self] string in
+            self?.districtTfx.setwWarning(false)
+            self?.userInfor.district = string
+        }
+        
+        wardTfx.didChangeValue = { [weak self] string in
+            self?.wardTfx.setwWarning(false)
+            self?.userInfor.ward = string
         }
         
         cityTfx.didChangeValue = { [weak self] string in
-            if string.count > 0 {
-                self?.cityTfx.setwWarning(false)
-                self?.userInfor.city = string
-            }
+            self?.cityTfx.setwWarning(false)
+            self?.userInfor.city = string
         }
         
         streetTfx.didChangeValue = { [weak self] string in
-            if string.count > 0 {
-                self?.streetTfx.setwWarning(false)
-                self?.userInfor.street = string
-            }
+            self?.streetTfx.setwWarning(false)
+            self?.userInfor.street = string
         }
     }
     
@@ -94,22 +93,10 @@ class UpdateUserInforViewController: BaseViewController {
         fullNameTfx.setwWarning((fullNameTfx.text?.count ?? 0) <= 0)
         emailTfx.setwWarning((emailTfx.text?.count ?? 0) <= 0)
         phoneNumberTfx.setwWarning((phoneNumberTfx.text?.count ?? 0) <= 0)
-//        genderTfx.setwWarning((genderTfx.text?.count ?? 0) <= 0)
-//        birthdayTfx.setwWarning(userInfor.Birthday == nil)
-//        countryTfx.setwWarning((countryTfx.text?.count ?? 0) <= 0)
-//        stateTfx.setwWarning((stateTfx.text?.count ?? 0) <= 0)
-//        cityTfx.setwWarning((cityTfx.text?.count ?? 0) <= 0)
-//        streetTfx.setwWarning((streetTfx.text?.count ?? 0) <= 0)
         
         guard fullNameTfx.text != "" && fullNameTfx.text != nil else { return false }
         guard emailTfx.text != "" && emailTfx.text != nil else { return false }
         guard phoneNumberTfx.text != "" && phoneNumberTfx.text != nil else { return false }
-//        guard genderTfx.text != "" && genderTfx.text != nil else { return false }
-//        guard userInfor.Birthday != nil else { return false }
-//        guard countryTfx.text != "" && countryTfx.text != nil else { return false }
-//        guard stateTfx.text != "" && stateTfx.text != nil else { return false }
-//        guard cityTfx.text != "" && cityTfx.text != nil else { return false }
-//        guard streetTfx.text != "" && streetTfx.text != nil else { return false }
         
         return true
     }
@@ -137,8 +124,10 @@ class UpdateUserInforViewController: BaseViewController {
                             switch result {
                             case .success(let response):
                                 do {
-                                    let user = try response.map(User.self)
-                                    Helper.shared.user = user
+                                    let userResponse = try response.map(GetUserResponse.self)
+                                    if let user = userResponse.result {
+                                        Helper.shared.user = user
+                                    }
                                 } catch {
                                     print("get user failed")
                                 }

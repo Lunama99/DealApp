@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wM0-kl-JQ0">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Medium.ttf">
+            <string>Poppins-Medium</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Add New Address-->
+        <scene sceneID="f2y-YR-8il">
+            <objects>
+                <viewController id="wM0-kl-JQ0" customClass="AddNewAddressViewController" customModule="DealApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dqA-hC-wVY">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="16J-TR-gul">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oWf-p0-851">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="530"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gG0-yh-fsn" userLabel="Separator">
+                                                <rect key="frame" x="20" y="225.5" width="0.0" height="1"/>
+                                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1" id="YQg-pS-H5v"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U1Q-gN-o5Z" userLabel="Separator">
+                                                <rect key="frame" x="394" y="225.5" width="0.0" height="1"/>
+                                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1" id="hnO-j8-soy"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xv0-Dz-oyG" customClass="BaseButton" customModule="DealApp" customModuleProvider="target">
+                                                <rect key="frame" x="20" y="442" width="374" height="56"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="56" id="zCP-af-IoB"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="14"/>
+                                                <state key="normal" title="Save"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="style">
+                                                        <integer key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="saveAction:" destination="wM0-kl-JQ0" eventType="touchUpInside" id="xSO-11-BCy"/>
+                                                </connections>
+                                            </button>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Oz6-A0-IkC" customClass="BaseTextField" customModule="DealApp" customModuleProvider="target">
+                                                <rect key="frame" x="20" y="78" width="374" height="50"/>
+                                                <color key="backgroundColor" red="0.93725490199999995" green="0.95294117649999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="gSa-Uq-V04"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ay-5o-RO5" customClass="BaseLabel" customModule="DealApp" customModuleProvider="target">
+                                                <rect key="frame" x="20" y="50" width="106" height="20"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="style">
+                                                        <integer key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="8eb-aS-Xx3">
+                                                <rect key="frame" x="20" y="144" width="374" height="20"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfc-Ml-dl0" customClass="BaseLabel" customModule="DealApp" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="182" height="20"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="style">
+                                                                <integer key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="State" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qQF-25-TRO" customClass="BaseLabel" customModule="DealApp" customModuleProvider="target">
+                                                        <rect key="frame" x="192" y="0.0" width="182" height="20"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="style">
+                                                                <integer key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="mwr-fm-6PF">
+                                                <rect key="frame" x="20" y="172" width="374" height="50"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Country" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x6V-IS-emd" customClass="BaseTextField" customModule="DealApp" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="182" height="50"/>
+                                                        <color key="backgroundColor" red="0.93725490199999995" green="0.95294117649999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="50" id="8MY-Rk-KDE"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="4"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </textField>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="State" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VC3-xS-cbL" customClass="BaseTextField" customModule="DealApp" customModuleProvider="target">
+                                                        <rect key="frame" x="192" y="0.0" width="182" height="50"/>
+                                                        <color key="backgroundColor" red="0.93725490199999995" green="0.95294117649999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="50" id="ygt-XF-Bye"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="4"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="dJM-DR-dV7">
+                                                <rect key="frame" x="20" y="238" width="374" height="20"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wg4-c3-dp3" customClass="BaseLabel" customModule="DealApp" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="182" height="20"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="style">
+                                                                <integer key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="District" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cs3-BY-aso" customClass="BaseLabel" customModule="DealApp" customModuleProvider="target">
+                                                        <rect key="frame" x="192" y="0.0" width="182" height="20"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="style">
+                                                                <integer key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="2cn-ed-28X">
+                                                <rect key="frame" x="20" y="266" width="374" height="50"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ued-TM-OOa" customClass="BaseTextField" customModule="DealApp" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="182" height="50"/>
+                                                        <color key="backgroundColor" red="0.93725490199999995" green="0.95294117649999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="50" id="t42-GT-7uL"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="4"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </textField>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="District" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3n8-Id-CS7" customClass="BaseTextField" customModule="DealApp" customModuleProvider="target">
+                                                        <rect key="frame" x="192" y="0.0" width="182" height="50"/>
+                                                        <color key="backgroundColor" red="0.93725490199999995" green="0.95294117649999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="50" id="VSk-Su-CbK"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="4"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="k2u-df-ItA">
+                                                <rect key="frame" x="20" y="360" width="374" height="50"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ward" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iqD-MD-ah9" customClass="BaseTextField" customModule="DealApp" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="182" height="50"/>
+                                                        <color key="backgroundColor" red="0.93725490199999995" green="0.95294117649999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="50" id="PDF-Aw-mZw"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="4"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </textField>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Street" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wQH-mu-MwS" customClass="BaseTextField" customModule="DealApp" customModuleProvider="target">
+                                                        <rect key="frame" x="192" y="0.0" width="182" height="50"/>
+                                                        <color key="backgroundColor" red="0.93725490199999995" green="0.95294117649999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="50" id="27H-LA-Jrt"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="4"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="zDp-17-692">
+                                                <rect key="frame" x="20" y="332" width="374" height="20"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ward" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dmf-CZ-mPp" customClass="BaseLabel" customModule="DealApp" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="182" height="20"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="style">
+                                                                <integer key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Street" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zN1-lj-BqL" customClass="BaseLabel" customModule="DealApp" customModuleProvider="target">
+                                                        <rect key="frame" x="192" y="0.0" width="182" height="20"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="style">
+                                                                <integer key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="U1Q-gN-o5Z" secondAttribute="bottom" constant="303.5" id="18P-9K-Sbq"/>
+                                            <constraint firstItem="Xv0-Dz-oyG" firstAttribute="leading" secondItem="oWf-p0-851" secondAttribute="leading" constant="20" id="2AV-wf-hhr"/>
+                                            <constraint firstItem="Oz6-A0-IkC" firstAttribute="top" secondItem="0Ay-5o-RO5" secondAttribute="bottom" constant="8" id="4g9-Uy-8u3"/>
+                                            <constraint firstItem="8eb-aS-Xx3" firstAttribute="top" secondItem="Oz6-A0-IkC" secondAttribute="bottom" constant="16" id="6qI-Te-vP1"/>
+                                            <constraint firstItem="gG0-yh-fsn" firstAttribute="leading" secondItem="oWf-p0-851" secondAttribute="leading" constant="20" id="8Fo-Vk-nhk"/>
+                                            <constraint firstItem="U1Q-gN-o5Z" firstAttribute="baseline" secondItem="gG0-yh-fsn" secondAttribute="baseline" id="8iL-fE-IIF"/>
+                                            <constraint firstItem="0Ay-5o-RO5" firstAttribute="leading" secondItem="oWf-p0-851" secondAttribute="leading" constant="20" id="Afd-c6-vgy"/>
+                                            <constraint firstItem="Xv0-Dz-oyG" firstAttribute="leading" secondItem="oWf-p0-851" secondAttribute="leading" constant="20" id="BAy-fd-fuX"/>
+                                            <constraint firstAttribute="trailing" secondItem="U1Q-gN-o5Z" secondAttribute="trailing" constant="20" id="CYo-M8-IXE"/>
+                                            <constraint firstItem="dJM-DR-dV7" firstAttribute="top" secondItem="mwr-fm-6PF" secondAttribute="bottom" constant="16" id="Cts-Ye-kVN"/>
+                                            <constraint firstAttribute="trailing" secondItem="zDp-17-692" secondAttribute="trailing" constant="20" id="DDt-CK-Plt"/>
+                                            <constraint firstItem="2cn-ed-28X" firstAttribute="leading" secondItem="oWf-p0-851" secondAttribute="leading" constant="20" id="EEE-3P-fhH"/>
+                                            <constraint firstItem="k2u-df-ItA" firstAttribute="top" secondItem="zDp-17-692" secondAttribute="bottom" constant="8" id="K8b-1n-Rns"/>
+                                            <constraint firstAttribute="trailing" secondItem="Xv0-Dz-oyG" secondAttribute="trailing" constant="20" id="Mpf-vt-IFL"/>
+                                            <constraint firstItem="Xv0-Dz-oyG" firstAttribute="top" secondItem="k2u-df-ItA" secondAttribute="bottom" constant="32" id="Mrt-QC-ts1"/>
+                                            <constraint firstAttribute="trailing" secondItem="8eb-aS-Xx3" secondAttribute="trailing" constant="20" id="Ozq-7S-1Wp"/>
+                                            <constraint firstItem="mwr-fm-6PF" firstAttribute="leading" secondItem="oWf-p0-851" secondAttribute="leading" constant="20" id="Rd0-XS-D3p"/>
+                                            <constraint firstAttribute="trailing" secondItem="k2u-df-ItA" secondAttribute="trailing" constant="20" id="SND-rr-hqW"/>
+                                            <constraint firstItem="k2u-df-ItA" firstAttribute="leading" secondItem="oWf-p0-851" secondAttribute="leading" constant="20" id="Y56-oN-4Io"/>
+                                            <constraint firstItem="zDp-17-692" firstAttribute="top" secondItem="2cn-ed-28X" secondAttribute="bottom" constant="16" id="c8M-OY-eFR"/>
+                                            <constraint firstItem="8eb-aS-Xx3" firstAttribute="leading" secondItem="oWf-p0-851" secondAttribute="leading" constant="20" id="cZq-J7-Jof"/>
+                                            <constraint firstAttribute="trailing" secondItem="Xv0-Dz-oyG" secondAttribute="trailing" constant="20" id="cxl-t2-FUX"/>
+                                            <constraint firstItem="2cn-ed-28X" firstAttribute="top" secondItem="dJM-DR-dV7" secondAttribute="bottom" constant="8" id="flz-Xy-zEK"/>
+                                            <constraint firstItem="Oz6-A0-IkC" firstAttribute="leading" secondItem="oWf-p0-851" secondAttribute="leading" constant="20" id="hFK-4D-QQf"/>
+                                            <constraint firstAttribute="trailing" secondItem="2cn-ed-28X" secondAttribute="trailing" constant="20" id="nfj-aU-h3k"/>
+                                            <constraint firstAttribute="trailing" secondItem="mwr-fm-6PF" secondAttribute="trailing" constant="20" id="ony-4X-dRe"/>
+                                            <constraint firstAttribute="bottom" secondItem="Xv0-Dz-oyG" secondAttribute="bottom" constant="32" id="p1G-VQ-tpi"/>
+                                            <constraint firstItem="dJM-DR-dV7" firstAttribute="leading" secondItem="oWf-p0-851" secondAttribute="leading" constant="20" id="qFs-p9-PI0"/>
+                                            <constraint firstItem="0Ay-5o-RO5" firstAttribute="top" secondItem="oWf-p0-851" secondAttribute="top" constant="50" id="rNV-fe-hxC"/>
+                                            <constraint firstItem="zDp-17-692" firstAttribute="leading" secondItem="oWf-p0-851" secondAttribute="leading" constant="20" id="wOo-Rq-kkU"/>
+                                            <constraint firstItem="mwr-fm-6PF" firstAttribute="top" secondItem="8eb-aS-Xx3" secondAttribute="bottom" constant="8" id="xRq-Tq-TAz"/>
+                                            <constraint firstAttribute="trailing" secondItem="dJM-DR-dV7" secondAttribute="trailing" constant="20" id="xZb-IZ-GIr"/>
+                                            <constraint firstAttribute="trailing" secondItem="Oz6-A0-IkC" secondAttribute="trailing" constant="20" id="zdY-G4-Z6x"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="oWf-p0-851" firstAttribute="top" secondItem="16J-TR-gul" secondAttribute="top" id="7uS-qH-ZzZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="oWf-p0-851" secondAttribute="bottom" id="KHA-m1-cA5"/>
+                                    <constraint firstItem="oWf-p0-851" firstAttribute="leading" secondItem="16J-TR-gul" secondAttribute="leading" id="YzI-VM-s8v"/>
+                                    <constraint firstAttribute="trailing" secondItem="oWf-p0-851" secondAttribute="trailing" id="udY-Yb-fXH"/>
+                                </constraints>
+                            </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nbM-eD-HE5">
+                                <rect key="frame" x="20" y="108" width="30" height="30"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="DWb-zf-mU6"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="nbM-eD-HE5" firstAttribute="leading" secondItem="DWb-zf-mU6" secondAttribute="leading" constant="20" id="2tb-Er-sb0"/>
+                            <constraint firstAttribute="bottom" secondItem="16J-TR-gul" secondAttribute="bottom" id="ElM-kH-f7v"/>
+                            <constraint firstItem="16J-TR-gul" firstAttribute="top" secondItem="DWb-zf-mU6" secondAttribute="top" id="Rj0-fo-rna"/>
+                            <constraint firstItem="nbM-eD-HE5" firstAttribute="top" secondItem="DWb-zf-mU6" secondAttribute="top" constant="20" id="cmp-6b-uxc"/>
+                            <constraint firstAttribute="trailing" secondItem="16J-TR-gul" secondAttribute="trailing" id="gaa-EV-FPS"/>
+                            <constraint firstItem="oWf-p0-851" firstAttribute="width" secondItem="dqA-hC-wVY" secondAttribute="width" id="lXd-5r-dy5"/>
+                            <constraint firstItem="16J-TR-gul" firstAttribute="leading" secondItem="dqA-hC-wVY" secondAttribute="leading" id="tJk-MZ-6Cf"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add New Address" id="sap-Bg-jnc"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="cityTfx" destination="Ued-TM-OOa" id="LKo-Kc-lSJ"/>
+                        <outlet property="countryTfx" destination="x6V-IS-emd" id="kJ2-Ia-RRL"/>
+                        <outlet property="districtTfx" destination="3n8-Id-CS7" id="0Wr-Ev-nZ3"/>
+                        <outlet property="phoneNumberTfx" destination="Oz6-A0-IkC" id="rSa-Rj-dRs"/>
+                        <outlet property="scrollView" destination="16J-TR-gul" id="b66-pb-kM8"/>
+                        <outlet property="stateTfx" destination="VC3-xS-cbL" id="1wN-CD-HCm"/>
+                        <outlet property="streetTfx" destination="wQH-mu-MwS" id="r5D-6g-UtE"/>
+                        <outlet property="wardTfx" destination="iqD-MD-ah9" id="zsv-3M-a5H"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U1D-tu-Gcx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Fph-6f-u0z"/>
+            </objects>
+            <point key="canvasLocation" x="4540.579710144928" y="31.473214285714285"/>
+        </scene>
+    </scenes>
+    <designables>
+        <designable name="0Ay-5o-RO5">
+            <size key="intrinsicContentSize" width="106" height="20"/>
+        </designable>
+        <designable name="Xv0-Dz-oyG">
+            <size key="intrinsicContentSize" width="35" height="32"/>
+        </designable>
+        <designable name="cs3-BY-aso">
+            <size key="intrinsicContentSize" width="50.5" height="20"/>
+        </designable>
+        <designable name="dmf-CZ-mPp">
+            <size key="intrinsicContentSize" width="39" height="20"/>
+        </designable>
+        <designable name="hfc-Ml-dl0">
+            <size key="intrinsicContentSize" width="58" height="20"/>
+        </designable>
+        <designable name="qQF-25-TRO">
+            <size key="intrinsicContentSize" width="38" height="20"/>
+        </designable>
+        <designable name="wg4-c3-dp3">
+            <size key="intrinsicContentSize" width="29" height="20"/>
+        </designable>
+        <designable name="zN1-lj-BqL">
+            <size key="intrinsicContentSize" width="42.5" height="20"/>
+        </designable>
+    </designables>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

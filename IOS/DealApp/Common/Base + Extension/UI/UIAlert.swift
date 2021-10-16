@@ -5,16 +5,13 @@
 //  Created by Macbook on 31/08/2021.
 //
 
-//import UIKit
-//import BRYXBanner
-//
-//class ShowAlert {
-//    static let shared = ShowAlert()
-//    var banner = Banner()
-//
-//    var lang: [String] {
-//        return [Default.shared.getDefaultLanguage() ?? ""]
-//    }
+import UIKit
+import BRYXBanner
+
+class ShowAlert {
+    static let shared = ShowAlert()
+    var banner = Banner()
+
 //
 //    func showResponseMassage(string: String, isSuccess: Bool = true) {
 //        banner.dismiss()
@@ -22,14 +19,14 @@
 //        banner.dismissesOnSwipe = true
 //        banner.show(duration: 2)
 //    }
-//
-//    func showCopySuccessful() {
-//        banner.dismiss()
-//        banner = Banner(title: R.string.localize.copied(preferredLanguages: lang), subtitle: "", image: R.image.ic_transactiondetail_check(), backgroundColor: UIColor.init(hexString: "#009944"))
-//        banner.dismissesOnSwipe = true
-//        banner.show(duration: 2)
-//    }
-//
+
+    func showCopySuccessful() {
+        banner.dismiss()
+        banner = Banner(title: "Copied", subtitle: "", image: nil, backgroundColor: UIColor.init(hexString: "#009944"))
+        banner.dismissesOnSwipe = true
+        banner.show(duration: 2)
+    }
+
 //    func mnemonicSelectIsWrong(_ vc: UIViewController?) {
 //        banner.dismiss()
 //        banner = Banner(title: R.string.localize.tryAgain(preferredLanguages: lang), subtitle: R.string.localize.wrongMnemonic(preferredLanguages: lang), image: R.image.ic_close(), backgroundColor: UIColor.init(hexString: "#cf000f"))
@@ -75,4 +72,4 @@
 //        alert.addAction(UIAlertAction(title: R.string.localize.cancel(preferredLanguages: lang), style: .cancel, handler: nil))
 //        vc?.present(alert, animated: true, completion: nil)
 //    }
-//}
+}

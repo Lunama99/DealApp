@@ -11,6 +11,7 @@ class HomeViewModel: ToolRepository {
     
     var time: Observable<String> = Observable("")
     var productCategory: Observable<[GetAllCategory]> = Observable([])
+    
     private let accountRepo = AccountRepository()
     private let productCategoryRepo = ProductCategoryReposistory()
     
@@ -33,18 +34,24 @@ class HomeViewModel: ToolRepository {
     }
     
     func getUser(completion: @escaping(()->Void)) {
-        accountRepo.getUser { [weak self] result in
-            switch result {
-            case .success(let response):
-                do {
-                    let user = try response.map(User.self)
-                    Helper.shared.user = user
-                    completion()
-                } catch {
-                    print("get user failed")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            self.accountRepo.getUser { result in
+                switch result {
+                case .success(let response):
+                    do {
+                        let userResponse = try response.map(GetUserResponse.self)
+                        if let user = userResponse.result, userResponse.status == true {
+                            Helper.shared.user = user
+                            completion()
+                        } else {
+                            Helper.shared.expire(message: userResponse.message ?? "")
+                        }
+                        completion()
+                    } catch {
+                        print("get user failed")
+                    }
+                case .failure(_): break
                 }
-            case .failure(_): break
-//                ShowAlert.shared.showResponseMassage(string: R.string.localize.failed(preferredLanguages: self?.lang), isSuccess: false)
             }
         }
     }

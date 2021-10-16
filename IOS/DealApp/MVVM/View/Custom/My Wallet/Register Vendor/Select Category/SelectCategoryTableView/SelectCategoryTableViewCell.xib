@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Regular.ttf">
+            <string>Poppins-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SelectCategoryTableViewCell" rowHeight="115" id="XIb-Kk-XVS" customClass="SelectCategoryTableViewCell" customModule="DealApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XIb-Kk-XVS" id="7gB-Jl-3Ud">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xui-Bb-73L" customClass="BaseView" customModule="DealApp" customModuleProvider="target">
+                        <rect key="frame" x="10" y="5" width="394" height="70"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7DQ-gT-J9h">
+                                <rect key="frame" x="20" y="10" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="K0Z-nZ-8gq"/>
+                                    <constraint firstAttribute="height" constant="50" id="kbD-KS-2EP"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sfD-hP-UYR">
+                                <rect key="frame" x="86" y="35" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="sfD-hP-UYR" firstAttribute="centerY" secondItem="7DQ-gT-J9h" secondAttribute="centerY" id="Cim-bX-EWU"/>
+                            <constraint firstItem="7DQ-gT-J9h" firstAttribute="leading" secondItem="xui-Bb-73L" secondAttribute="leading" constant="20" id="Pr7-2o-7JH"/>
+                            <constraint firstItem="sfD-hP-UYR" firstAttribute="leading" secondItem="7DQ-gT-J9h" secondAttribute="trailing" constant="16" id="dIm-u7-O3Y"/>
+                            <constraint firstItem="7DQ-gT-J9h" firstAttribute="centerY" secondItem="xui-Bb-73L" secondAttribute="centerY" id="yNw-Y6-QXN"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="xui-Bb-73L" firstAttribute="leading" secondItem="7gB-Jl-3Ud" secondAttribute="leading" constant="10" id="TUv-Oa-gDp"/>
+                    <constraint firstAttribute="trailing" secondItem="xui-Bb-73L" secondAttribute="trailing" constant="10" id="a14-ce-zmo"/>
+                    <constraint firstItem="xui-Bb-73L" firstAttribute="top" secondItem="7gB-Jl-3Ud" secondAttribute="top" constant="5" id="cFr-WF-dha"/>
+                    <constraint firstAttribute="bottom" secondItem="xui-Bb-73L" secondAttribute="bottom" constant="5" id="epH-z1-Npa"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="imgView" destination="7DQ-gT-J9h" id="aQB-lu-9Hl"/>
+                <outlet property="mainView" destination="xui-Bb-73L" id="rQe-Cr-6H3"/>
+                <outlet property="titleLbl" destination="sfD-hP-UYR" id="KiP-dg-vIe"/>
+            </connections>
+            <point key="canvasLocation" x="-178.2608695652174" y="231.69642857142856"/>
+        </tableViewCell>
+    </objects>
+</document>

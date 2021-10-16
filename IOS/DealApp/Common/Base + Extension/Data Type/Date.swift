@@ -17,7 +17,10 @@ extension Date {
         case format1 = "MM/dd/yyyy h:mm:ss"
         case format2 = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSSZ"
         case format3 = "yyyy-MM-dd'T'HH:mm:ss.SSS"
-        case format4 = "MM/dd/yyyy"
+        case format4 = "dd/MM/yyyy"
+        case format5 = "yyyy-MM-dd'T'HH:mm:ss"
+        case format6 = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        case format7 = "yyyy-MM-dd"
     }
     
     func millisecondsSince1970() -> Int64 {

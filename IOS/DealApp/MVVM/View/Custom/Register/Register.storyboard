@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2hX-Fs-dN2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2hX-Fs-dN2">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -26,10 +26,10 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DR2-WZ-yzz">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="836.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="756"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ARy-JW-Q66" customClass="BaseLabel" customModule="DealApp" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="50" width="118.5" height="20.5"/>
+                                                <rect key="frame" x="20" y="50" width="191.5" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -39,22 +39,8 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R3k-pP-twG" customClass="BaseTextField" customModule="DealApp" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="130.5" width="374" height="50"/>
-                                                <color key="backgroundColor" red="0.93725490199999995" green="0.95294117649999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="bd1-Gg-4gG"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="4"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZFm-iP-gNx" customClass="BaseLabel" customModule="DealApp" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="102.5" width="82.5" height="20"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZFm-iP-gNx" customClass="BaseLabel" customModule="DealApp" customModuleProvider="target">
+                                                <rect key="frame" x="20" y="116" width="71" height="20"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -64,8 +50,8 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CPa-im-Wvq" customClass="BaseTextField" customModule="DealApp" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="224.5" width="374" height="50"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Full Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CPa-im-Wvq" customClass="BaseTextField" customModule="DealApp" customModuleProvider="target">
+                                                <rect key="frame" x="20" y="144" width="374" height="50"/>
                                                 <color key="backgroundColor" red="0.93725490199999995" green="0.95294117649999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="Qd7-q6-Wo9"/>
@@ -78,19 +64,8 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yu0-xb-Yyb" customClass="BaseLabel" customModule="DealApp" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="196.5" width="81.5" height="20"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="style">
-                                                        <integer key="value" value="1"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1bG-Ip-tHK" userLabel="Separator">
-                                                <rect key="frame" x="20" y="532" width="0.0" height="1"/>
+                                                <rect key="frame" x="20" y="451.5" width="0.0" height="1"/>
                                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="CkA-Bo-tan"/>
@@ -100,7 +75,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fUA-6y-8aT" userLabel="Separator">
-                                                <rect key="frame" x="394" y="532" width="0.0" height="1"/>
+                                                <rect key="frame" x="394" y="451.5" width="0.0" height="1"/>
                                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="kKW-H7-9UO"/>
@@ -110,7 +85,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gEM-0f-gRj" customClass="BaseTextField" customModule="DealApp" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="320.5" width="374" height="50"/>
+                                                <rect key="frame" x="20" y="240" width="374" height="50"/>
                                                 <color key="backgroundColor" red="0.93725490199999995" green="0.95294117649999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="2Sr-c3-H5U"/>
@@ -124,7 +99,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jrv-IX-4Hm" customClass="BaseLabel" customModule="DealApp" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="292.5" width="41" height="20"/>
+                                                <rect key="frame" x="20" y="212" width="39.5" height="20"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -135,7 +110,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TYn-wL-hmW" customClass="BaseTextField" customModule="DealApp" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="508.5" width="374" height="50"/>
+                                                <rect key="frame" x="20" y="428" width="374" height="50"/>
                                                 <color key="backgroundColor" red="0.93725490199999995" green="0.95294117649999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="s6u-rV-rgH"/>
@@ -149,7 +124,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6YH-Fg-MEr" customClass="BaseLabel" customModule="DealApp" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="480.5" width="73.5" height="20"/>
+                                                <rect key="frame" x="20" y="400" width="69.5" height="20"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -160,7 +135,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="en0-Qg-h8p" customClass="BaseTextField" customModule="DealApp" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="602.5" width="374" height="50"/>
+                                                <rect key="frame" x="20" y="522" width="374" height="50"/>
                                                 <color key="backgroundColor" red="0.93725490199999995" green="0.95294117649999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="cH9-k2-B0q"/>
@@ -174,7 +149,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ds2-pa-Ozl" customClass="BaseLabel" customModule="DealApp" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="574.5" width="139" height="20"/>
+                                                <rect key="frame" x="20" y="494" width="130.5" height="20"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -185,7 +160,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QSf-bw-ngE" customClass="BaseButton" customModule="DealApp" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="684.5" width="374" height="56"/>
+                                                <rect key="frame" x="20" y="604" width="374" height="56"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="56" id="bmZ-kN-Wyd"/>
                                                 </constraints>
@@ -204,7 +179,7 @@
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tOY-m5-23n">
-                                                <rect key="frame" x="120.5" y="780.5" width="173.5" height="32"/>
+                                                <rect key="frame" x="120.5" y="700" width="173.5" height="32"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMw-hc-cfC">
                                                         <rect key="frame" x="0.0" y="0.0" width="128.5" height="32"/>
@@ -235,7 +210,7 @@
                                                 </constraints>
                                             </view>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="User Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fMy-DE-VQf" customClass="BaseTextField" customModule="DealApp" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="414.5" width="374" height="50"/>
+                                                <rect key="frame" x="20" y="334" width="374" height="50"/>
                                                 <color key="backgroundColor" red="0.93725490199999995" green="0.95294117649999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="a8J-nj-WpR"/>
@@ -249,7 +224,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DrT-fu-HMK" customClass="BaseLabel" customModule="DealApp" customModuleProvider="target">
-                                                <rect key="frame" x="20" y="386.5" width="85.5" height="20"/>
+                                                <rect key="frame" x="20" y="306" width="78.5" height="20"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -263,15 +238,12 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="6YH-Fg-MEr" firstAttribute="leading" secondItem="DR2-WZ-yzz" secondAttribute="leading" constant="20" id="1rG-Nv-VUb"/>
-                                            <constraint firstItem="R3k-pP-twG" firstAttribute="leading" secondItem="DR2-WZ-yzz" secondAttribute="leading" constant="20" id="5i1-My-jp3"/>
-                                            <constraint firstItem="Yu0-xb-Yyb" firstAttribute="leading" secondItem="DR2-WZ-yzz" secondAttribute="leading" constant="20" id="9wF-RZ-UOW"/>
                                             <constraint firstItem="fMy-DE-VQf" firstAttribute="top" secondItem="DrT-fu-HMK" secondAttribute="bottom" constant="8" id="AKb-yw-HjG"/>
                                             <constraint firstItem="TYn-wL-hmW" firstAttribute="top" secondItem="6YH-Fg-MEr" secondAttribute="bottom" constant="8" id="B9c-8b-YaI"/>
                                             <constraint firstItem="DrT-fu-HMK" firstAttribute="leading" secondItem="DR2-WZ-yzz" secondAttribute="leading" constant="20" id="BEi-fn-g0P"/>
                                             <constraint firstAttribute="trailing" secondItem="fUA-6y-8aT" secondAttribute="trailing" constant="20" id="BMr-R3-fQ6"/>
                                             <constraint firstItem="CPa-im-Wvq" firstAttribute="leading" secondItem="DR2-WZ-yzz" secondAttribute="leading" constant="20" id="BNd-g0-W3R"/>
                                             <constraint firstItem="Jrv-IX-4Hm" firstAttribute="top" secondItem="CPa-im-Wvq" secondAttribute="bottom" constant="18" id="BQG-Wh-tfj"/>
-                                            <constraint firstItem="R3k-pP-twG" firstAttribute="top" secondItem="ZFm-iP-gNx" secondAttribute="bottom" constant="8" id="BTu-Y7-7tK"/>
                                             <constraint firstItem="1bG-Ip-tHK" firstAttribute="leading" secondItem="DR2-WZ-yzz" secondAttribute="leading" constant="20" id="Bev-Rn-JjQ"/>
                                             <constraint firstItem="Ds2-pa-Ozl" firstAttribute="top" secondItem="TYn-wL-hmW" secondAttribute="bottom" constant="16" id="Dkb-Aa-vFI"/>
                                             <constraint firstItem="gEM-0f-gRj" firstAttribute="top" secondItem="Jrv-IX-4Hm" secondAttribute="bottom" constant="8" id="EWb-D1-jVk"/>
@@ -280,13 +252,12 @@
                                             <constraint firstItem="fUA-6y-8aT" firstAttribute="baseline" secondItem="1bG-Ip-tHK" secondAttribute="baseline" id="L5y-Kj-cCD"/>
                                             <constraint firstAttribute="trailing" secondItem="gEM-0f-gRj" secondAttribute="trailing" constant="20" id="N6I-bN-6ag"/>
                                             <constraint firstAttribute="trailing" secondItem="QSf-bw-ngE" secondAttribute="trailing" constant="20" id="NHS-RR-fhc"/>
-                                            <constraint firstAttribute="trailing" secondItem="R3k-pP-twG" secondAttribute="trailing" constant="20" id="O6g-5G-v6H"/>
                                             <constraint firstItem="tOY-m5-23n" firstAttribute="top" secondItem="QSf-bw-ngE" secondAttribute="bottom" constant="40" id="Uta-5R-Tcq"/>
                                             <constraint firstAttribute="trailing" secondItem="QSf-bw-ngE" secondAttribute="trailing" constant="20" id="WBM-aE-zje"/>
-                                            <constraint firstItem="CPa-im-Wvq" firstAttribute="top" secondItem="Yu0-xb-Yyb" secondAttribute="bottom" constant="8" id="WEf-ap-Lsf"/>
                                             <constraint firstItem="en0-Qg-h8p" firstAttribute="top" secondItem="Ds2-pa-Ozl" secondAttribute="bottom" constant="8" id="Wdy-H1-Zp7"/>
                                             <constraint firstAttribute="trailing" secondItem="fMy-DE-VQf" secondAttribute="trailing" constant="20" id="bNN-I7-lS5"/>
                                             <constraint firstAttribute="trailing" secondItem="TYn-wL-hmW" secondAttribute="trailing" constant="20" id="bac-Gv-TwZ"/>
+                                            <constraint firstItem="CPa-im-Wvq" firstAttribute="top" secondItem="ZFm-iP-gNx" secondAttribute="bottom" constant="8" id="cfv-ub-92l"/>
                                             <constraint firstItem="Jrv-IX-4Hm" firstAttribute="leading" secondItem="DR2-WZ-yzz" secondAttribute="leading" constant="20" id="dTJ-Pt-fW3"/>
                                             <constraint firstItem="gEM-0f-gRj" firstAttribute="leading" secondItem="DR2-WZ-yzz" secondAttribute="leading" constant="20" id="eMi-Xv-W8e"/>
                                             <constraint firstItem="Ds2-pa-Ozl" firstAttribute="leading" secondItem="DR2-WZ-yzz" secondAttribute="leading" constant="20" id="hoR-8u-A38"/>
@@ -295,7 +266,6 @@
                                             <constraint firstAttribute="trailing" secondItem="CPa-im-Wvq" secondAttribute="trailing" constant="20" id="kVr-Cd-wL1"/>
                                             <constraint firstItem="TYn-wL-hmW" firstAttribute="leading" secondItem="DR2-WZ-yzz" secondAttribute="leading" constant="20" id="l0X-aG-DXE"/>
                                             <constraint firstItem="ARy-JW-Q66" firstAttribute="top" secondItem="DR2-WZ-yzz" secondAttribute="top" constant="50" id="nJM-iV-C4a"/>
-                                            <constraint firstItem="Yu0-xb-Yyb" firstAttribute="top" secondItem="R3k-pP-twG" secondAttribute="bottom" constant="16" id="omP-aP-bvd"/>
                                             <constraint firstAttribute="bottom" secondItem="fUA-6y-8aT" secondAttribute="bottom" constant="303.5" id="q0m-kh-fZp"/>
                                             <constraint firstItem="ZFm-iP-gNx" firstAttribute="leading" secondItem="DR2-WZ-yzz" secondAttribute="leading" constant="20" id="qGw-QN-oyk"/>
                                             <constraint firstItem="fMy-DE-VQf" firstAttribute="leading" secondItem="DR2-WZ-yzz" secondAttribute="leading" constant="20" id="reI-wi-MnN"/>
@@ -337,8 +307,7 @@
                     <connections>
                         <outlet property="confirmPasswordTfx" destination="en0-Qg-h8p" id="TcA-D5-Cf8"/>
                         <outlet property="emailTfx" destination="gEM-0f-gRj" id="5Zh-1P-IRE"/>
-                        <outlet property="firstNameTfx" destination="R3k-pP-twG" id="Jq6-5x-18S"/>
-                        <outlet property="lastNameTfx" destination="CPa-im-Wvq" id="CSP-C6-Mcd"/>
+                        <outlet property="fullNameTfx" destination="CPa-im-Wvq" id="Tjm-YP-Sdr"/>
                         <outlet property="passwordTfx" destination="TYn-wL-hmW" id="eTZ-dO-CXg"/>
                         <outlet property="userNameTfx" destination="fMy-DE-VQf" id="O0p-dg-ZIb"/>
                     </connections>
@@ -350,28 +319,25 @@
     </scenes>
     <designables>
         <designable name="6YH-Fg-MEr">
-            <size key="intrinsicContentSize" width="73.5" height="20.5"/>
+            <size key="intrinsicContentSize" width="69.5" height="20"/>
         </designable>
         <designable name="ARy-JW-Q66">
-            <size key="intrinsicContentSize" width="118.5" height="20.5"/>
+            <size key="intrinsicContentSize" width="191.5" height="34"/>
         </designable>
         <designable name="DrT-fu-HMK">
-            <size key="intrinsicContentSize" width="85.5" height="20.5"/>
+            <size key="intrinsicContentSize" width="78.5" height="20"/>
         </designable>
         <designable name="Ds2-pa-Ozl">
-            <size key="intrinsicContentSize" width="139" height="20.5"/>
+            <size key="intrinsicContentSize" width="130.5" height="20"/>
         </designable>
         <designable name="Jrv-IX-4Hm">
-            <size key="intrinsicContentSize" width="41" height="20.5"/>
+            <size key="intrinsicContentSize" width="39.5" height="20"/>
         </designable>
         <designable name="QSf-bw-ngE">
             <size key="intrinsicContentSize" width="65" height="32"/>
         </designable>
-        <designable name="Yu0-xb-Yyb">
-            <size key="intrinsicContentSize" width="81.5" height="20.5"/>
-        </designable>
         <designable name="ZFm-iP-gNx">
-            <size key="intrinsicContentSize" width="82.5" height="20.5"/>
+            <size key="intrinsicContentSize" width="71" height="20"/>
         </designable>
     </designables>
     <resources>
