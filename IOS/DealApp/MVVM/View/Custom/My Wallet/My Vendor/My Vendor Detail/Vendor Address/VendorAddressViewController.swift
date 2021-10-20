@@ -11,11 +11,14 @@ class VendorAddressViewController: BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var saveBtn: BaseButton!
+    @IBOutlet weak var saveView: UIView!
+    @IBOutlet weak var addBtn: UIButton!
     
     private let vendorRepo = VendorRepository()
     var vendor = GetListVendorRegister()
     var callBack: (()->Void)?
     var isChangeAddress: Bool = false
+    var displayStyle: DisplayStyle = .Vendor
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +32,15 @@ class VendorAddressViewController: BaseViewController {
         tableView.register(R.nib.vendorAddressTableViewCell)
         tableView.delegate = self
         tableView.dataSource = self
+        
+        if displayStyle == .Vendor {
+            saveView.isHidden = false
+            addBtn.isHidden = false
+        } else {
+            saveView.isHidden = true
+            addBtn.isHidden = true
+
+        }
     }
     
     func setupCell(_ cell: VendorAddressTableViewCell, indexPath: IndexPath) {
@@ -36,7 +48,7 @@ class VendorAddressViewController: BaseViewController {
         cell.streetLbl.text = item?.street
         cell.otherLbl.text = "Ward \(item?.ward ?? "N/A"), District \(item?.district ?? "N/A"), \(item?.city ?? "N/A") City"
         cell.stateCountryLbl.text = "State \(item?.state ?? "N/A"), \(item?.country ?? "N/A")"
-        cell.phoneNumberLbl.text = item?.phoneNumber
+        cell.phoneNumberLbl.text = "Phone number: \(item?.phoneNumber ?? "N/A")"
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -110,6 +122,15 @@ extension VendorAddressViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: R.segue.vendorAddressViewController.showEditAddress, sender: self)
+        if displayStyle == .Vendor {
+            performSegue(withIdentifier: R.segue.vendorAddressViewController.showEditAddress, sender: self)
+        }
+    }
+}
+
+extension VendorAddressViewController {
+    enum DisplayStyle {
+        case Vendor
+        case User
     }
 }

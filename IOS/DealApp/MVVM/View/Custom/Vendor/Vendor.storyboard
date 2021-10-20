@@ -155,6 +155,7 @@
                         <outlet property="vendorView" destination="pjj-ca-ALx" id="QdI-pS-Eow"/>
                         <outlet property="voucherView" destination="Y6j-bf-R8d" id="OqU-gm-NyP"/>
                         <segue destination="eP7-hi-ZYC" kind="show" identifier="showVendorDetail" id="mrO-Pc-qKQ"/>
+                        <segue destination="kpi-fR-ZWj" kind="show" identifier="showVoucherDetail" id="1pg-ap-RwR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -171,6 +172,16 @@
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="81.696428571428569"/>
         </scene>
+        <!--VoucherDetail-->
+        <scene sceneID="qmZ-lQ-2O4">
+            <objects>
+                <viewControllerPlaceholder storyboardName="VoucherDetail" id="kpi-fR-ZWj" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Wn4-Rn-aQd"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sbO-wr-Cco" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="62" y="505"/>
+        </scene>
         <!--VendorDetail-->
         <scene sceneID="GG0-4b-m3K">
             <objects>
@@ -179,7 +190,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eeo-1y-Fva" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="138" y="479"/>
+            <point key="canvasLocation" x="231" y="505"/>
         </scene>
     </scenes>
     <resources>

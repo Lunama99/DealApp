@@ -117,7 +117,9 @@
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="addBtn" destination="Hjs-x3-ZgX" id="Wzu-G1-aAr"/>
                         <outlet property="saveBtn" destination="9T0-Dj-M5X" id="dmI-Lf-swH"/>
+                        <outlet property="saveView" destination="kdX-ES-fNG" id="Kva-Zh-vpL"/>
                         <outlet property="tableView" destination="cEd-lT-HAr" id="xje-Jk-rin"/>
                         <segue destination="mTm-hJ-pW9" kind="show" identifier="showEditAddress" id="tzj-q7-jdL"/>
                     </connections>

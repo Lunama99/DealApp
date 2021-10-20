@@ -191,15 +191,13 @@ extension VendorInformationViewController: UICollectionViewDelegateFlowLayout {
 
 extension VendorInformationViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        guard let image = info[.originalImage] as? UIImage else { return }
-        
+        guard let originImg = info[.originalImage] as? UIImage else { return }
+        let image = originImg.resizeImageWith(newSize: CGSize(width: 500, height: 0))
         switch picker.restorationIdentifier {
         case ImagePicker.Avatar.rawValue:
             avatarImg.image = image
             avatarImg.setwWarning(false)
             avatarBase64 = image.pngData()?.base64EncodedString()
-            
-            //            captureFrontBtn.setwWarning(false)
         case ImagePicker.List.rawValue:
             
             viewModel.isChangeListImage = true
@@ -215,7 +213,6 @@ extension VendorInformationViewController: UIImagePickerControllerDelegate, UINa
                     viewModel.listImage.value?.append(image)
                 }
             }
-            //            captureBackBtn.setwWarning(false)
         default: break
         }
         

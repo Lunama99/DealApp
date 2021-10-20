@@ -72,6 +72,9 @@ class AccountVerificationViewController: BaseViewController {
         portraitImg.layer.masksToBounds = true
         portraitImg.contentMode = .scaleAspectFill
         
+        user.issuedOn = Date().toString(format: .format7)
+        user.birthday = Date().toString(format: .format7)
+        
         birthDayPicker.addTarget(self, action: #selector(dateChanged(_:)), for: .valueChanged)
         issueOnDatePicker.addTarget(self, action: #selector(dateChanged(_:)), for: .valueChanged)
         

@@ -34,14 +34,11 @@ class MyVendorDetailViewController: BaseViewController {
         descriptionLbl.lineBreakMode = .byWordWrapping
         scrollView.contentInsetAdjustmentBehavior = .never
         
-        let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: "120 points")
-            attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 1, range: NSMakeRange(0, attributeString.length))
-        
         imgScrollView.isPagingEnabled = true
         imgScrollView.delegate = self
         imgScrollView.bounces = false
     
-        indicatorBtn.backgroundColor = .black.withAlphaComponent(0.2)
+        indicatorBtn.backgroundColor = UIColor.black.withAlphaComponent(0.2)
         indicatorBtn.bringSubviewToFront(imgScrollView)
     }
     
@@ -119,10 +116,11 @@ class MyVendorDetailViewController: BaseViewController {
                 self?.fetchData()
             }
         }
-    }
-    
-    @IBAction func backAction(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
+        
+        if segue.identifier == R.segue.myVendorDetailViewController.showVoucherManager.identifier,
+           let voucherManagerViewController = segue.destination as? VoucherManagerViewController {
+            voucherManagerViewController.viewModel.idVendor = viewModel.vendorId
+        }
     }
     
     @IBAction func seeMoreAction(_ sender: Any) {

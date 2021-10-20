@@ -32,7 +32,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8IO-6C-ShB" customClass="BaseView" customModule="DealApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="679.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="670.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ttr-ZD-YDo">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="331"/>
@@ -74,7 +74,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7ZL-Ls-Uv1">
-                                                <rect key="frame" x="0.0" y="331" width="414" height="104.5"/>
+                                                <rect key="frame" x="0.0" y="331" width="414" height="95.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eAd-zO-5cx">
                                                         <rect key="frame" x="20" y="24" width="35" height="25.5"/>
@@ -101,11 +101,11 @@
                                                             <segue destination="5Pc-vv-bFG" kind="show" identifier="showVendorInformation" id="q9s-21-ZeF"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HwI-og-ygQ">
-                                                        <rect key="frame" x="166" y="73.5" width="82" height="15"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HwI-og-ygQ">
+                                                        <rect key="frame" x="166" y="65.5" width="82" height="30"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="15" id="Kp2-sc-oFo"/>
+                                                            <constraint firstAttribute="height" constant="30" id="Kp2-sc-oFo"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="12"/>
                                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -123,17 +123,17 @@
                                                     <constraint firstItem="GbI-3Z-bwd" firstAttribute="leading" secondItem="7ZL-Ls-Uv1" secondAttribute="leading" constant="20" id="7zQ-pn-vif"/>
                                                     <constraint firstItem="eAd-zO-5cx" firstAttribute="leading" secondItem="7ZL-Ls-Uv1" secondAttribute="leading" constant="20" id="Ci9-cX-aG3"/>
                                                     <constraint firstAttribute="trailing" secondItem="GbI-3Z-bwd" secondAttribute="trailing" constant="60" id="ETY-mf-IBU"/>
-                                                    <constraint firstAttribute="bottom" secondItem="HwI-og-ygQ" secondAttribute="bottom" constant="16" id="K9f-Yy-Dnu"/>
+                                                    <constraint firstAttribute="bottom" secondItem="HwI-og-ygQ" secondAttribute="bottom" id="K9f-Yy-Dnu"/>
                                                     <constraint firstItem="HwI-og-ygQ" firstAttribute="centerX" secondItem="7ZL-Ls-Uv1" secondAttribute="centerX" id="Pin-Mx-YUL"/>
                                                     <constraint firstAttribute="trailing" secondItem="be8-AK-pWJ" secondAttribute="trailing" constant="20" id="boD-Qx-6jt"/>
                                                     <constraint firstItem="be8-AK-pWJ" firstAttribute="top" secondItem="7ZL-Ls-Uv1" secondAttribute="top" constant="20" id="e8m-eK-yDd"/>
-                                                    <constraint firstItem="HwI-og-ygQ" firstAttribute="top" secondItem="GbI-3Z-bwd" secondAttribute="bottom" constant="8" id="fgt-jc-RQd"/>
+                                                    <constraint firstItem="HwI-og-ygQ" firstAttribute="top" secondItem="GbI-3Z-bwd" secondAttribute="bottom" id="fgt-jc-RQd"/>
                                                     <constraint firstItem="GbI-3Z-bwd" firstAttribute="top" secondItem="eAd-zO-5cx" secondAttribute="bottom" constant="16" id="k14-0v-XYI"/>
                                                     <constraint firstItem="eAd-zO-5cx" firstAttribute="top" secondItem="7ZL-Ls-Uv1" secondAttribute="top" constant="24" id="loc-b5-hxf"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g8H-oP-krs">
-                                                <rect key="frame" x="0.0" y="511.5" width="414" height="80"/>
+                                                <rect key="frame" x="0.0" y="502.5" width="414" height="80"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Voucher Manager" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QRR-rZ-sjL">
                                                         <rect key="frame" x="20" y="30" width="127" height="20"/>
@@ -147,6 +147,7 @@
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstItem="Kvp-QY-f9B" firstAttribute="centerY" secondItem="g8H-oP-krs" secondAttribute="centerY" id="6Yl-2S-gzQ"/>
                                                     <constraint firstAttribute="trailing" secondItem="Kvp-QY-f9B" secondAttribute="trailing" constant="20" id="96j-ge-HDu"/>
@@ -154,9 +155,12 @@
                                                     <constraint firstItem="QRR-rZ-sjL" firstAttribute="leading" secondItem="g8H-oP-krs" secondAttribute="leading" constant="20" id="asZ-dC-Nj5"/>
                                                     <constraint firstAttribute="height" constant="80" id="bJ3-bx-tzE"/>
                                                 </constraints>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="iX2-cN-VNB" appends="YES" id="T9c-4G-D0I"/>
+                                                </connections>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zcm-8f-k5K">
-                                                <rect key="frame" x="0.0" y="599.5" width="414" height="80"/>
+                                                <rect key="frame" x="0.0" y="590.5" width="414" height="80"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feature Product List" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rv9-ZD-NUT">
                                                         <rect key="frame" x="20" y="30" width="138.5" height="20"/>
@@ -179,7 +183,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Z7-fu-gDW">
-                                                <rect key="frame" x="0.0" y="443.5" width="414" height="60"/>
+                                                <rect key="frame" x="0.0" y="434.5" width="414" height="60"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o4W-2A-bbI">
                                                         <rect key="frame" x="20" y="16" width="80" height="20"/>
@@ -261,6 +265,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gsd-10-dLl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="iX2-cN-VNB">
+                    <connections>
+                        <segue destination="ZRS-ep-I7q" kind="show" identifier="showVoucherManager" id="IO4-5T-98H"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="56.919642857142854"/>
         </scene>
@@ -272,7 +281,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UtA-ME-Tkh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-28" y="469"/>
+            <point key="canvasLocation" x="-73" y="469"/>
         </scene>
         <!--VendorInformation-->
         <scene sceneID="TdF-4d-a8f">
@@ -282,7 +291,17 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UEi-MX-vPC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="317" y="469"/>
+            <point key="canvasLocation" x="359" y="469"/>
+        </scene>
+        <!--VoucherManager-->
+        <scene sceneID="NKh-qz-Ygn">
+            <objects>
+                <viewControllerPlaceholder storyboardName="VoucherManager" id="ZRS-ep-I7q" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="XdP-sH-iLC"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jcv-rr-V2j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="138" y="469"/>
         </scene>
     </scenes>
     <designables>

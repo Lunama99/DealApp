@@ -13,7 +13,7 @@ class VendorViewController: BaseViewController {
     @IBOutlet weak var voucherView: BaseView!
     @IBOutlet weak var vendorView: BaseView!
     
-    private let contentInsetCV = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+    private let contentInsetCV = UIEdgeInsets(top: 20, left: 20, bottom: 0, right: 20)
     private let numberOfColumn: CGFloat = 2
     private let spacing: CGFloat = 16
     
@@ -56,40 +56,63 @@ class VendorViewController: BaseViewController {
         viewModel.listVendor.bind { [weak self] string in
             self?.collectionView.reloadData()
         }
+        
+        viewModel.listVoucher.bind { [weak self] string in
+            self?.collectionView.reloadData()
+        }
     }
     
     func fetchData() {
         viewModel.getListVendor { [weak self] in
             self?.stateView = .ready
         }
+        
+        viewModel.getListVoucher { [weak self] in
+            self?.stateView = .ready
+        }
     }
     
     func setupVoucherCell(_ cell: HotDealCollectionViewCell, indexPath: IndexPath) {
-        switch indexPath.row {
-        case 0:
-            cell.imgView.image = R.image.img_demo1()?.resizeImageWith(newSize: CGSize(width: cell.frame.width, height: 0))
-        case 1:
-            cell.imgView.image = R.image.img_demo2()?.resizeImageWith(newSize: CGSize(width: cell.frame.width, height: 0))
-        case 2:
-            cell.imgView.image = R.image.img_demo3()?.resizeImageWith(newSize: CGSize(width: cell.frame.width, height: 0))
-        case 3:
-            cell.imgView.image = R.image.img_demo4()?.resizeImageWith(newSize: CGSize(width: cell.frame.width, height: 0))
-        default:
-            cell.imgView.image = R.image.img_demo5()?.resizeImageWith(newSize: CGSize(width: cell.frame.width, height: 0))
-        }
+        let item = viewModel.listVoucher.value?[indexPath.row]
         
-        cell.imgView.contentMode = .scaleToFill
+        let currWidth = cell.widthAnchor.constraint(equalToConstant: cell.bounds.width)
+        currWidth.isActive = true
+        let currHeight = cell.heightAnchor.constraint(equalToConstant: cell.bounds.height)
+        currHeight.isActive = true
+        
+        cell.imgView.contentMode = .scaleAspectFill
         cell.imgView.layer.cornerRadius = 4
         cell.imgView.layer.masksToBounds = true
+        cell.imgView.sd_setImage(with: URL(string: item?.image ?? ""), placeholderImage: R.image.img_placeholder()?.resizeImageWith(newSize: CGSize(width: cell.bounds.width, height: cell.bounds.width)))
         
-        cell.titleLbl.text = "3 Days Tour Packages To France With Airfare"
-        cell.pointLbl.text = "100 points"
+        cell.titleLbl.text = item?.name
+        cell.pointLbl.text = "\(item?.newPrice?.toPercent() ?? "0")"
         
-        let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: "120 points")
+        let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: "\(item?.oldPrice?.toPercent() ?? "0")")
             attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 1, range: NSMakeRange(0, attributeString.length))
         
         cell.discountLbl.attributedText = attributeString
         cell.setShadow()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == R.segue.vendorViewController.showVendorDetail.identifier,
+           let vendorDetailViewController = segue.destination as? VendorDetailViewController {
+            if let indexPath = collectionView.indexPathsForSelectedItems?.first, let vendorId = viewModel.listVendor.value?[indexPath.row].id {
+                vendorDetailViewController.viewModel.vendorId = vendorId
+            }
+            
+        }
+        
+        if segue.identifier == R.segue.vendorViewController.showVoucherDetail.identifier,
+           let voucherDetailViewController = segue.destination as? VoucherDetailViewController {
+            if let indexPath = collectionView.indexPathsForSelectedItems?.first, let voucher = viewModel.listVoucher.value?[indexPath.row] {
+                voucherDetailViewController.viewModel.voucher = voucher
+                if let vendor = viewModel.listVendor.value?.filter({$0.id == voucher.idVendor}).first {
+                    voucherDetailViewController.viewModel.vendor = vendor
+                }
+            }
+        }
     }
     
     func setupVendorCell(_ cell: VendorCollectionViewCell, indexPath: IndexPath) {
@@ -101,11 +124,11 @@ class VendorViewController: BaseViewController {
         currHeight.isActive = true
         
         cell.imgView.contentMode = .scaleAspectFill
-        cell.imgView.sd_setImage(with: URL(string: item?.avatar ?? ""), placeholderImage: R.image.img_placeholder()?.resizeImageWith(newSize: CGSize(width: cell.bounds.width, height: cell.bounds.width)))
-        cell.titleLbl.text = item?.name
-        
         cell.contentView.layer.masksToBounds = true
         cell.layer.cornerRadius = 4
+        
+        cell.imgView.sd_setImage(with: URL(string: item?.avatar ?? ""), placeholderImage: R.image.img_placeholder()?.resizeImageWith(newSize: CGSize(width: cell.bounds.width, height: cell.bounds.width)))
+        cell.titleLbl.text = item?.name
     }
     
     @IBAction func voucherAction(_ sender: Any) {
@@ -123,7 +146,7 @@ class VendorViewController: BaseViewController {
 
 extension VendorViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return collectionDisplay == .Voucher ? 4 : (viewModel.listVendor.value?.count ?? 0)
+        return collectionDisplay == .Voucher ? (viewModel.listVoucher.value?.count ?? 0) : (viewModel.listVendor.value?.count ?? 0)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -139,7 +162,12 @@ extension VendorViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: R.segue.vendorViewController.showVendorDetail, sender: self)
+        if collectionDisplay == .Voucher {
+            performSegue(withIdentifier: R.segue.vendorViewController.showVoucherDetail, sender: self)
+        } else {
+            performSegue(withIdentifier: R.segue.vendorViewController.showVendorDetail, sender: self)
+        }
+        
     }
 }
 
@@ -147,7 +175,7 @@ extension VendorViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionDisplay == .Voucher {
             let width = (collectionView.bounds.width - (contentInsetCV.left + contentInsetCV.right + spacing))/numberOfColumn - 1
-            return CGSize(width: width, height: width/2*2.7)
+            return CGSize(width: width, height: width/2*2.6)
         } else {
             let width = (collectionView.bounds.width - (contentInsetCV.left + contentInsetCV.right + spacing))/numberOfColumn - 1
             return CGSize(width: width, height: width/2*2.7)

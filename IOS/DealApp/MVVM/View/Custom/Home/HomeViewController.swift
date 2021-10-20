@@ -28,7 +28,9 @@ class HomeViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        updateUserInfor()
+        fetchData()
+        
+        avatarImg.sd_setImage(with: URL(string: Helper.shared.user.avatar ?? ""))
     }
     
     func setupView() {
@@ -81,42 +83,6 @@ class HomeViewController: BaseViewController {
         newsCollectionView.dataSource = self
         newsCollectionView.contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         suggestionCollectionView.alwaysBounceHorizontal = true
-        
-//        searchView.layer.shadowColor = UIColor.gray.cgColor
-//        searchView.layer.shadowOpacity = 0.8
-//        searchView.layer.shadowOffset = CGSize.zero
-//        searchView.layer.shadowRadius = 6
-//        searchView.layer.masksToBounds = true
-//        searchView.layer.borderWidth = 1.5
-//        searchView.layer.borderColor = UIColor.white.cgColor
-    }
-    
-    func setupSuggestionCell(_ cell: SuggestionCollectionViewCell, indexPath: IndexPath) {
-        switch indexPath.row {
-        case 0:
-            cell.imgView.image = R.image.img_demo1()
-        case 1:
-            cell.imgView.image = R.image.img_demo2()
-        case 2:
-            cell.imgView.image = R.image.img_demo3()
-        case 3:
-            cell.imgView.image = R.image.img_demo4()
-        default:
-            cell.imgView.image = R.image.img_demo5()
-        }
-        
-        cell.imgView.contentMode = .scaleAspectFill
-        cell.imgView.layer.cornerRadius = 4
-        cell.imgView.layer.masksToBounds = true
-        
-        cell.titleLbl.text = "3 Days Tour Packages To France With Airfare"
-        cell.pointLbl.text = "100 points"
-        
-        let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: "120 points")
-            attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 1, range: NSMakeRange(0, attributeString.length))
-        
-        cell.discountLbl.attributedText = attributeString
-        cell.setShadow()
     }
     
     func setupObservable() {
@@ -134,21 +100,47 @@ class HomeViewController: BaseViewController {
         viewModel.productCategory.bind { [weak self] _ in
             self?.categoryCollectionView.reloadData()
         }
+        
+//        viewModel.listVendor.bind { [weak self] string in
+//            self?.collectionView.reloadData()
+//        }
+        
+        viewModel.listVoucher.bind { [weak self] string in
+            self?.suggestionCollectionView.reloadData()
+        }
     }
     
     func fetchData() {
-        stateView = .loading
-        viewModel.getUser { [weak self]  in
-            self?.stateView = .ready
-            self?.updateUserInfor()
-        }
+        viewModel.getServerTime { }
         
         viewModel.getAllCategory { }
+        
+        viewModel.getListVoucher { }
+        
+        viewModel.getListVendor { }
     }
     
-    func updateUserInfor() {
-        viewModel.getServerTime { }
-        avatarImg.sd_setImage(with: URL(string: Helper.shared.user.avatar ?? ""))
+    func setupSuggestionCell(_ cell: SuggestionCollectionViewCell, indexPath: IndexPath) {
+        let item = viewModel.listVoucher.value?[indexPath.row]
+        
+        let currWidth = cell.widthAnchor.constraint(equalToConstant: cell.bounds.width)
+        currWidth.isActive = true
+        let currHeight = cell.heightAnchor.constraint(equalToConstant: cell.bounds.height)
+        currHeight.isActive = true
+        
+        cell.imgView.contentMode = .scaleAspectFill
+        cell.imgView.layer.cornerRadius = 4
+        cell.imgView.layer.masksToBounds = true
+        cell.imgView.sd_setImage(with: URL(string: item?.image ?? ""), placeholderImage: R.image.img_placeholder()?.resizeImageWith(newSize: CGSize(width: cell.bounds.width, height: cell.bounds.width)))
+        
+        cell.titleLbl.text = item?.name
+        cell.pointLbl.text = "\(item?.newPrice?.toPercent() ?? "0")"
+        
+        let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: "\(item?.oldPrice?.toPercent() ?? "0")")
+            attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 1, range: NSMakeRange(0, attributeString.length))
+        
+        cell.discountLbl.attributedText = attributeString
+        cell.setShadow()
     }
     
     func setupNewsCell(_ cell: SuggestionCollectionViewCell, indexPath: IndexPath) {
@@ -188,12 +180,28 @@ class HomeViewController: BaseViewController {
         cell.layer.cornerRadius = 4
         cell.layer.masksToBounds = true
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == R.segue.homeViewController.showVoucherDetail.identifier,
+           let voucherDetailViewController = segue.destination as? VoucherDetailViewController {
+            if let indexPath = suggestionCollectionView.indexPathsForSelectedItems?.first, let voucher = viewModel.listVoucher.value?[indexPath.row] {
+                voucherDetailViewController.viewModel.voucher = voucher
+                if let vendor = viewModel.listVendor.value?.filter({$0.id == voucher.idVendor}).first {
+                    voucherDetailViewController.viewModel.vendor = vendor
+                }
+            }
+        }
+    }
+    
+    @IBAction func seeAllBtn(_ sender: Any) {
+        tabBarController?.selectedIndex = 1
+    }
 }
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == suggestionCollectionView {
-            return 5
+            return viewModel.listVoucher.value?.count ?? 0
         } else if collectionView == newsCollectionView {
             return 5
         } else {
@@ -216,13 +224,21 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             return cell
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == suggestionCollectionView {
+            performSegue(withIdentifier: R.segue.homeViewController.showVoucherDetail, sender: self)
+        } else if collectionView == newsCollectionView {
+        } else {
+        }
+    }
 }
 
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == suggestionCollectionView ||
             collectionView == newsCollectionView {
-            return CGSize(width: 200, height: collectionView.bounds.height)
+            return CGSize(width: 180, height: collectionView.bounds.height)
         } else {
             return CGSize(width: collectionView.bounds.height, height: collectionView.bounds.height)
         }

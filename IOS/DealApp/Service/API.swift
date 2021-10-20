@@ -36,6 +36,13 @@ public enum API {
     case GetListVendor(Page: Int, Limit: Int, orderType: String)
     case UpdateVendorInformation(ID: String, Name: String, Description: String, AvatarBase64: String?, ImageListBase64: [String]?, address: [VendorAddress]?)
     case GetVendortById(Id: String)
+    // Voucher
+    case GetListVoucherByIDVendor(IdVendor: String, Page: Int, Limit: Int, OrderType: String)
+    case GetListVoucher(Page: Int, Limit: Int, OrderType: String)
+    case AddVoucher(voucher: GetVoucher)
+    case DeleteVoucher(IdVoucher: String)
+    // Invoice
+    case AddInvoiceVoucher(PaymentMethod: Int)
 }
 
 extension API: TargetType {
@@ -50,7 +57,8 @@ extension API: TargetType {
     public var headers: [String: String]? {
         switch self {
         case .ChangePassword, .UpdateUserInfor, .GetUser, .GetWalletAddress, .FormVerifyUser, .GetBalance,
-                .GetTransactionHistory, .RegisterVendor, .GetListVendorRegisted, .UpdateVendorInformation:
+                .GetTransactionHistory, .RegisterVendor, .GetListVendorRegisted, .UpdateVendorInformation, .GetListVoucherByIDVendor,
+                .AddVoucher, .DeleteVoucher:
             print("token: \(Helper.shared.userToken ?? "")")
             return ["Authorization": "Bearer \(Helper.shared.userToken ?? "")",
                     "Content-Type": "application/json"]
@@ -84,6 +92,11 @@ extension API: TargetType {
       case .GetListVendorRegisted: return .get
       case .UpdateVendorInformation: return .put
       case .GetVendortById: return .get
+      case .GetListVoucherByIDVendor: return .put
+      case .AddVoucher: return .put
+      case .DeleteVoucher: return .put
+      case .GetListVoucher: return .put
+      case .AddInvoiceVoucher: return .put
       }
     }
 
@@ -109,11 +122,19 @@ extension API: TargetType {
         case .GetListVendorRegisted: return "/Vendor/GetListVendorRegisted"
         case .UpdateVendorInformation: return "/Vendor/UpdateVendorInformation"
         case .GetVendortById(let id): return "/Vendor/GetVendortById/\(id)"
+        case .GetListVoucherByIDVendor: return "/Voucher/GetListVoucherByIDVendor"
+        case .AddVoucher: return "/Voucher/AddVoucher"
+        case .DeleteVoucher: return "/Voucher/DeleteVoucher"
+        case .GetListVoucher: return "/Voucher/GetListVoucher"
+        case .AddInvoiceVoucher: return "/Invoice/AddInvoiceVoucher"
         }
     }
     
     public var task: Task {
       switch self {
+      case .GetServerTime, .GetUser, .GetAllCategory, .GetListNotification, .GetWalletAddress, .GetBalance, .GetCoinDeposit,
+              .GetListVendorRegisted, .GetVendortById:
+          return .requestParameters(parameters: ["ver": Date().millisecondsSince1970()], encoding: URLEncoding.queryString)
       case .Register(let FullName, let Sponsor, let Email, let UserName, let Password, let Type):
         var parameters: [String: Any] = ["FullName": FullName,
                           "Email": Email,
@@ -148,6 +169,7 @@ extension API: TargetType {
                                          "PhoneNumber": User.phoneNumber ?? "",
                                          "Country": User.country ?? "",
                                          "City": User.city ?? "",
+                                         "Commune": User.commune ?? "",
                                          "Street": User.street ?? ""]
         
         if let avatar = User.avatarBase64 {
@@ -252,8 +274,46 @@ extension API: TargetType {
           }
           
           return .requestParameters(parameters: parameters, encoding: JSONEncoding.default)
-      default:
-        return .requestPlain
+      case .GetListVoucherByIDVendor(let IdVendor, let Page, let Limit, let OrderType):
+          return .requestParameters(parameters: ["IdVendor": IdVendor,
+                                                 "Page": Page,
+                                                 "Limit": Limit,
+                                                 "OrderType": OrderType], encoding: JSONEncoding.default)
+      case .AddVoucher(let voucher):
+          var parameters: [String: Any] = ["idVendor": voucher.idVendor ?? "",
+                                           "name": voucher.name ?? "",
+                                           "description": voucher.description ?? "",
+                                           "oldPrice": voucher.oldPrice ?? 0,
+                                           "newPrice": voucher.newPrice ?? 0,
+                                           "quantityWare": voucher.quantityWare ?? 0,
+                                           "dateEnd": voucher.dateEnd ?? "",
+                                           "dateStart": voucher.dateStart ?? ""]
+          
+          if let id = voucher.id {
+              parameters["id"] = id
+          }
+          
+          if let status = voucher.status {
+              parameters["status"] = status
+          }
+          
+          if let imageBase64 = voucher.imageBase64 {
+              parameters["imageBase64"] = imageBase64
+          }
+          
+          if let active = voucher.active {
+              parameters["active"] = active
+          }
+          
+          return .requestParameters(parameters: parameters, encoding: JSONEncoding.default)
+      case .DeleteVoucher(let IdVoucher):
+          return .requestParameters(parameters: ["idVoucher": IdVoucher], encoding: URLEncoding.queryString)
+      case .GetListVoucher(let Page, let Limit, let OrderType):
+          return .requestParameters(parameters: ["Page": Page,
+                                                 "Limit": Limit,
+                                                 "OrderType": OrderType], encoding: JSONEncoding.default)
+      case .AddInvoiceVoucher(let PaymentMethod):
+        return .requestParameters(parameters: ["PaymentMethod": PaymentMethod], encoding: JSONEncoding.default)
       }
     }
     

@@ -26,7 +26,7 @@ public class User: Codable {
     var avatar: String?
     var avatarBase64: String?
     var country: String?
-    var ward: String?
+    var commune: String?
     var district: String?
     var city: String?
     var street: String?

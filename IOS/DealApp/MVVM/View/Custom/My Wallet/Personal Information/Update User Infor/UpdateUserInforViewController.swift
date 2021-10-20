@@ -42,7 +42,7 @@ class UpdateUserInforViewController: BaseViewController {
         cityTfx.text = userInfor.city
         countryTfx.text = userInfor.country
         streetTfx.text = userInfor.street
-        wardTfx.text = userInfor.ward
+        wardTfx.text = userInfor.commune
         districtTfx.text = userInfor.district
         
         fullNameTfx.didChangeValue = { [weak self] string in
@@ -75,7 +75,7 @@ class UpdateUserInforViewController: BaseViewController {
         
         wardTfx.didChangeValue = { [weak self] string in
             self?.wardTfx.setwWarning(false)
-            self?.userInfor.ward = string
+            self?.userInfor.commune = string
         }
         
         cityTfx.didChangeValue = { [weak self] string in
