@@ -12,6 +12,7 @@ class TopUpViewModel {
     private let walletRepo = WalletRepository()
     var listAdress: Observable<[WalletAddress]> = Observable([])
     var coinDeposit: Observable<[CoinDeposit]> = Observable([])
+    var walletBalance: Observable<WalletBalance> = Observable(WalletBalance())
     var searchBarText: String = ""
     
     func getCoinDeposit(completion: @escaping(()->Void)) {
@@ -62,6 +63,25 @@ class TopUpViewModel {
         } else {
             return coinDeposit.value ?? []
         }
-        
+    }
+    
+    func getBalance(completion: @escaping(()->Void)) {
+        walletRepo.getBalance { [weak self] result in
+            switch result {
+            case .success(let response):
+                do {
+                    let balanceResponse = try response.map(GetWalletBalance.self)
+                    if let walletBalance = balanceResponse.result, balanceResponse.status == true {
+                        self?.walletBalance.value = walletBalance.first
+                        completion()
+                    } else {
+                        Helper.shared.expire(message: balanceResponse.message ?? "")
+                    }
+                } catch {
+                    print("get balance failed")
+                }
+            case .failure(_): break
+            }
+        }
     }
 }

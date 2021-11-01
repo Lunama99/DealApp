@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Result
 import Moya
 
 class VendorRepository: NetworkManager {
@@ -35,6 +36,18 @@ class VendorRepository: NetworkManager {
     
     func getListVendor(Page: Int, Limit: Int, orderType: String, completion: @escaping (Result<Response, MoyaError>) -> Void) {
         provider.request(.GetListVendor(Page: Page, Limit: Limit, orderType: orderType)) { result  in
+            completion(result)
+        }
+    }
+    
+    func getListVendorByIDVendorType(IdCategory: String, Page: Int, Limit: Int, orderType: String, completion: @escaping (Result<Response, MoyaError>) -> Void) {
+        provider.request(.GetListVendorByIDVendorType(IdCategory: IdCategory, Page: Page, Limit: Limit, OrderType: orderType)) { result  in
+            completion(result)
+        }
+    }
+    
+    func searchVendor(key: String, page: Int, limit: Int, completion: @escaping (Result<Response, MoyaError>) -> Void) {
+        provider.request(.SearchVendor(key: key, page: page, limit: limit)) { result  in
             completion(result)
         }
     }

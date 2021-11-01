@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Result
 import Moya
 
 class ProductRepository: NetworkManager {

@@ -11,17 +11,32 @@ class TransactionHistoryViewModel {
     
     var listTransaction: Observable<[TransactionHistory]> = Observable([])
     private let walletRepo = WalletRepository()
+    var isLoading: Bool = false
+    var currentPage: Int? = 1
     
-    func getTransaction(page: Int) {
-        walletRepo.getTransaction(Page: page, Limit: 20, Order: nil) { result in
+    func getTransaction(tyle: TransactionType) {
+        guard let page = currentPage, !isLoading else { return }
+        isLoading = true
+        walletRepo.getTransaction(Page: page, Limit: 20, Type: tyle.rawValue) { [weak self] result in
+            self?.isLoading = false
             switch result {
             case .success(let response):
                 do {
-                    let transactionResponse = try response.map(GetTransactionHistory.self)
-                    if let transaction = transactionResponse.result, transactionResponse.status == true {
-                        self.listTransaction.value = transaction
+                    let model = try response.map(GetTransactionHistory.self)
+                    if let transaction = model.result, model.status == true {
+                        if self?.currentPage == 1 {
+                            self?.listTransaction.value = transaction
+                        } else {
+                            self?.listTransaction.value = (self?.listTransaction.value ?? []) + transaction
+                        }
                     } else {
-                        Helper.shared.expire(message: transactionResponse.message ?? "")
+                        Helper.shared.expire(message: model.message ?? "")
+                    }
+                    
+                    if model.result?.count == 20 {
+                        self?.currentPage = (self?.currentPage ?? 0) + 1
+                    } else {
+                        self?.currentPage = nil
                     }
                 } catch {
                     print("get transaction history failed")
@@ -30,4 +45,11 @@ class TransactionHistoryViewModel {
             }
         }
     }
+}
+
+enum TransactionType: String {
+    case BuyVoucher = "BuyVoucher"
+    case Deposit = "Deposit"
+    case WithDraw = "WithDraw"
+    case All = "All"
 }

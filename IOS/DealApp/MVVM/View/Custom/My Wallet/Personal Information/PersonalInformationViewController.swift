@@ -22,7 +22,6 @@ class PersonalInformationViewController: BaseViewController {
     @IBOutlet weak var idLbl: BaseLabel!
     @IBOutlet weak var verifyBtn: BaseButton!
     
-    
     let facebookBtn = FBLoginButton(frame: .zero, permissions: [.publicProfile])
 
     override func viewDidLoad() {

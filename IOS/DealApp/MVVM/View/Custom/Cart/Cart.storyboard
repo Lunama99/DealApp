@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pfq-A0-7uh">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Medium.ttf">
+            <string>Poppins-Medium</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Cart-->
+        <scene sceneID="0ZY-7K-OE9">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="pfq-A0-7uh" customClass="CartViewController" customModule="DealApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="D5H-2B-vXi">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="IQZ-3c-qfG">
+                                <rect key="frame" x="0.0" y="88" width="414" height="702"/>
+                                <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gQp-cg-2s4">
+                                <rect key="frame" x="0.0" y="790" width="414" height="72"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KJM-RU-h8M" customClass="BaseButton" customModule="DealApp" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="26" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="Ibu-C9-fNO"/>
+                                            <constraint firstAttribute="width" constant="20" id="lSf-4u-sp9"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="style">
+                                                <integer key="value" value="0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="allAction:" destination="pfq-A0-7uh" eventType="touchUpInside" id="mtW-VF-0ub"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="769-mw-jYh" customClass="BaseButton" customModule="DealApp" customModuleProvider="target">
+                                        <rect key="frame" x="274" y="16" width="120" height="56"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="2GG-oX-8gF"/>
+                                            <constraint firstAttribute="height" constant="56" id="Twm-W0-Kre"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="14"/>
+                                        <state key="normal" title="Buy"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="style">
+                                                <integer key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="buyAction:" destination="pfq-A0-7uh" eventType="touchUpInside" id="DEL-Sy-Idy"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p8z-AQ-qpU">
+                                        <rect key="frame" x="228" y="18" width="30" height="16.5"/>
+                                        <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="14"/>
+                                        <color key="textColor" red="0.21568627450980393" green="0.28627450980392155" blue="0.3411764705882353" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N/A" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Nb-S3-2Xb" customClass="BaseLabel" customModule="DealApp" customModuleProvider="target">
+                                        <rect key="frame" x="227" y="51" width="31" height="21"/>
+                                        <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="18"/>
+                                        <color key="textColor" red="0.8980392157" green="0.15686274510000001" blue="0.15686274510000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KMR-ar-yb7">
+                                        <rect key="frame" x="40" y="26" width="50" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="0Cu-nU-ixH"/>
+                                            <constraint firstAttribute="height" constant="20" id="g54-iA-JZA"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="All">
+                                            <fontDescription key="titleFontDescription" name="Poppins-Medium" family="Poppins" pointSize="14"/>
+                                            <color key="baseForegroundColor" red="0.21568627450980393" green="0.28627450980392155" blue="0.3411764705882353" alpha="1" colorSpace="calibratedRGB"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="allAction:" destination="pfq-A0-7uh" eventType="touchUpInside" id="JZx-Wc-N6D"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="KMR-ar-yb7" firstAttribute="leading" secondItem="KJM-RU-h8M" secondAttribute="trailing" id="3lw-kc-t6S"/>
+                                    <constraint firstAttribute="trailing" secondItem="769-mw-jYh" secondAttribute="trailing" constant="20" id="4oU-yC-m9O"/>
+                                    <constraint firstItem="KMR-ar-yb7" firstAttribute="centerY" secondItem="KJM-RU-h8M" secondAttribute="centerY" id="5SK-JH-Bb8"/>
+                                    <constraint firstAttribute="bottom" secondItem="769-mw-jYh" secondAttribute="bottom" id="Diz-d0-Rm1"/>
+                                    <constraint firstItem="769-mw-jYh" firstAttribute="leading" secondItem="8Nb-S3-2Xb" secondAttribute="trailing" constant="16" id="G7X-be-TsZ"/>
+                                    <constraint firstItem="KJM-RU-h8M" firstAttribute="centerY" secondItem="gQp-cg-2s4" secondAttribute="centerY" id="VyT-pe-dyh"/>
+                                    <constraint firstItem="769-mw-jYh" firstAttribute="top" secondItem="gQp-cg-2s4" secondAttribute="top" constant="16" id="atN-BS-T4N"/>
+                                    <constraint firstItem="p8z-AQ-qpU" firstAttribute="top" secondItem="gQp-cg-2s4" secondAttribute="top" constant="18" id="lqn-rw-a3t"/>
+                                    <constraint firstItem="769-mw-jYh" firstAttribute="leading" secondItem="p8z-AQ-qpU" secondAttribute="trailing" constant="16" id="qF7-sf-wxK"/>
+                                    <constraint firstItem="KJM-RU-h8M" firstAttribute="leading" secondItem="gQp-cg-2s4" secondAttribute="leading" constant="20" id="qxg-E6-bIf"/>
+                                    <constraint firstAttribute="bottom" secondItem="8Nb-S3-2Xb" secondAttribute="bottom" id="xTA-UF-cLP"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="gvW-Ln-TJy"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="gQp-cg-2s4" firstAttribute="leading" secondItem="gvW-Ln-TJy" secondAttribute="leading" id="6AU-KH-4Qq"/>
+                            <constraint firstItem="IQZ-3c-qfG" firstAttribute="trailing" secondItem="gvW-Ln-TJy" secondAttribute="trailing" id="Jez-WR-xyl"/>
+                            <constraint firstItem="gQp-cg-2s4" firstAttribute="top" secondItem="IQZ-3c-qfG" secondAttribute="bottom" id="LHN-QS-8Jc"/>
+                            <constraint firstItem="gQp-cg-2s4" firstAttribute="bottom" secondItem="gvW-Ln-TJy" secondAttribute="bottom" id="S0d-sN-wvQ"/>
+                            <constraint firstItem="IQZ-3c-qfG" firstAttribute="leading" secondItem="gvW-Ln-TJy" secondAttribute="leading" id="hc6-qG-YLs"/>
+                            <constraint firstItem="IQZ-3c-qfG" firstAttribute="top" secondItem="gvW-Ln-TJy" secondAttribute="top" id="r3Q-jn-1YZ"/>
+                            <constraint firstItem="gQp-cg-2s4" firstAttribute="trailing" secondItem="gvW-Ln-TJy" secondAttribute="trailing" id="zF3-kq-4kl"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Cart" id="Cgn-0K-05P"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="allCheckBoxBtn" destination="KJM-RU-h8M" id="A80-7U-BjA"/>
+                        <outlet property="buyBtn" destination="769-mw-jYh" id="Gsz-d9-SnV"/>
+                        <outlet property="tableView" destination="IQZ-3c-qfG" id="g6p-iK-WRn"/>
+                        <outlet property="totalLbl" destination="8Nb-S3-2Xb" id="ttj-7D-vuR"/>
+                        <segue destination="nrE-n0-nih" kind="presentation" identifier="showUpdateItemCart" id="pGo-jH-mAA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2cK-Hk-Cpy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="27.536231884057973" y="81.696428571428569"/>
+        </scene>
+        <!--UpdateItemCart-->
+        <scene sceneID="rt0-Eb-5Ow">
+            <objects>
+                <viewControllerPlaceholder storyboardName="UpdateItemCart" id="nrE-n0-nih" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="0Ls-zm-PCs"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aC1-Rc-whA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="28" y="510"/>
+        </scene>
+    </scenes>
+    <designables>
+        <designable name="769-mw-jYh">
+            <size key="intrinsicContentSize" width="30" height="29"/>
+        </designable>
+        <designable name="8Nb-S3-2Xb">
+            <size key="intrinsicContentSize" width="31" height="21"/>
+        </designable>
+        <designable name="KJM-RU-h8M">
+            <size key="intrinsicContentSize" width="30" height="34"/>
+        </designable>
+    </designables>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -13,9 +13,10 @@ class VoucherManagerViewModel {
     var idVendor: String = ""
     var listVoucher: Observable<[GetVoucher]> = Observable([])
     var vendor: GetListVendorRegister = GetListVendorRegister()
+    var searchText: Observable<String> = Observable("")
     
     func getListVoucherByIDVendor(completion: @escaping(()->Void)) {
-        voucherRepo.getListVoucherByIDVendor(IdVendor: idVendor, Page: 1, Limit: 20, OrderType: "string") { [weak self] result in
+        voucherRepo.getListVoucherByIDVendor(IdVendor: idVendor) { [weak self] result in
             switch result {
             case .success(let response):
                 do {
@@ -28,6 +29,19 @@ class VoucherManagerViewModel {
             case .failure(let error):
                 print(error)
             }
+        }
+    }
+    
+    func filterVoucher() -> [GetVoucher] {
+        if let string = searchText.value, string != "" {
+            return listVoucher.value?.filter({$0.status == 0}).filter({ item in
+                if (item.name?.lowercased() ?? "").contains(searchText.value?.lowercased() ?? "") {
+                    return true
+                }
+                    return false
+                }) ?? []
+        } else {
+            return listVoucher.value ?? []
         }
     }
 }

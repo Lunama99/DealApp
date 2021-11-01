@@ -8,10 +8,12 @@
 import UIKit
 import FBSDKCoreKit
 import IQKeyboardManagerSwift
+import UserNotifications
+import Firebase
 import DropDown
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
 
@@ -34,6 +36,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         DropDown.appearance().backgroundColor = UIColor.white
         DropDown.appearance().cornerRadius = 4
         DropDown.appearance().selectionBackgroundColor = UIColor.lightGray
+        
+        let pushManager = PushNotificationManager(userID: "currently_logged_in_user_id")
+        pushManager.registerForPushNotifications()
+        FirebaseApp.configure()
         
         ApplicationDelegate.shared.application(application,didFinishLaunchingWithOptions: launchOptions)
         

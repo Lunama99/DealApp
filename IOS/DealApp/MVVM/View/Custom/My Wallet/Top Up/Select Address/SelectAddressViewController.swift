@@ -21,7 +21,6 @@ class SelectAddressViewController: BaseViewController {
         super.viewDidLoad()
         setupView()
         setupObservable()
-        fetchData()
     }
     
     func setupView() {
@@ -43,14 +42,6 @@ class SelectAddressViewController: BaseViewController {
         viewModel.listAdress.bind { [weak self] _ in
             self?.tableView.reloadData()
         }
-        
-//        viewModel.balance.bind { [weak self] value in
-//            self?.balanceLbl.text = "Balance: \(value?.available?.toBalance() ?? "0") \(value?.currency ?? "")"
-//        }
-    }
-    
-    func fetchData() {
-//        viewModel.getBalance { }
     }
     
     @IBAction func tapOutsideAction(_ sender: Any) {

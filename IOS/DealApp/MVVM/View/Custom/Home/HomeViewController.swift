@@ -8,12 +8,35 @@
 import UIKit
 import SDWebImage
 
+enum TypeUser: Int {
+    case Member = 0
+    case Partner = 1
+    case Vendor = 2
+    
+    var title: String {
+        switch self {
+        case .Member:
+            return "Member"
+        case .Partner:
+            return "Partner"
+        case .Vendor:
+            return "Vendor"
+        }
+    }
+}
+
 class HomeViewController: BaseViewController {
     
     @IBOutlet weak var pointValueLbl: BaseLabel!
     @IBOutlet weak var suggestionCollectionView: UICollectionView!
     @IBOutlet weak var categoryCollectionView: UICollectionView!
     @IBOutlet weak var newsCollectionView: UICollectionView!
+    @IBOutlet weak var currencyLbl: BaseLabel!
+    @IBOutlet weak var userTyleLbl: BaseLabel!
+    @IBOutlet weak var topUpBtn: BaseButton!
+    @IBOutlet weak var suggestionLbl: UILabel!
+    @IBOutlet weak var categoryLbl: UILabel!
+    @IBOutlet weak var whatNewLbl: UILabel!
     
     private var viewModel = HomeViewModel()
     private let titleLbl = BaseLabel()
@@ -23,7 +46,6 @@ class HomeViewController: BaseViewController {
         super.viewDidLoad()
         setupView()
         setupObservable()
-        fetchData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -31,6 +53,19 @@ class HomeViewController: BaseViewController {
         fetchData()
         
         avatarImg.sd_setImage(with: URL(string: Helper.shared.user.avatar ?? ""))
+        
+        if let userType = Helper.shared.user.type {
+            if userType.count == 3 {
+                let partner = TypeUser.init(rawValue: userType.filter({$0.type == 1}).first?.type ?? 0)?.title ?? ""
+                let vendor = TypeUser.init(rawValue: userType.filter({$0.type == 2}).first?.type ?? 0)?.title ?? ""
+                userTyleLbl.text = "\(vendor)/\(partner)"
+            } else if userType.count == 2 {
+                let value = TypeUser.init(rawValue: userType.filter({$0.type != 0}).first?.type ?? 0)?.title ?? ""
+                userTyleLbl.text = value
+            } else {
+                userTyleLbl.text = TypeUser.init(rawValue: userType.last?.type ?? 0)?.title
+            }
+        }
     }
     
     func setupView() {
@@ -40,7 +75,6 @@ class HomeViewController: BaseViewController {
         
         navigationController?.tabBarController?.tabBar.items?[0].selectedImage = R.image.ic_home_filled()?.withRenderingMode(.alwaysOriginal)
         navigationController?.tabBarController?.tabBar.items?[1].selectedImage = R.image.ic_vendor_filled()?.withRenderingMode(.alwaysOriginal)
-//        navigationController?.tabBarController?.tabBar.items?[2].selectedImage = R.image.ic_point_center_filled()?.withRenderingMode(.alwaysOriginal)
         navigationController?.tabBarController?.tabBar.items?[2].selectedImage = R.image.ic_transaction_filled()?.withRenderingMode(.alwaysOriginal)
         navigationController?.tabBarController?.tabBar.items?[3].selectedImage = R.image.ic_my_wallet_filled()?.withRenderingMode(.alwaysOriginal)
         
@@ -64,7 +98,7 @@ class HomeViewController: BaseViewController {
         navigationItem.leftBarButtonItems = [avatarLeftBarButton, titleLeftBarButton]
         
         // Setup icon
-        showNoticeButton()
+        showRightButtons()
         
         suggestionCollectionView.register(R.nib.suggestionCollectionViewCell)
         suggestionCollectionView.delegate = self
@@ -101,16 +135,22 @@ class HomeViewController: BaseViewController {
             self?.categoryCollectionView.reloadData()
         }
         
-//        viewModel.listVendor.bind { [weak self] string in
-//            self?.collectionView.reloadData()
-//        }
+        viewModel.walletBalance.bind { [weak self] _ in
+            self?.pointValueLbl.text = "\(self?.viewModel.walletBalance.value?.available?.toPercent() ?? "0")"
+            self?.currencyLbl.text = "\(self?.viewModel.walletBalance.value?.currency ?? "N/A")"
+        }
         
         viewModel.listVoucher.bind { [weak self] string in
             self?.suggestionCollectionView.reloadData()
         }
+        
+        viewModel.listNewVoucher.bind { [weak self] string in
+            self?.newsCollectionView.reloadData()
+        }
     }
     
     func fetchData() {
+        
         viewModel.getServerTime { }
         
         viewModel.getAllCategory { }
@@ -118,6 +158,12 @@ class HomeViewController: BaseViewController {
         viewModel.getListVoucher { }
         
         viewModel.getListVendor { }
+        
+        viewModel.getBalance { }
+        
+        viewModel.getCart { }
+        
+        viewModel.getListNewVoucher { }
     }
     
     func setupSuggestionCell(_ cell: SuggestionCollectionViewCell, indexPath: IndexPath) {
@@ -144,27 +190,22 @@ class HomeViewController: BaseViewController {
     }
     
     func setupNewsCell(_ cell: SuggestionCollectionViewCell, indexPath: IndexPath) {
-        switch indexPath.row {
-        case 0:
-            cell.imgView.image = R.image.img_demo1()
-        case 1:
-            cell.imgView.image = R.image.img_demo2()
-        case 2:
-            cell.imgView.image = R.image.img_demo3()
-        case 3:
-            cell.imgView.image = R.image.img_demo4()
-        default:
-            cell.imgView.image = R.image.img_demo5()
-        }
+        let item = viewModel.listNewVoucher.value?[indexPath.row]
+        
+        let currWidth = cell.widthAnchor.constraint(equalToConstant: cell.bounds.width)
+        currWidth.isActive = true
+        let currHeight = cell.heightAnchor.constraint(equalToConstant: cell.bounds.height)
+        currHeight.isActive = true
         
         cell.imgView.contentMode = .scaleAspectFill
         cell.imgView.layer.cornerRadius = 4
         cell.imgView.layer.masksToBounds = true
+        cell.imgView.sd_setImage(with: URL(string: item?.image ?? ""), placeholderImage: R.image.img_placeholder()?.resizeImageWith(newSize: CGSize(width: cell.bounds.width, height: cell.bounds.width)))
         
-        cell.titleLbl.text = "3 Days Tour Packages To France With Airfare"
-        cell.pointLbl.text = "100 points"
+        cell.titleLbl.text = item?.name
+        cell.pointLbl.text = "\(item?.newPrice?.toPercent() ?? "0")"
         
-        let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: "120 points")
+        let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: "\(item?.oldPrice?.toPercent() ?? "0")")
             attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 1, range: NSMakeRange(0, attributeString.length))
         
         cell.discountLbl.attributedText = attributeString
@@ -194,6 +235,17 @@ class HomeViewController: BaseViewController {
     }
     
     @IBAction func seeAllBtn(_ sender: Any) {
+        let navVC = tabBarController?.viewControllers![1] as! UINavigationController
+        let vendorViewController = navVC.topViewController as! VendorViewController
+        vendorViewController.collectionDisplay = .Voucher
+        tabBarController?.selectedIndex = 1
+    }
+    
+    @IBAction func searchBarAction(_ sender: Any) {
+        let navVC = tabBarController?.viewControllers![1] as! UINavigationController
+        let vendorViewController = navVC.topViewController as! VendorViewController
+        vendorViewController.collectionDisplay = .Voucher
+        vendorViewController.focusTextField = true
         tabBarController?.selectedIndex = 1
     }
 }
@@ -203,7 +255,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         if collectionView == suggestionCollectionView {
             return viewModel.listVoucher.value?.count ?? 0
         } else if collectionView == newsCollectionView {
-            return 5
+            return viewModel.listNewVoucher.value?.count ?? 0
         } else {
             return viewModel.productCategory.value?.count ?? 0
         }
@@ -230,6 +282,14 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             performSegue(withIdentifier: R.segue.homeViewController.showVoucherDetail, sender: self)
         } else if collectionView == newsCollectionView {
         } else {
+            let item = viewModel.productCategory.value?[indexPath.row]
+            
+            let navVC = tabBarController?.viewControllers![1] as! UINavigationController
+            let vendorViewController = navVC.topViewController as! VendorViewController
+            vendorViewController.viewModel.listVendor.value = []
+            vendorViewController.viewModel.vendorSearchText.value = item?.name ?? ""
+            vendorViewController.collectionDisplay = .Vendor
+            tabBarController?.selectedIndex = 1
         }
     }
 }

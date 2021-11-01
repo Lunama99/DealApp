@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Scan View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" customClass="ScanViewController" customModule="Vera" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_scan" translatesAutoresizingMaskIntoConstraints="NO" id="iPJ-9U-sAX">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f1e-Ow-gy7">
+                                <rect key="frame" x="30" y="217" width="354" height="354"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="f1e-Ow-gy7" secondAttribute="height" id="NXJ-ny-SYs"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Aw-Ax-Dus" customClass="BaseButton" customModule="Vera" customModuleProvider="target">
+                                <rect key="frame" x="20" y="30" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="38h-Mu-6Od"/>
+                                    <constraint firstAttribute="width" constant="35" id="k2O-Yv-5y4"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="ic_close"/>
+                                <connections>
+                                    <action selector="dismissActionButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Rs0-Qe-aUu"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="f1e-Ow-gy7" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="I9l-ap-7Zh"/>
+                            <constraint firstItem="iPJ-9U-sAX" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Oal-T0-0Ld"/>
+                            <constraint firstItem="iPJ-9U-sAX" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="RYg-Yd-VNA"/>
+                            <constraint firstItem="f1e-Ow-gy7" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="30" id="VpY-lO-njR"/>
+                            <constraint firstItem="f1e-Ow-gy7" firstAttribute="centerY" secondItem="vDu-zF-Fre" secondAttribute="centerY" multiplier="0.87" id="a90-zu-xw7"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="f1e-Ow-gy7" secondAttribute="trailing" constant="30" id="dAP-vM-pcv"/>
+                            <constraint firstItem="4Aw-Ax-Dus" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="30" id="jVu-lG-CIv"/>
+                            <constraint firstItem="4Aw-Ax-Dus" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="rTb-KK-Poj"/>
+                            <constraint firstAttribute="bottom" secondItem="iPJ-9U-sAX" secondAttribute="bottom" id="w4b-Ot-a1H"/>
+                            <constraint firstItem="iPJ-9U-sAX" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="y7r-4F-ePE"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backgroundImageView" destination="iPJ-9U-sAX" id="AZi-mb-Ofo"/>
+                        <outlet property="closeBtn" destination="4Aw-Ax-Dus" id="YR6-an-ype"/>
+                        <outlet property="squareView" destination="f1e-Ow-gy7" id="29o-MB-TBM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="27.536231884057973" y="80.357142857142847"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ic_close" width="64" height="64"/>
+        <image name="img_scan" width="187.5" height="406"/>
+    </resources>
+</document>

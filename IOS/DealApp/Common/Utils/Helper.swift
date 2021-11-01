@@ -31,6 +31,12 @@ class Helper {
         }
     }
     
+    var cart: CartReponse? {
+        didSet {
+            NotificationCenter.default.post(name: NotificationName.updateCart, object: nil)
+        }
+    }
+    
     func getTopViewController(base: UIViewController? = UIApplication.shared.windows.first?.rootViewController) -> UIViewController? {
         
         if let nav = base as? UINavigationController {
@@ -119,15 +125,15 @@ class Helper {
         parent.navigationController?.pushViewController(webViewController, animated: true)
     }
 
-//    func showScan(parent: BaseViewController, completion: @escaping(String)->Void) {
-//        guard let scanViewController = R.storyboard.scan.instantiateInitialViewController() else { return }
-//        scanViewController.modalPresentationStyle = .fullScreen
-//        scanViewController.callBack = { value in
-//            completion(value)
-//        }
-//        parent.navigationController?.present(scanViewController, animated: true, completion: nil)
-//    }
-//
+    func showScan(parent: BaseViewController, completion: @escaping(String)->Void) {
+        guard let scanViewController = R.storyboard.scan.instantiateInitialViewController() else { return }
+        scanViewController.modalPresentationStyle = .fullScreen
+        scanViewController.callBack = { value in
+            completion(value)
+        }
+        parent.navigationController?.present(scanViewController, animated: true, completion: nil)
+    }
+
     func copyString(string: String) {
         let pasteboard = UIPasteboard.general
         pasteboard.string = string
@@ -143,9 +149,9 @@ class Helper {
 //        parent.navigationController?.present(inputPopupViewController, animated: true, completion: nil)
 //    }
 //
-    func showQRCode(wallet: WalletAddress?, parent: BaseViewController) {
+    func showQRCode(displayStyle: ReceiveViewController.DisplayStyle, parent: BaseViewController) {
         guard let receiveViewController = R.storyboard.receive.instantiateInitialViewController() else { return }
-        receiveViewController.wallet = wallet
+        receiveViewController.displayStyle = displayStyle
         parent.navigationController?.pushViewController(receiveViewController, animated: true)
     }
 

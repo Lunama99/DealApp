@@ -13,7 +13,7 @@ class GetWalletAddress: Codable {
     var result: [WalletAddress]?
 }
 
-class WalletAddress: Codable {
+public class WalletAddress: Codable {
     var currency: String?
     var type: String?
     var address: String?
@@ -22,7 +22,7 @@ class WalletAddress: Codable {
 class GetWalletBalance: Codable {
     var status: Bool?
     var message: String?
-    var result: WalletBalance?
+    var result: [WalletBalance]?
 }
 
 class WalletBalance: Codable {

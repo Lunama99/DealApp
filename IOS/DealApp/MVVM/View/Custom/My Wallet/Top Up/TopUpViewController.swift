@@ -13,6 +13,8 @@ class TopUpViewController: BaseViewController {
     @IBOutlet weak var cryptoCollectionView: UICollectionView!
     @IBOutlet weak var bankCollectionView: UICollectionView!
     @IBOutlet weak var cryptoSearchBar: CustomSearchBar!
+    @IBOutlet weak var pointValueLbl: BaseLabel!
+    @IBOutlet weak var currencyLbl: BaseLabel!
     
     private let contentInsetCV = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
     private let cellWidth: CGFloat = 60
@@ -29,7 +31,7 @@ class TopUpViewController: BaseViewController {
     
     func setupView() {
         showBackButton()
-        showNoticeButton()
+        showRightButtons()
         
         cryptoCollectionView.register(R.nib.topUpCollectionViewCell)
         cryptoCollectionView.contentInset = contentInsetCV
@@ -53,11 +55,18 @@ class TopUpViewController: BaseViewController {
             self?.cryptoCollectionView.reloadData()
             self?.stateView = .ready
         }
+        
+        viewModel.getBalance { }
     }
     
     func setupObservable() {
         viewModel.coinDeposit.bind { [weak self] string in
             self?.cryptoCollectionView.reloadData()
+        }
+        
+        viewModel.walletBalance.bind { [weak self] _ in
+            self?.pointValueLbl.text = "\(self?.viewModel.walletBalance.value?.available?.toPercent() ?? "0")"
+            self?.currencyLbl.text = "\(self?.viewModel.walletBalance.value?.currency ?? "N/A")"
         }
     }
     
@@ -101,7 +110,7 @@ class TopUpViewController: BaseViewController {
             }
             selectAddressViewController.addressSelected = { [weak self] value in
                 guard let strongSelf = self else { return }
-                Helper.shared.showQRCode(wallet: value, parent: strongSelf)
+                Helper.shared.showQRCode(displayStyle: .wallet(wallet: value), parent: strongSelf)
             }
         }
     }
@@ -127,7 +136,9 @@ extension TopUpViewController: UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == cryptoCollectionView {
             let item = viewModel.filterDepositCoin()[indexPath.row]
+            stateView = .loading
             viewModel.getAddress(symbol: item.currency ?? "") { [weak self] in
+                self?.stateView = .ready
                 self?.performSegue(withIdentifier: R.segue.topUpViewController.showSelectAddress, sender: self)
             }
         }

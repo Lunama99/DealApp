@@ -18,7 +18,7 @@ class PartnerAreaViewController: BaseViewController {
     
     func setupView() {
         // Setup icon
-        showNoticeButton()
+        showRightButtons()
         showBackButton()
         
         tableView.register(R.nib.partnerAreaTableViewCell)

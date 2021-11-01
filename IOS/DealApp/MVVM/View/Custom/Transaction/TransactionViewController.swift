@@ -9,100 +9,138 @@ import UIKit
 
 class TransactionViewController: BaseViewController {
 
-    @IBOutlet weak var shoppingView: BaseView!
-    @IBOutlet weak var topUpView: BaseView!
+    @IBOutlet weak var allView: BaseView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var depositView: BaseView!
+    @IBOutlet weak var voucherView: BaseView!
+    @IBOutlet weak var withDrawView: BaseView!
     
-    var tableDisplay: CollectionDisplay = .Shopping {
+    private let viewModel = TransactionHistoryViewModel()
+    
+    var tableDisplay: TransactionType = .All {
         didSet {
-            tableView.reloadData()
+            viewModel.currentPage = 1
+            fetchData()
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        setupObservable()
+        fetchData()
     }
     
     func setupView() {
-        // Setup icon
-        showNoticeButton()
-        
-        tableView.register(R.nib.shoppingTableViewCell)
-        tableView.register(R.nib.topUpTableViewCell)
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
+        tableView.register(R.nib.historyTableViewCell)
         tableView.delegate = self
         tableView.dataSource = self
     }
     
-    func setupShoppingCell(_ cell: ShoppingTableViewCell, indexPath: IndexPath) {
-        switch indexPath.row {
-        case 0:
-            cell.imgView.image = R.image.img_transaction_demo_4()
-            cell.confirmBtn.isHidden = false
-            cell.pointView.isHidden = true
-        case 1:
-            cell.imgView.image = R.image.img_transaction_demo_5()
-            cell.confirmBtn.isHidden = true
-            cell.pointView.isHidden = false
-        case 2:
-            cell.imgView.image = R.image.img_transaction_demo_3()
-            cell.confirmBtn.isHidden = false
-            cell.pointView.isHidden = true
-        case 3:
-            cell.imgView.image = R.image.img_transaction_demo_1()
-            cell.confirmBtn.isHidden = false
-            cell.pointView.isHidden = true
-        default:
-            cell.imgView.image = R.image.img_transaction_demo_2()
-            cell.confirmBtn.isHidden = false
-            cell.pointView.isHidden = true
+    func setupObservable() {
+        viewModel.listTransaction.bind { [weak self] _ in
+            self?.tableView.reloadData()
+        }
+    }
+    
+    func fetchData() {
+        viewModel.getTransaction(tyle: tableDisplay)
+    }
+    
+    func setupCell(_ cell: HistoryTableViewCell, indexPath: IndexPath) {
+        let item = viewModel.listTransaction.value?[indexPath.row]
+        if TransactionType.init(rawValue: item?.type ?? "") == TransactionType.Deposit {
+            cell.addressLbl.text = item?.userAddress
+        } else {
+            cell.addressLbl.text = "My Wallet"
+        }
+        cell.urlLbl.text = item?.txid
+        cell.tyleLbl.text = item?.type
+        cell.amountLbl.text = "\(item?.amount?.toBalance() ?? "0") \(item?.currency ?? "")"
+        
+        if item?.status == true {
+            cell.statusBtn.setTitle("Confirmed", for: .normal)
+            cell.statusBtn.setTitleColor(UIColor.init(hexString: "#48A500"), for: .normal)
+            cell.statusBtn.backgroundColor = UIColor.init(hexString: "#F2FFE9")
+            cell.statusBtn.setBorderButton(color: UIColor.init(hexString: "#48A500"))
+        } else {
+            cell.statusBtn.setTitle("Pending", for: .normal)
+            cell.statusBtn.setTitleColor(UIColor.init(hexString: "#D89935"), for: .normal)
+            cell.statusBtn.backgroundColor = UIColor.init(hexString: "#F7CC74")
+            cell.statusBtn.setBorderButton(color: UIColor.init(hexString: "#D89935"))
         }
         
-        cell.imgView.layer.cornerRadius = 4
-        cell.imgView.layer.masksToBounds = true
+        if (item?.amount ?? 0) > 0 {
+            cell.amountLbl.textColor = .systemGreen
+        } else {
+            cell.amountLbl.textColor = .red
+        }
+        
+        cell.dateLbl.text = item?.dateCreate?.toDate(format: .format5)?.toString(format: .format1)
     }
     
-    func setupTopUpCell(_ cell: TopUpTableViewCell, indexPath: IndexPath) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let position = scrollView.contentOffset.y
+        if position > (tableView.contentSize.height - 100 - scrollView.frame.size.height) {
+            print("loading more \(Date())")
+            fetchData()
+        }
     }
     
-    @IBAction func shoppingAction(_ sender: Any) {
-        topUpView.backgroundColor = UIColor.init(hexString: "EFF3F6")
-        shoppingView.backgroundColor = .white
-        tableDisplay = .Shopping
+    @IBAction func allAction(_ sender: Any) {
+        allView.backgroundColor = .white
+        voucherView.backgroundColor = UIColor.init(hexString: "EFF3F6")
+        depositView.backgroundColor = UIColor.init(hexString: "EFF3F6")
+        withDrawView.backgroundColor = UIColor.init(hexString: "EFF3F6")
+        tableDisplay = .All
     }
     
-    @IBAction func topUpAction(_ sender: Any) {
-        topUpView.backgroundColor = .white
-        shoppingView.backgroundColor = UIColor.init(hexString: "EFF3F6")
-        tableDisplay = .TopUp
+    @IBAction func voucherAction(_ sender: Any) {
+        allView.backgroundColor = UIColor.init(hexString: "EFF3F6")
+        voucherView.backgroundColor = .white
+        depositView.backgroundColor = UIColor.init(hexString: "EFF3F6")
+        withDrawView.backgroundColor = UIColor.init(hexString: "EFF3F6")
+        tableDisplay = .BuyVoucher
+    }
+    
+    @IBAction func depositAction(_ sender: Any) {
+        allView.backgroundColor = UIColor.init(hexString: "EFF3F6")
+        voucherView.backgroundColor = UIColor.init(hexString: "EFF3F6")
+        depositView.backgroundColor = .white
+        withDrawView.backgroundColor = UIColor.init(hexString: "EFF3F6")
+        tableDisplay = .Deposit
+    }
+    
+    @IBAction func withDrawAction(_ sender: Any) {
+        allView.backgroundColor = UIColor.init(hexString: "EFF3F6")
+        voucherView.backgroundColor = UIColor.init(hexString: "EFF3F6")
+        depositView.backgroundColor = UIColor.init(hexString: "EFF3F6")
+        withDrawView.backgroundColor = .white
+        tableDisplay = .WithDraw
     }
 }
 
 extension TransactionViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return viewModel.listTransaction.value?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if tableDisplay == .Shopping {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: R.nib.shoppingTableViewCell.identifier, for: indexPath) as? ShoppingTableViewCell else { return UITableViewCell() }
-            setupShoppingCell(cell, indexPath: indexPath)
-            return cell
-        } else {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: R.nib.topUpTableViewCell.identifier, for: indexPath) as? TopUpTableViewCell else { return UITableViewCell() }
-            setupTopUpCell(cell, indexPath: indexPath)
-            return cell
-        }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.historyTableViewCell, for: indexPath)
+        else { return UITableViewCell() }
+        setupCell(cell, indexPath: indexPath)
+        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
     }
-}
-
-extension TransactionViewController {
-    enum CollectionDisplay {
-        case Shopping
-        case TopUp
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let item = viewModel.listTransaction.value?[indexPath.row]
+        if TransactionType.init(rawValue: item?.type ?? "") != TransactionType.BuyVoucher {
+            Helper.shared.showWebView(title: "Transaction Detail", url: item?.txid ?? "", parent: self)
+        }
     }
 }

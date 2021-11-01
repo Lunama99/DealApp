@@ -12,15 +12,22 @@ class VendorViewController: BaseViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var voucherView: BaseView!
     @IBOutlet weak var vendorView: BaseView!
+    @IBOutlet weak var customeSearchBar: CustomSearchBar!
     
     private let contentInsetCV = UIEdgeInsets(top: 20, left: 20, bottom: 0, right: 20)
     private let numberOfColumn: CGFloat = 2
     private let spacing: CGFloat = 16
-    
-    private let viewModel = VendorViewModel()
+    private var timer: Timer = Timer()
+    var focusTextField: Bool = false
+    let viewModel = VendorViewModel()
     
     var collectionDisplay: CollectionDisplay = .Voucher {
         didSet {
+            guard let collectionView = collectionView else { return }
+            guard let customeSearchBar = customeSearchBar else { return }
+            customeSearchBar.searchTfx.text = collectionDisplay == .Vendor ? viewModel.vendorSearchText.value : viewModel.voucherSearchText.value
+            viewModel.vendorPage = 1
+            viewModel.voucherPage = 1
             collectionView.reloadData()
         }
     }
@@ -34,6 +41,21 @@ class VendorViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         fetchData()
+        
+        if collectionDisplay == .Voucher {
+            vendorView.backgroundColor = UIColor.init(hexString: "EFF3F6")
+            voucherView.backgroundColor = .white
+            collectionDisplay = .Voucher
+        } else {
+            vendorView.backgroundColor = .white
+            voucherView.backgroundColor = UIColor.init(hexString: "EFF3F6")
+            collectionDisplay = .Vendor
+        }
+        
+        if focusTextField {
+            focusTextField = false
+            customeSearchBar.searchTfx.becomeFirstResponder()
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -43,13 +65,24 @@ class VendorViewController: BaseViewController {
     
     func setupView() {
         // Setup icon
-        showNoticeButton()
+        showRightButtons()
         
         collectionView.register(R.nib.vendorCollectionViewCell)
         collectionView.register(R.nib.hotDealCollectionViewCell)
         collectionView.contentInset = contentInsetCV
         collectionView.delegate = self
         collectionView.dataSource = self
+        
+        customeSearchBar.searchTfx.didChangeValue = { [weak self] string in
+            self?.timer.invalidate()
+            if self?.collectionDisplay == .Vendor {
+                self?.viewModel.vendorPage = 1
+                self?.viewModel.vendorSearchText.value = string
+            } else {
+                self?.viewModel.voucherPage = 1
+                self?.viewModel.voucherSearchText.value = string
+            }
+        }
     }
     
     func setupObservable() {
@@ -60,15 +93,43 @@ class VendorViewController: BaseViewController {
         viewModel.listVoucher.bind { [weak self] string in
             self?.collectionView.reloadData()
         }
+        
+        viewModel.vendorSearchText.bind { [weak self] string in
+            self?.timer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: false) { _ in
+                if string?.trimmingCharacters(in: .whitespaces) != "" {
+                    self?.viewModel.searchVendor(key: string ?? "") { }
+                } else {
+                    self?.viewModel.getListVendor { }
+                }
+            }
+        }
+        
+        viewModel.voucherSearchText.bind { [weak self] string in
+            self?.timer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: false) { _ in
+                if string?.trimmingCharacters(in: .whitespaces) != "" {
+                    self?.viewModel.searchVoucher(key: string ?? "") { }
+                } else {
+                    self?.viewModel.getListVoucher { }
+                }
+            }
+        }
     }
     
     func fetchData() {
-        viewModel.getListVendor { [weak self] in
-            self?.stateView = .ready
-        }
-        
-        viewModel.getListVoucher { [weak self] in
-            self?.stateView = .ready
+        viewModel.vendorPage = 1
+        viewModel.voucherPage = 1
+        if collectionDisplay == .Vendor {
+            if viewModel.vendorSearchText.value?.trimmingCharacters(in: .whitespaces) != "" {
+                viewModel.searchVendor(key: viewModel.vendorSearchText.value ?? "") { }
+            } else {
+                viewModel.getListVendor { }
+            }
+        } else {
+            if viewModel.voucherSearchText.value?.trimmingCharacters(in: .whitespaces) != "" {
+                viewModel.searchVoucher(key: viewModel.voucherSearchText.value ?? "") { }
+            } else {
+                viewModel.getListVoucher { }
+            }
         }
     }
     
@@ -168,6 +229,17 @@ extension VendorViewController: UICollectionViewDelegate, UICollectionViewDataSo
             performSegue(withIdentifier: R.segue.vendorViewController.showVendorDetail, sender: self)
         }
         
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let position = scrollView.contentOffset.y
+        if position > (collectionView.contentSize.height - 100 - scrollView.frame.size.height) {
+            if collectionDisplay == .Vendor {
+                viewModel.getListVendor { }
+            } else {
+                viewModel.getListVoucher { }
+            }
+        }
     }
 }
 

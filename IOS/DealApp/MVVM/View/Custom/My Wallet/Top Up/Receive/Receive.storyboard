@@ -218,6 +218,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="copyBtn" destination="Km3-Yh-M3B" id="dsf-1k-ZWt"/>
+                        <outlet property="historyView" destination="f8I-mc-YVT" id="8Er-bF-OvF"/>
                         <outlet property="imageView" destination="atJ-7l-k0j" id="BoK-ip-oP8"/>
                         <outlet property="titleLbl" destination="Fwh-pu-TNP" id="YsZ-KS-1ky"/>
                         <outlet property="walletAddressLbl" destination="wjh-TG-MnR" id="ynZ-51-kRK"/>

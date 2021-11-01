@@ -34,7 +34,7 @@ class TransactionHistoryViewController: BaseViewController {
     }
     
     func fetchData() {
-        viewModel.getTransaction(page: 1)
+        viewModel.getTransaction(tyle: .All)
     }
     
     func setupCell(_ cell: HistoryTableViewCell, indexPath: IndexPath) {
@@ -63,6 +63,13 @@ class TransactionHistoryViewController: BaseViewController {
         }
         
         cell.dateLbl.text = item?.dateCreate?.toDate(format: .format5)?.toString(format: .format1)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let position = scrollView.contentOffset.y
+        if position > (tableView.contentSize.height - 100 - scrollView.frame.size.height) {
+            fetchData()
+        }
     }
 }
 

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Result
 import Moya
 
 class WalletRepository: NetworkManager {
@@ -15,14 +16,14 @@ class WalletRepository: NetworkManager {
         }
     }
     
-    func getBalance(currency: String, completion: @escaping (Result<Response, MoyaError>) -> Void) {
-        provider.request(.GetBalance(currency: currency)) { result  in
+    func getBalance(completion: @escaping (Result<Response, MoyaError>) -> Void) {
+        provider.request(.GetBalance) { result  in
             completion(result)
         }
     }
     
-    func getTransaction(Page: Int, Limit: Int, Order: String?, completion: @escaping (Result<Response, MoyaError>) -> Void) {
-        provider.request(.GetTransactionHistory(Page: Page, Limit: Limit, Order: Order)) { result  in
+    func getTransaction(Page: Int, Limit: Int, Type: String, completion: @escaping (Result<Response, MoyaError>) -> Void) {
+        provider.request(.GetTransactionHistory(Page: Page, Limit: Limit, Type: Type)) { result  in
             completion(result)
         }
     }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="g3J-NZ-Z0A">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="g3J-NZ-Z0A">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -32,7 +32,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8IO-6C-ShB" customClass="BaseView" customModule="DealApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="670.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="662.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ttr-ZD-YDo">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="331"/>
@@ -133,7 +133,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g8H-oP-krs">
-                                                <rect key="frame" x="0.0" y="502.5" width="414" height="80"/>
+                                                <rect key="frame" x="0.0" y="494.5" width="414" height="80"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Voucher Manager" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QRR-rZ-sjL">
                                                         <rect key="frame" x="20" y="30" width="127" height="20"/>
@@ -160,7 +160,7 @@
                                                 </connections>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zcm-8f-k5K">
-                                                <rect key="frame" x="0.0" y="590.5" width="414" height="80"/>
+                                                <rect key="frame" x="0.0" y="582.5" width="414" height="80"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feature Product List" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rv9-ZD-NUT">
                                                         <rect key="frame" x="20" y="30" width="138.5" height="20"/>
@@ -183,7 +183,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Z7-fu-gDW">
-                                                <rect key="frame" x="0.0" y="434.5" width="414" height="60"/>
+                                                <rect key="frame" x="0.0" y="434.5" width="414" height="52"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o4W-2A-bbI">
                                                         <rect key="frame" x="20" y="16" width="80" height="20"/>
@@ -191,22 +191,31 @@
                                                         <color key="textColor" red="0.2156862745" green="0.28627450980000002" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OUR-ys-iVn">
-                                                        <rect key="frame" x="20" y="44" width="374" height="0.0"/>
-                                                        <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="12"/>
-                                                        <color key="textColor" red="0.2156862745" green="0.28627450980000002" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="eHN-Py-2Rj" customClass="BaseTextView" customModule="DealApp" customModuleProvider="target">
+                                                        <rect key="frame" x="20" y="36" width="374" height="0.0"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" id="mcO-RY-N2T"/>
+                                                        </constraints>
+                                                        <color key="textColor" red="0.21568627450980393" green="0.28627450980392155" blue="0.3411764705882353" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="style">
+                                                                <integer key="value" value="0"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </textView>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="OUR-ys-iVn" secondAttribute="trailing" constant="20" id="3G4-X6-Ml2"/>
                                                     <constraint firstItem="o4W-2A-bbI" firstAttribute="leading" secondItem="3Z7-fu-gDW" secondAttribute="leading" constant="20" id="A0a-Z8-VgE"/>
-                                                    <constraint firstItem="OUR-ys-iVn" firstAttribute="top" secondItem="o4W-2A-bbI" secondAttribute="bottom" constant="8" id="Jxm-Bh-KPp"/>
-                                                    <constraint firstItem="OUR-ys-iVn" firstAttribute="leading" secondItem="3Z7-fu-gDW" secondAttribute="leading" constant="20" id="LIe-tp-Hqq"/>
+                                                    <constraint firstAttribute="bottom" secondItem="eHN-Py-2Rj" secondAttribute="bottom" constant="16" id="AJQ-si-qG3"/>
+                                                    <constraint firstItem="eHN-Py-2Rj" firstAttribute="leading" secondItem="3Z7-fu-gDW" secondAttribute="leading" constant="20" id="Fz6-kx-h5w"/>
                                                     <constraint firstItem="o4W-2A-bbI" firstAttribute="top" secondItem="3Z7-fu-gDW" secondAttribute="top" constant="16" id="V4K-DT-Uci"/>
+                                                    <constraint firstAttribute="trailing" secondItem="eHN-Py-2Rj" secondAttribute="trailing" constant="20" id="WJ5-2n-obB"/>
                                                     <constraint firstItem="o4W-2A-bbI" firstAttribute="leading" secondItem="3Z7-fu-gDW" secondAttribute="leading" constant="20" id="a7A-Ar-AbP"/>
-                                                    <constraint firstAttribute="bottom" secondItem="OUR-ys-iVn" secondAttribute="bottom" constant="16" id="nZN-UT-bOc"/>
+                                                    <constraint firstItem="eHN-Py-2Rj" firstAttribute="top" secondItem="o4W-2A-bbI" secondAttribute="bottom" id="ok1-Jr-rRJ"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -256,7 +265,8 @@
                     </view>
                     <connections>
                         <outlet property="addressLbl" destination="GbI-3Z-bwd" id="ePL-Zf-oaI"/>
-                        <outlet property="descriptionLbl" destination="OUR-ys-iVn" id="ohL-I7-18K"/>
+                        <outlet property="descriptionTextView" destination="eHN-Py-2Rj" id="mBS-Mu-eQF"/>
+                        <outlet property="descriptionTextViewHeightConstraint" destination="mcO-RY-N2T" id="aXb-Nb-5Oy"/>
                         <outlet property="imgScrollView" destination="Y15-3J-ogr" id="qxZ-Ac-wVK"/>
                         <outlet property="indicatorBtn" destination="7iD-eC-msv" id="Yzy-YD-Qa4"/>
                         <outlet property="nameLbl" destination="eAd-zO-5cx" id="x1S-jZ-Gdu"/>

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Result
 import Moya
 
 class AccountRepository: NetworkManager {
@@ -47,6 +48,18 @@ class AccountRepository: NetworkManager {
     
     func formVerifyUser(User: FormVerifyUser, completion: @escaping (Result<Response, MoyaError>) -> Void) {
         provider.request(.FormVerifyUser(User: User)) { result in
+            completion(result)
+        }
+    }
+    
+    func resetPassword(NewPassword: String, ConfirmPassword: String, Token: String, completion: @escaping (Result<Response, MoyaError>) -> Void) {
+        provider.request(.ResetPassword(NewPassword: NewPassword, ConfirmPassword: ConfirmPassword, Token: Token)) { result in
+            completion(result)
+        }
+    }
+    
+    func registerPartner(completion: @escaping (Result<Response, MoyaError>) -> Void) {
+        provider.request(.RegisterPartner) { result in
             completion(result)
         }
     }

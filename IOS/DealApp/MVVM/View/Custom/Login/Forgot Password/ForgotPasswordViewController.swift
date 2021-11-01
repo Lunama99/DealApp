@@ -35,14 +35,17 @@ class ForgotPasswordViewController: BaseViewController {
                     let model = try response.map(DefaultResponse.self)
                     let alert = UIAlertController(title: "", message: model.message, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .cancel) { action in
+                        if model.status == true {
+                            self?.performSegue(withIdentifier: R.segue.forgotPasswordViewController.showResetPassword, sender: self)
+                        } else {
                             alert.dismiss(animated: true, completion: nil)
+                        }
                     })
                     self?.present(alert, animated: true, completion: nil)
                 } catch {
                     print("login failed")
                 }
             case .failure(_): break
-            //                ShowAlert.shared.showResponseMassage(string: R.string.localize.failed(preferredLanguages: self?.lang), isSuccess: false)
             }
         }
     }

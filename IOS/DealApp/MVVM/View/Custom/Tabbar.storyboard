@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5tF-A7-dlx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5tF-A7-dlx">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -133,11 +133,11 @@
             </objects>
             <point key="canvasLocation" x="1381" y="802"/>
         </scene>
-        <!--My Wallet-->
+        <!--Information-->
         <scene sceneID="rHl-Jo-zdf">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="i7g-NB-1CH" customClass="BaseNavigationController" customModule="DealApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Wallet" image="ic_my_wallet" id="C2o-Ef-rNu"/>
+                    <tabBarItem key="tabBarItem" title="Information" image="ic_my_wallet" id="C2o-Ef-rNu"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rzt-nc-YLI">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -162,10 +162,10 @@
             </objects>
             <point key="canvasLocation" x="1380" y="1227"/>
         </scene>
-        <!--MyWallet-->
+        <!--Information-->
         <scene sceneID="htW-jW-dxh">
             <objects>
-                <viewControllerPlaceholder storyboardName="MyWallet" id="bKH-qN-9ch" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Information" id="bKH-qN-9ch" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="CIq-20-tXf"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pd0-NB-iVX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

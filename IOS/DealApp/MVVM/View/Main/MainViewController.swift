@@ -16,20 +16,17 @@ class MainViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        if let token = AccessToken.current, !token.isExpired {
-//            let token = token.tokenString
-//            let request = FBSDKLoginKit.GraphRequest(graphPath: "me",
-//                                                     parameters: ["fields": "email, name"],
-//                                                     tokenString: token,
-//                                                     version: nil,
-//                                                     httpMethod: .get)
-//            request.start { connection, result, error in
+        //        if let token = AccessToken.current, !token.isExpired {
+        //            let token = token.tokenString
+        //            let request = FBSDKLoginKit.GraphRequest(graphPath: "me",
+        //                                                     parameters: ["fields": "email, name"],
+        //                                                     tokenString: token,
+        //                                                     version: nil,
+        //                                                     httpMethod: .get)
+        //            request.start { connection, result, error in
+        
         if Helper.shared.userToken != nil {
-            stateView = .loading
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                self.getUser()
-            }
-//            }
+            self.getUser()
         } else {
             self.perform(#selector(self.showLoginViewController), with: nil, afterDelay: 0.01)
         }
@@ -51,24 +48,36 @@ class MainViewController: BaseViewController {
     
     func getUser() {
         stateView = .loading
-        self.accountRepo.getUser { [weak self] result in
-            self?.stateView = .ready
-            switch result {
-            case .success(let response):
-                do {
-                    let userResponse = try response.map(GetUserResponse.self)
-                    if let user = userResponse.result, userResponse.status == true {
-                        Helper.shared.user = user
-                        self?.perform(#selector(self?.showHomeViewController), with: nil, afterDelay: 0.01)
-                    } else {
-                        Helper.shared.expire(message: userResponse.message ?? "")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+            self.accountRepo.getUser { [weak self] result in
+                self?.stateView = .ready
+                switch result {
+                case .success(let response):
+                    do {
+                        let userResponse = try response.map(GetUserResponse.self)
+                        if let user = userResponse.result, userResponse.status == true {
+                            Helper.shared.user = user
+                            self?.perform(#selector(self?.showHomeViewController), with: nil, afterDelay: 0.01)
+                        } else {
+                            self?.expire(message: userResponse.message ?? "")
+                        }
+                    } catch {
+                        print("get user failed")
                     }
-                } catch {
-                    print("get user failed")
+                case .failure(_): break
                 }
-            case .failure(_): break
             }
         }
+    }
+    
+    func expire(message: String) {
+        let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel) { action in
+            Helper.shared.clearUserInfor()
+            self.perform(#selector(self.showLoginViewController), with: nil, afterDelay: 0.01)
+        })
+
+        present(alert, animated: true, completion: nil)
     }
 }
 

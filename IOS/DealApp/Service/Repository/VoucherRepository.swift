@@ -6,11 +6,12 @@
 //
 
 import Foundation
+import Result
 import Moya
 
 class VoucherRepository: NetworkManager {
-    func getListVoucherByIDVendor(IdVendor: String, Page: Int, Limit: Int, OrderType: String, completion: @escaping (Result<Response, MoyaError>) -> Void) {
-        provider.request(.GetListVoucherByIDVendor(IdVendor: IdVendor, Page: Page, Limit: Limit, OrderType: OrderType)) { result  in
+    func getListVoucherByIDVendor(IdVendor: String, completion: @escaping (Result<Response, MoyaError>) -> Void) {
+        provider.request(.GetListVoucherByIDVendor(IdVendor: IdVendor)) { result  in
             completion(result)
         }
     }
@@ -29,6 +30,18 @@ class VoucherRepository: NetworkManager {
     
     func deleteVoucher(IdVoucher: String, completion: @escaping (Result<Response, MoyaError>) -> Void) {
         provider.request(.DeleteVoucher(IdVoucher: IdVoucher)) { result  in
+            completion(result)
+        }
+    }
+    
+    func searchVoucher(key: String, page: Int, limit: Int, completion: @escaping (Result<Response, MoyaError>) -> Void) {
+        provider.request(.SearchVoucher(key: key, page: page, limit: limit)) { result  in
+            completion(result)
+        }
+    }
+    
+    func getListNewVoucher(completion: @escaping (Result<Response, MoyaError>) -> Void) {
+        provider.request(.GetListNewVoucher) { result  in
             completion(result)
         }
     }

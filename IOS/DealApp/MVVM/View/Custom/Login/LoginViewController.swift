@@ -27,7 +27,7 @@ class LoginViewController: BaseViewController {
     
     func setupView() {
         passwordTfx.isSecureTextEntry = true
-        
+        checkBtn.layer.borderWidth = !remember ? 1 : 0
         userNameTfx.didChangeValue = { [weak self] string in
             if string.count > 0 { self?.userNameTfx.setwWarning(false) }
         }
@@ -95,7 +95,8 @@ class LoginViewController: BaseViewController {
     
     @IBAction func rememberAction(_ sender: Any) {
         remember = !remember
-        checkBtn.setImage(remember ? R.image.ic_check() : nil, for: .normal)
+        checkBtn.layer.borderWidth = !remember ? 1 : 0
+        checkBtn.setImage(remember ? R.image.ic_checkbox_blue() : nil, for: .normal)
     }
 }
 

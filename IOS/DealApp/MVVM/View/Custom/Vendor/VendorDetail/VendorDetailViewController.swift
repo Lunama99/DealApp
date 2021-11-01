@@ -14,7 +14,7 @@ class VendorDetailViewController: BaseViewController {
     @IBOutlet weak var imgScrollView: UIScrollView!
     @IBOutlet weak var shareBtn: BaseButton!
     @IBOutlet weak var likeBtn: BaseButton!
-    @IBOutlet weak var descriptionLbl: UILabel!
+    @IBOutlet weak var descriptionTextView: BaseTextView!
     @IBOutlet weak var addressLbl: UILabel!
     @IBOutlet weak var avatarImg: UIImageView!
     @IBOutlet weak var titleLbl: UILabel!
@@ -33,8 +33,7 @@ class VendorDetailViewController: BaseViewController {
 
     func setupView() {
         
-        showBackButton()
-        descriptionLbl.lineBreakMode = .byWordWrapping
+        showBackButton(mode: .Light)
         scrollView.contentInsetAdjustmentBehavior = .never
         
         imgScrollView.isPagingEnabled = true
@@ -55,7 +54,6 @@ class VendorDetailViewController: BaseViewController {
             
             strongSelf.currentIndex = 1
             strongSelf.titleLbl.text = strongSelf.viewModel.vendor.value?.name
-            strongSelf.descriptionLbl.text = strongSelf.viewModel.vendor.value?.description
             strongSelf.avatarImg.sd_setImage(with: URL(string: strongSelf.viewModel.vendor.value?.avatar ?? ""), placeholderImage: R.image.img_store_placeholder())
             
             strongSelf.imgScrollView.subviews.forEach { image in
@@ -102,6 +100,10 @@ class VendorDetailViewController: BaseViewController {
     func fetchData() {
         viewModel.getVendorById { [weak self] in
             self?.stateView = .ready
+            self?.descriptionTextView.text = self?.viewModel.vendor.value?.description
+            self?.descriptionTextView.translatesAutoresizingMaskIntoConstraints = true
+            self?.descriptionTextView.sizeToFit()
+            self?.descriptionTextView.isScrollEnabled = false
         }
     }
     

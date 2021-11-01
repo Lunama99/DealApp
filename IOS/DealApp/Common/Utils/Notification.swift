@@ -8,7 +8,9 @@
 import Foundation
 
 struct NotificationName {
-    static let showHideBalance = NSNotification.Name.init("ShowHideBalance")
+    static let updateCart = NSNotification.Name.init("UpdateCart")
+    static let seeAllVoucher = NSNotification.Name.init("seeAllVoucher")
+    static let categoryVendor = NSNotification.Name.init("categoryVendor")
 }
 
 

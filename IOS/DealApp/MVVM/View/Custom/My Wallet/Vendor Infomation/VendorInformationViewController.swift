@@ -12,7 +12,8 @@ class VendorInformationViewController: BaseViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var avatarImg: UIImageView!
     @IBOutlet weak var nameTfx: BaseTextField!
-    @IBOutlet weak var descriptionTfx: BaseTextField!
+    @IBOutlet weak var descriptionTextView: BaseTextView!
+    @IBOutlet weak var descriptionTextViewHeightConstraint: NSLayoutConstraint!
     
     private let imagePicker = UIImagePickerController()
     private let contentInsetCV = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
@@ -51,7 +52,7 @@ class VendorInformationViewController: BaseViewController {
         avatarImg.layer.masksToBounds = true
         
         nameTfx.text = viewModel.vendor?.name
-        descriptionTfx.text = viewModel.vendor?.description
+        descriptionTextView.text = viewModel.vendor?.description
         
         nameTfx.didChangeValue = { [weak self] string in
             if string.count > 0 {
@@ -60,9 +61,9 @@ class VendorInformationViewController: BaseViewController {
             }
         }
         
-        descriptionTfx.didChangeValue = { [weak self] string in
+        descriptionTextView.didChangeValue = { [weak self] string in
             if string.count > 0 {
-                self?.descriptionTfx.setwWarning(false)
+                self?.descriptionTextView.setwWarning(false)
                 self?.viewModel.vendor?.description = string
             }
         }
@@ -107,7 +108,7 @@ class VendorInformationViewController: BaseViewController {
     
     func verifyTfx() -> Bool {
         nameTfx.setwWarning((nameTfx.text?.count ?? 0) <= 0)
-        descriptionTfx.setwWarning((descriptionTfx.text?.count ?? 0) <= 0)
+        descriptionTextView.setwWarning((descriptionTextView.text?.count ?? 0) <= 0)
         
         if avatarBase64 == nil && viewModel.vendor?.avatar == nil {
             avatarImg.setwWarning(true)
@@ -120,7 +121,7 @@ class VendorInformationViewController: BaseViewController {
         }
         
         guard nameTfx.text != "" && nameTfx.text != nil else { return false }
-        guard descriptionTfx.text != "" && descriptionTfx.text != nil else { return false }
+        guard descriptionTextView.text != "" && descriptionTextView.text != nil else { return false }
         guard viewModel.vendor?.avatar != nil || avatarBase64 != nil else { return false }
         guard (viewModel.vendor?.imageList?.count ?? 0) > 0 || (viewModel.listImage.value?.count ?? 0) > 0 else { return false }
         

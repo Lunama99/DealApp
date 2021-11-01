@@ -89,3 +89,61 @@ class BaseTextField: UITextField {
         }
     }
 }
+
+class BaseTextView: UITextView, UITextViewDelegate {
+
+    // Variable
+    var padding = UIEdgeInsets(top: 8, left: 10, bottom: 8, right: 10)
+    var didChangeValue: ((String)->Void)?
+    var didEndEditing: ((String)->Void)?
+    
+    // Design UI
+    @IBInspectable var style: Int = 0 {
+        didSet {
+            switch style {
+            case 0:
+                textContainerInset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
+            case 1:
+                textContainerInset = padding
+            default:
+                textContainerInset = UIEdgeInsets(top: 8, left: 10, bottom: 8, right: 10)
+            }
+        }
+    }
+    
+    @IBInspectable var cornerRadius: CGFloat = 0 {
+        didSet {
+            self.layer.cornerRadius = cornerRadius
+        }
+    }
+    
+    override init(frame: CGRect, textContainer: NSTextContainer?) {
+        super.init(frame: frame, textContainer: textContainer)
+        setupView()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setupView()
+    }
+    
+    private func setupView() {
+        autocapitalizationType = .words
+        font = R.font.poppinsRegular(size: 14)
+        delegate = self
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        didChangeValue?(textView.text ?? "")
+    }
+
+    func setwWarning(_ isShow: Bool) {
+        if isShow {
+            layer.borderWidth = 1
+            layer.borderColor = UIColor.red.cgColor
+        } else {
+            layer.borderWidth = 0
+            layer.borderColor = UIColor.clear.cgColor
+        }
+    }
+}

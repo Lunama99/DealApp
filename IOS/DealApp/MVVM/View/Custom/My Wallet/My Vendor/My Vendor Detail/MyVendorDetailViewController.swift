@@ -14,8 +14,9 @@ class MyVendorDetailViewController: BaseViewController {
     @IBOutlet weak var imgScrollView: UIScrollView!
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var addressLbl: UILabel!
-    @IBOutlet weak var descriptionLbl: UILabel!
+    @IBOutlet weak var descriptionTextView: BaseTextView!
     @IBOutlet weak var seeMoreBtn: UIButton!
+    @IBOutlet weak var descriptionTextViewHeightConstraint: NSLayoutConstraint!
     
     var viewModel = MyVendorDetailViewModel()
     private var imgFrame = CGRect.zero
@@ -30,8 +31,8 @@ class MyVendorDetailViewController: BaseViewController {
 
     func setupView() {
         
-        showBackButton()
-        descriptionLbl.lineBreakMode = .byWordWrapping
+        showBackButton(mode: .Light)
+        
         scrollView.contentInsetAdjustmentBehavior = .never
         
         imgScrollView.isPagingEnabled = true
@@ -48,8 +49,6 @@ class MyVendorDetailViewController: BaseViewController {
             
             strongSelf.currentIndex = 1
             strongSelf.nameLbl.text = strongSelf.viewModel.vendor.value?.name
-            strongSelf.descriptionLbl.text = strongSelf.viewModel.vendor.value?.description
-            
             strongSelf.imgScrollView.subviews.forEach { image in
                 if image.isKind(of: VendorDetailImageView.self) {
                     image.removeFromSuperview()
@@ -94,8 +93,13 @@ class MyVendorDetailViewController: BaseViewController {
     func fetchData() {
         viewModel.getVendorById { [weak self] in
             self?.stateView = .ready
+            self?.descriptionTextView.text = self?.viewModel.vendor.value?.description
+            self?.descriptionTextView.translatesAutoresizingMaskIntoConstraints = true
+            self?.descriptionTextView.sizeToFit()
+            self?.descriptionTextView.isScrollEnabled = false
         }
     }
+
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == R.segue.myVendorDetailViewController.showVendorInformation.identifier,

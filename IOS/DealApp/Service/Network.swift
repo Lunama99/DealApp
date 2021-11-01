@@ -7,12 +7,13 @@
 
 import Foundation
 import SVProgressHUD
+import Result
 import Moya
 
 class NetworkManager {
     var provider: MoyaProvider<API> {
         let provider = MoyaProvider<API>()
-        provider.session.sessionConfiguration.timeoutIntervalForRequest = 60
+        provider.manager.session.configuration.timeoutIntervalForRequest = 60
         DispatchQueue.main.asyncAfter(deadline: .now() + 60) {
             SVProgressHUD.dismiss()
         }

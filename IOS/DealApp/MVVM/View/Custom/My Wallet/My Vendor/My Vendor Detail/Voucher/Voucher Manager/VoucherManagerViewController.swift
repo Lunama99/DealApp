@@ -11,6 +11,7 @@ class VoucherManagerViewController: BaseViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addBtn: UIButton!
+    @IBOutlet weak var customSearchBar: CustomSearchBar!
     
     var viewModel = VoucherManagerViewModel()
     var displayStyle: DisplayStyle = .Vendor
@@ -31,15 +32,24 @@ class VoucherManagerViewController: BaseViewController {
         
         if displayStyle == .Vendor {
             addBtn.isHidden = false
+            title = "Voucher Manager"
         } else {
             addBtn.isHidden = true
+            title = "\(viewModel.vendor.name ?? "") Voucher"
+        }
+        
+        customSearchBar.searchTfx.didChangeValue = { [weak self] string in
+            self?.viewModel.searchText.value = string
         }
     }
     
     func setupObservable() {
         viewModel.listVoucher.bind { [weak self] _ in
-            guard let strongSelf = self else { return }
-            strongSelf.tableView.reloadData()
+            self?.tableView.reloadData()
+        }
+        
+        viewModel.searchText.bind { [weak self] string in
+            self?.tableView.reloadData()
         }
     }
     
@@ -50,16 +60,16 @@ class VoucherManagerViewController: BaseViewController {
     }
     
     func setupCell(_ cell: VoucherManagerTableViewCell, indexPath: IndexPath) {
-        let item = viewModel.listVoucher.value?[indexPath.row]
-        cell.imgView.sd_setImage(with: URL(string: item?.image ?? ""), placeholderImage: R.image.img_placeholder())
+        let item = viewModel.filterVoucher()[indexPath.row]
+        cell.imgView.sd_setImage(with: URL(string: item.image ?? ""), placeholderImage: R.image.img_placeholder())
         
-        let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: item?.oldPrice?.toDollar() ?? "0")
+        let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: item.oldPrice?.toDollar() ?? "0")
             attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 1, range: NSMakeRange(0, attributeString.length))
         
-        cell.titleLbl.text = item?.name
+        cell.titleLbl.text = item.name
         cell.oldPriceLbl.attributedText = attributeString
-        cell.newPriceLbl.text = item?.newPrice?.toDollar() ?? "0"
-        cell.dateLbl.text = item?.dateEnd?.toDate(format: .format5)?.toString(format: .format4)
+        cell.newPriceLbl.text = item.newPrice?.toDollar() ?? "0"
+        cell.dateLbl.text = item.dateEnd?.toDate(format: .format5)?.toString(format: .format4)
         
         cell.imgView.contentMode = .scaleAspectFill
         cell.imgView.layer.cornerRadius = 4
@@ -71,7 +81,8 @@ class VoucherManagerViewController: BaseViewController {
            let addNewVoucherViewController = segue.destination as? AddNewVoucherViewController {
             addNewVoucherViewController.displayStyle = .Edit
             
-            if let indexPath = tableView.indexPathForSelectedRow, let voucher = viewModel.listVoucher.value?[indexPath.row] {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let voucher = viewModel.filterVoucher()[indexPath.row]
                 addNewVoucherViewController.viewModel.voucher.value = voucher
             }
             
@@ -93,7 +104,8 @@ class VoucherManagerViewController: BaseViewController {
         
         if segue.identifier == R.segue.voucherManagerViewController.showViewVoucher.identifier,
            let voucherDetailViewController = segue.destination as? VoucherDetailViewController {
-            if let indexPath = tableView.indexPathForSelectedRow, let voucher = viewModel.listVoucher.value?[indexPath.row] {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let voucher = viewModel.filterVoucher()[indexPath.row]
                 voucherDetailViewController.viewModel.voucher = voucher
                 voucherDetailViewController.viewModel.vendor = viewModel.vendor
             }
@@ -103,7 +115,7 @@ class VoucherManagerViewController: BaseViewController {
 
 extension VoucherManagerViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.listVoucher.value?.count ?? 0
+        return viewModel.filterVoucher().count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

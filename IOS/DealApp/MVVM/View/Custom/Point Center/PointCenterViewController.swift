@@ -25,7 +25,7 @@ class PointCenterViewController: BaseViewController {
     
     func setupView() {
         // Setup icon
-        showNoticeButton()
+        showRightButtons()
         
         collectionView.register(R.nib.pointCenterCollectionViewCell)
         collectionView.contentInset = contentInsetCV

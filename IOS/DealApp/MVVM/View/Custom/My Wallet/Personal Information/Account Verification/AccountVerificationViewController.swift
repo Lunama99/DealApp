@@ -225,8 +225,9 @@ class AccountVerificationViewController: BaseViewController {
 
 extension AccountVerificationViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        guard let image = info[.originalImage] as? UIImage else { return }
+        guard let originImage = info[.originalImage] as? UIImage else { return }
         let filename = (info[.imageURL] as? NSURL)?.lastPathComponent ?? ""
+        let image = originImage.resizeImageWith(newSize: CGSize(width: 500, height: 0))
         
         switch picker.restorationIdentifier {
         case ImagePicker.Front.rawValue:

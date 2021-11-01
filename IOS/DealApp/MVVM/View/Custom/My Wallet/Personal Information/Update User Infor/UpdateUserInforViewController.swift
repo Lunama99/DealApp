@@ -164,7 +164,8 @@ class UpdateUserInforViewController: BaseViewController {
 
 extension UpdateUserInforViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        guard let image = info[.originalImage] as? UIImage else { return }
+        guard let originImage = info[.originalImage] as? UIImage else { return }
+        let image = originImage.resizeImageWith(newSize: CGSize(width: 500, height: 0))
         avatarImg.image = image
         userInfor.avatarBase64 = image.pngData()?.base64EncodedString()
         dismiss(animated: true)

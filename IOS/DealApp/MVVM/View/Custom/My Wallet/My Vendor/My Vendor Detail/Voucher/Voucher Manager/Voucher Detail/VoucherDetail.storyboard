@@ -160,19 +160,28 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yrr-JW-E3e">
                                                 <rect key="frame" x="0.0" y="590.5" width="414" height="32"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eA5-8e-AfI">
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="eoa-Za-I9T" customClass="BaseTextView" customModule="DealApp" customModuleProvider="target">
                                                         <rect key="frame" x="20" y="16" width="374" height="0.0"/>
-                                                        <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="12"/>
-                                                        <color key="textColor" red="0.2156862745" green="0.28627450980000002" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" id="g22-My-xiM"/>
+                                                        </constraints>
+                                                        <color key="textColor" red="0.21568627450980393" green="0.28627450980392155" blue="0.3411764705882353" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="style">
+                                                                <integer key="value" value="0"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </textView>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="eA5-8e-AfI" secondAttribute="trailing" constant="20" id="0Dc-CV-rfJ"/>
-                                                    <constraint firstAttribute="bottom" secondItem="eA5-8e-AfI" secondAttribute="bottom" constant="16" id="DGY-Xi-Hj9"/>
-                                                    <constraint firstItem="eA5-8e-AfI" firstAttribute="leading" secondItem="Yrr-JW-E3e" secondAttribute="leading" constant="20" id="QW0-J4-PJW"/>
-                                                    <constraint firstItem="eA5-8e-AfI" firstAttribute="top" secondItem="Yrr-JW-E3e" secondAttribute="top" constant="16" id="Ryx-du-dZb"/>
+                                                    <constraint firstAttribute="trailing" secondItem="eoa-Za-I9T" secondAttribute="trailing" constant="20" id="6qA-xe-Kyd"/>
+                                                    <constraint firstItem="eoa-Za-I9T" firstAttribute="top" secondItem="Yrr-JW-E3e" secondAttribute="top" constant="16" id="CeM-V5-DVb"/>
+                                                    <constraint firstAttribute="bottom" secondItem="eoa-Za-I9T" secondAttribute="bottom" constant="16" id="aO7-B0-tFb"/>
+                                                    <constraint firstItem="eoa-Za-I9T" firstAttribute="leading" secondItem="Yrr-JW-E3e" secondAttribute="leading" constant="20" id="rLp-5K-faK"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -253,8 +262,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addToCartBtn" destination="0hC-8s-FSY" id="0MK-cY-SEH"/>
                         <outlet property="avatarVendorImg" destination="Xj9-js-f5p" id="j7J-dB-HWW"/>
-                        <outlet property="descriptionLbl" destination="eA5-8e-AfI" id="E5l-O6-ghk"/>
+                        <outlet property="descriptionTextView" destination="eoa-Za-I9T" id="HSI-ke-7LZ"/>
                         <outlet property="discountLbl" destination="1Ey-Ir-kvY" id="O7I-GD-Lqh"/>
                         <outlet property="endDateLbl" destination="de0-u7-rj5" id="kv9-8I-Xlu"/>
                         <outlet property="pointLbl" destination="N4r-o2-Hhf" id="3Gl-Xz-cjh"/>
