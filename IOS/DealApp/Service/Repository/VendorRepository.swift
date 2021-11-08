@@ -10,8 +10,8 @@ import Result
 import Moya
 
 class VendorRepository: NetworkManager {
-    func registerVendor(IDCategory: String, Name: String, PaymentDiscountPercent: String, LicenseBase64: String, completion: @escaping (Result<Response, MoyaError>) -> Void) {
-        provider.request(.RegisterVendor(IDCategory: IDCategory, Name: Name, PaymentDiscountPercent: PaymentDiscountPercent, LicenseBase64: LicenseBase64)) { result  in
+    func registerVendor(ID: String?, IDCategory: String, Name: String, PaymentDiscountPercent: String, LicenseBase64: String, completion: @escaping (Result<Response, MoyaError>) -> Void) {
+        provider.request(.RegisterVendor(ID: ID, IDCategory: IDCategory, Name: Name, PaymentDiscountPercent: PaymentDiscountPercent, LicenseBase64: LicenseBase64)) { result  in
             completion(result)
         }
     }

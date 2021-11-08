@@ -227,6 +227,7 @@
                         <outlet property="tableView" destination="GlQ-Ga-cXr" id="y9L-Mo-S9Y"/>
                         <outlet property="voucherView" destination="NDn-wn-WvV" id="y75-Bi-dPy"/>
                         <outlet property="withDrawView" destination="2xx-Fh-Rjf" id="TDp-8c-l8b"/>
+                        <segue destination="gMU-An-fad" kind="show" identifier="showInvoiceDetail" id="0m3-NP-aoT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ol7-Wf-fNf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -252,6 +253,16 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="81.696428571428569"/>
+        </scene>
+        <!--InvoicesDetail-->
+        <scene sceneID="8Q6-Xf-TaG">
+            <objects>
+                <viewControllerPlaceholder storyboardName="InvoicesDetail" id="gMU-An-fad" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="zwJ-ME-12c"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UTF-9q-Ugq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="138" y="495"/>
         </scene>
     </scenes>
     <resources>

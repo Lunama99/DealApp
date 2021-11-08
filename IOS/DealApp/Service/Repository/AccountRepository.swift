@@ -16,8 +16,8 @@ class AccountRepository: NetworkManager {
         }
     }
     
-    func login(UserName: String, Password: String, RememberMe: Bool, completion: @escaping (Result<Response, MoyaError>) -> Void) {
-        provider.request(.Login(UserName: UserName, Password: Password, RememberMe: RememberMe)) { result  in
+    func login(UserName: String, Password: String, RememberMe: Bool, TokenDevice: String, completion: @escaping (Result<Response, MoyaError>) -> Void) {
+        provider.request(.Login(UserName: UserName, Password: Password, RememberMe: RememberMe, TokenDevice: TokenDevice)) { result  in
             completion(result)
         }
     }

@@ -88,6 +88,13 @@ class TransactionViewController: BaseViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == R.segue.transactionViewController.showInvoiceDetail.identifier,
+           let invoicesDetailViewController = segue.destination as? InvoicesDetailViewController {
+            invoicesDetailViewController.invoice = viewModel.invoice
+        }
+    }
+    
     @IBAction func allAction(_ sender: Any) {
         allView.backgroundColor = .white
         voucherView.backgroundColor = UIColor.init(hexString: "EFF3F6")
@@ -141,6 +148,12 @@ extension TransactionViewController: UITableViewDelegate, UITableViewDataSource 
         let item = viewModel.listTransaction.value?[indexPath.row]
         if TransactionType.init(rawValue: item?.type ?? "") != TransactionType.BuyVoucher {
             Helper.shared.showWebView(title: "Transaction Detail", url: item?.txid ?? "", parent: self)
+        } else {
+            stateView = .loading
+            viewModel.getInvoiceByTxTransaction(tx: item?.txid ?? "") { [weak self] in
+                self?.stateView = .ready
+                self?.performSegue(withIdentifier: R.segue.transactionViewController.showInvoiceDetail, sender: self)
+            }
         }
     }
 }

@@ -314,6 +314,7 @@
                         <outlet property="userTyleLbl" destination="agJ-fR-5mC" id="K3e-kM-3Tj"/>
                         <outlet property="whatNewLbl" destination="of6-ni-hxI" id="PUM-e0-hd8"/>
                         <segue destination="wfh-ZT-stw" kind="show" identifier="showVoucherDetail" id="MDT-h1-Zb7"/>
+                        <segue destination="yA6-gh-6jj" kind="show" identifier="showNewVoucher" id="RtL-mA-iJa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -326,6 +327,16 @@
             <point key="canvasLocation" x="137.68115942028987" y="81.696428571428569"/>
         </scene>
         <!--VoucherDetail-->
+        <scene sceneID="I4r-KR-Vfb">
+            <objects>
+                <viewControllerPlaceholder storyboardName="VoucherDetail" id="yA6-gh-6jj" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="BU9-Az-XS9"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="92X-cF-Vav" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="168" y="503"/>
+        </scene>
+        <!--VoucherDetail-->
         <scene sceneID="kD8-yP-6gn">
             <objects>
                 <viewControllerPlaceholder storyboardName="VoucherDetail" id="wfh-ZT-stw" sceneMemberID="viewController">
@@ -333,7 +344,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V28-zP-Bkv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="29" y="503"/>
+            <point key="canvasLocation" x="-41" y="503"/>
         </scene>
         <!--TopUp-->
         <scene sceneID="g4T-EK-wdu">
@@ -343,7 +354,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k5w-n2-HVy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="231" y="503"/>
+            <point key="canvasLocation" x="356" y="503"/>
         </scene>
     </scenes>
     <designables>

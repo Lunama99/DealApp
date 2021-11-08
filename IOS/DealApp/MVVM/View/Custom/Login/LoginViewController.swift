@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import FBSDKLoginKit
+import FirebaseMessaging
 
 class LoginViewController: BaseViewController {
 
@@ -16,7 +16,6 @@ class LoginViewController: BaseViewController {
     @IBOutlet weak var showHideBtn: BaseButton!
     @IBOutlet weak var checkBtn: BaseButton!
     
-    let facebookBtn = FBLoginButton(frame: .zero, permissions: [.publicProfile])
     let accountRepo = AccountRepository()
     var remember: Bool = true
     
@@ -36,10 +35,6 @@ class LoginViewController: BaseViewController {
             if string.count > 0 { self?.passwordTfx.setwWarning(false) }
             self?.showHideBtn.isHidden = string.count == 0
         }
-        
-        facebookBtn.delegate = self
-        facebookBtn.permissions = ["public_profile", "email"]
-        facebookBtn.isHidden = true
     }
     
     @IBAction func showHideAction(_ sender: Any) {
@@ -52,8 +47,12 @@ class LoginViewController: BaseViewController {
         
         guard verifyTfx() else { return }
         
+        let token = Messaging.messaging().fcmToken ?? ""
+        print(token)
+        
         stateView = .loading
-        accountRepo.login(UserName: userNameTfx.text ?? "", Password: passwordTfx.text ?? "", RememberMe: remember) { [weak self] result in
+        
+        accountRepo.login(UserName: userNameTfx.text ?? "", Password: passwordTfx.text ?? "", RememberMe: remember, TokenDevice: token) { [weak self] result in
             self?.stateView = .ready
             switch result {
             case .success(let response):
@@ -89,25 +88,9 @@ class LoginViewController: BaseViewController {
         return true
     }
     
-    @IBAction func facebookLoginAction(_ sender: Any) {
-        facebookBtn.sendActions(for: .touchUpInside)
-    }
-    
     @IBAction func rememberAction(_ sender: Any) {
         remember = !remember
         checkBtn.layer.borderWidth = !remember ? 1 : 0
         checkBtn.setImage(remember ? R.image.ic_checkbox_blue() : nil, for: .normal)
-    }
-}
-
-extension LoginViewController: LoginButtonDelegate {
-    func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
-        Helper.shared.getFaceBookUser(result: result) { [weak self] in
-            self?.navigationController?.returnRootViewController()
-        }
-    }
-    
-    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
-        print("Log out")
     }
 }

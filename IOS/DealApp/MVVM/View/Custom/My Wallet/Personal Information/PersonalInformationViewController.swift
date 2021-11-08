@@ -7,7 +7,6 @@
 
 import UIKit
 import SDWebImage
-import FBSDKLoginKit
 
 class PersonalInformationViewController: BaseViewController {
     
@@ -21,8 +20,6 @@ class PersonalInformationViewController: BaseViewController {
     @IBOutlet weak var addressLbl: BaseLabel!
     @IBOutlet weak var idLbl: BaseLabel!
     @IBOutlet weak var verifyBtn: BaseButton!
-    
-    let facebookBtn = FBLoginButton(frame: .zero, permissions: [.publicProfile])
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,9 +46,6 @@ class PersonalInformationViewController: BaseViewController {
         phoneLbl.text =  user.phoneNumber ?? "N/A"
         emailLbl.text = user.email ?? "N/A"
         addressLbl.text = user.fullAddress ?? "N/A"
-        facebookBtn.permissions = ["public_profile", "email"]
-        facebookBtn.delegate = self
-        facebookBtn.isHidden = true
         
         verifyBtn.setTitle(user.verify, for: .normal)
         verifyBtn.layer.cornerRadius = 4
@@ -75,21 +69,9 @@ class PersonalInformationViewController: BaseViewController {
             self.stateView = .ready
             self.navigationController?.returnRootViewController()
         }
-        
-//        facebookBtn.sendActions(for: .touchUpInside)
     }
     
     @IBAction func verificationAction(_ sender: Any) {
         performSegue(withIdentifier: R.segue.personalInformationViewController.showAccountVerification, sender: self)
-    }
-}
-
-extension PersonalInformationViewController: LoginButtonDelegate {
-    func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
-        
-    }
-    
-    func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
-        navigationController?.returnRootViewController()
     }
 }

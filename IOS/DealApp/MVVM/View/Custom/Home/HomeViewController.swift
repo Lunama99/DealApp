@@ -82,6 +82,7 @@ class HomeViewController: BaseViewController {
         avatarImg.contentMode = .scaleAspectFill
         avatarImg.layer.cornerRadius = 15
         avatarImg.layer.masksToBounds = true
+        avatarImg.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showInformation)))
         
         let avatarLeftBarButton = UIBarButtonItem(customView: avatarImg)
         
@@ -147,6 +148,10 @@ class HomeViewController: BaseViewController {
         viewModel.listNewVoucher.bind { [weak self] string in
             self?.newsCollectionView.reloadData()
         }
+    }
+    
+    @objc func showInformation() {
+        tabBarController?.selectedIndex = 3
     }
     
     func fetchData() {
@@ -232,6 +237,16 @@ class HomeViewController: BaseViewController {
                 }
             }
         }
+        
+        if segue.identifier == R.segue.homeViewController.showNewVoucher.identifier,
+           let voucherDetailViewController = segue.destination as? VoucherDetailViewController {
+            if let indexPath = newsCollectionView.indexPathsForSelectedItems?.first, let voucher = viewModel.listNewVoucher.value?[indexPath.row] {
+                voucherDetailViewController.viewModel.voucher = voucher
+                if let vendor = viewModel.listVendor.value?.filter({$0.id == voucher.idVendor}).first {
+                    voucherDetailViewController.viewModel.vendor = vendor
+                }
+            }
+        }
     }
     
     @IBAction func seeAllBtn(_ sender: Any) {
@@ -281,6 +296,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         if collectionView == suggestionCollectionView {
             performSegue(withIdentifier: R.segue.homeViewController.showVoucherDetail, sender: self)
         } else if collectionView == newsCollectionView {
+            performSegue(withIdentifier: R.segue.homeViewController.showNewVoucher, sender: self)
         } else {
             let item = viewModel.productCategory.value?[indexPath.row]
             

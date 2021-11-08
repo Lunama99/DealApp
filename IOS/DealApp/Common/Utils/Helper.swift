@@ -6,10 +6,8 @@
 //
 
 import Foundation
-import FBSDKLoginKit
 import SVProgressHUD
 import KeychainSwift
-//import RealmSwift
 
 class Helper {
     
@@ -64,43 +62,6 @@ class Helper {
         })
 
         getTopViewController()?.present(alert, animated: true, completion: nil)
-    }
-    
-    func getFaceBookUser(result: LoginManagerLoginResult?, completion: @escaping(()->Void)) {
-        let token = result?.token?.tokenString
-        let parameters = ["fields": "email, name, picture.type(large)"]
-        let request = FBSDKLoginKit.GraphRequest(graphPath: "me",
-                                                 parameters: parameters,
-                                                 tokenString: token,
-                                                 version: nil,
-                                                 httpMethod: .get)
-        SVProgressHUD.show()
-        request.start { connection, result, error in
-            SVProgressHUD.dismiss()
-            guard error == nil else { return }
-            if let jsonData = result as? [String: Any?] {
-                let user = FaceBookUser()
-                
-                if let id = jsonData["id"] as? String {
-                    user.id = id
-                }
-                
-                if let name = jsonData["name"] as? String {
-                    user.name = name
-                }
-                
-                if let email = jsonData["email"] as? String {
-                    user.email = email
-                }
-                
-                if let picture = jsonData["picture"] as? NSDictionary, let data = picture["data"] as? NSDictionary, let url = data["url"] as? String {
-                    user.imageURL = url
-                }
-                
-//                self.user = user
-                completion()
-            }
-        }
     }
 
     func generateQRCode(from string: String) -> UIImage? {

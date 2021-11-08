@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import FBSDKCoreKit
 import IQKeyboardManagerSwift
 import UserNotifications
 import Firebase
@@ -37,11 +36,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         DropDown.appearance().cornerRadius = 4
         DropDown.appearance().selectionBackgroundColor = UIColor.lightGray
         
-        let pushManager = PushNotificationManager(userID: "currently_logged_in_user_id")
-        pushManager.registerForPushNotifications()
         FirebaseApp.configure()
         
-        ApplicationDelegate.shared.application(application,didFinishLaunchingWithOptions: launchOptions)
+        let pushManager = PushNotificationManager(userID: "currently_logged_in_user_id")
+        pushManager.registerForPushNotifications()
         
         return true
     }
@@ -58,15 +56,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Called when the user discards a scene session.
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
-    }
-
-    func application(_ app: UIApplication,open url: URL,options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        ApplicationDelegate.shared.application(
-            app,
-            open: url,
-            sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
-            annotation: options[UIApplication.OpenURLOptionsKey.annotation]
-        )
     }
 }
 

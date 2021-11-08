@@ -18,11 +18,15 @@ target 'DealApp' do
   pod 'SVProgressHUD'
   pod 'IQKeyboardManagerSwift'
   pod 'RNCryptor', '~> 5.0'
-  pod 'FBSDKLoginKit'
   pod 'KeychainSwift', '~> 19.0'
   pod 'DropDown'
   pod 'FSCalendar'
   pod "Popover"
   pod 'BRYXBanner'
   # Pods for DealApp
+end
+
+target 'ImageNotification' do
+  use_frameworks!
+  pod 'FirebaseMessaging'
 end

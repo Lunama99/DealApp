@@ -54,7 +54,20 @@ class MyVendorViewModel {
                     return false
                 }) ?? []
         } else {
-            return listVendorOrigin.value?.filter({$0.status == 1}) ?? []
+            return listVendorOrigin.value?.filter({$0.status == 0}) ?? []
+        }
+    }
+    
+    func filterVendorReject() -> [GetListVendorRegister] {
+        if let string = searchText.value, string != "" {
+            return listVendorOrigin.value?.filter({$0.status == 2}).filter({ item in
+                if (item.name?.lowercased() ?? "").contains(searchText.value?.lowercased() ?? "") {
+                    return true
+                }
+                    return false
+                }) ?? []
+        } else {
+            return listVendorOrigin.value?.filter({$0.status == 2}) ?? []
         }
     }
 }

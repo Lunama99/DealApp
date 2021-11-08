@@ -54,6 +54,10 @@ class VendorInformationViewController: BaseViewController {
         nameTfx.text = viewModel.vendor?.name
         descriptionTextView.text = viewModel.vendor?.description
         
+        if descriptionTextView.contentSize.height > 50 {
+            descriptionTextViewHeightConstraint.constant = descriptionTextView.contentSize.height
+        }
+        
         nameTfx.didChangeValue = { [weak self] string in
             if string.count > 0 {
                 self?.nameTfx.setwWarning(false)
@@ -65,6 +69,9 @@ class VendorInformationViewController: BaseViewController {
             if string.count > 0 {
                 self?.descriptionTextView.setwWarning(false)
                 self?.viewModel.vendor?.description = string
+                if (self?.descriptionTextView.contentSize.height ?? 0) > 50 {
+                    self?.descriptionTextViewHeightConstraint.constant = self?.descriptionTextView.contentSize.height ?? 50
+                }
             }
         }
     }

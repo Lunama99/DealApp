@@ -14,14 +14,14 @@
 		FA04FA0826E7621E002DDD09 /* TopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA04FA0726E7621E002DDD09 /* TopUpViewController.swift */; };
 		FA04FA0B26E77268002DDD09 /* TopUpCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA04FA0A26E77268002DDD09 /* TopUpCollectionViewCell.xib */; };
 		FA04FA0D26E7727A002DDD09 /* TopUpCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA04FA0C26E7727A002DDD09 /* TopUpCollectionViewCell.swift */; };
+		FA09889227325F34008B563E /* GetNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA09889127325F34008B563E /* GetNotification.swift */; };
+		FA098894273279D9008B563E /* NotificationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA098893273279D9008B563E /* NotificationRepository.swift */; };
 		FA0CD53F26E62636004F958F /* VendorDetailImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA0CD53E26E62636004F958F /* VendorDetailImageView.xib */; };
 		FA0CD54126E6264B004F958F /* VendorDetailImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0CD54026E6264B004F958F /* VendorDetailImageView.swift */; };
 		FA0CD54426E62C8E004F958F /* Notification.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA0CD54326E62C8E004F958F /* Notification.storyboard */; };
 		FA0CD54626E62C9D004F958F /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0CD54526E62C9D004F958F /* NotificationViewController.swift */; };
 		FA0CD54926E6356E004F958F /* NotificationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA0CD54826E6356E004F958F /* NotificationTableViewCell.xib */; };
 		FA0CD54B26E63582004F958F /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0CD54A26E63582004F958F /* NotificationTableViewCell.swift */; };
-		FA0CD54E26E63A06004F958F /* NotificationHeaderTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA0CD54D26E63A06004F958F /* NotificationHeaderTableView.xib */; };
-		FA0CD55026E63A17004F958F /* NotificationHeaderTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0CD54F26E63A17004F958F /* NotificationHeaderTableView.swift */; };
 		FA0EEA6A26FB0B39004C0D43 /* AccountRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0EEA6926FB0B39004C0D43 /* AccountRepository.swift */; };
 		FA16C3D326DE1DA500692CFD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA16C3D226DE1DA500692CFD /* AppDelegate.swift */; };
 		FA16C3D526DE1DA500692CFD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA16C3D426DE1DA500692CFD /* SceneDelegate.swift */; };
@@ -198,7 +198,24 @@
 		FAFF252A26F094D7003807F7 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFF252926F094D7003807F7 /* HomeViewModel.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		FA573107273393FC006A17F1 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		0DA0E5E799125D92E5B171BC /* Pods-ImageNotification.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageNotification.release.xcconfig"; path = "Target Support Files/Pods-ImageNotification/Pods-ImageNotification.release.xcconfig"; sourceTree = "<group>"; };
+		375F7228E45981A11A1D916D /* Pods_ShareNotification.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShareNotification.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3BB0FD0AFFC644DDC9CD5A27 /* Pods-ImageNotification.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageNotification.debug.xcconfig"; path = "Target Support Files/Pods-ImageNotification/Pods-ImageNotification.debug.xcconfig"; sourceTree = "<group>"; };
+		8657A7A33A9E057FDEB302E9 /* Pods_ImageNotification.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ImageNotification.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3FD4F7943E70B053CB910CE /* Pods-DealApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DealApp.release.xcconfig"; path = "Target Support Files/Pods-DealApp/Pods-DealApp.release.xcconfig"; sourceTree = "<group>"; };
 		E73C8301BAA6CE3296C2BDA9 /* Pods_DealApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DealApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8D043735E9A648D1480E1AC /* Pods-DealApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DealApp.debug.xcconfig"; path = "Target Support Files/Pods-DealApp/Pods-DealApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -209,14 +226,14 @@
 		FA04FA0726E7621E002DDD09 /* TopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopUpViewController.swift; sourceTree = "<group>"; };
 		FA04FA0A26E77268002DDD09 /* TopUpCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopUpCollectionViewCell.xib; sourceTree = "<group>"; };
 		FA04FA0C26E7727A002DDD09 /* TopUpCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopUpCollectionViewCell.swift; sourceTree = "<group>"; };
+		FA09889127325F34008B563E /* GetNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNotification.swift; sourceTree = "<group>"; };
+		FA098893273279D9008B563E /* NotificationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationRepository.swift; sourceTree = "<group>"; };
 		FA0CD53E26E62636004F958F /* VendorDetailImageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VendorDetailImageView.xib; sourceTree = "<group>"; };
 		FA0CD54026E6264B004F958F /* VendorDetailImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorDetailImageView.swift; sourceTree = "<group>"; };
 		FA0CD54326E62C8E004F958F /* Notification.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Notification.storyboard; sourceTree = "<group>"; };
 		FA0CD54526E62C9D004F958F /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		FA0CD54826E6356E004F958F /* NotificationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationTableViewCell.xib; sourceTree = "<group>"; };
 		FA0CD54A26E63582004F958F /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
-		FA0CD54D26E63A06004F958F /* NotificationHeaderTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationHeaderTableView.xib; sourceTree = "<group>"; };
-		FA0CD54F26E63A17004F958F /* NotificationHeaderTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationHeaderTableView.swift; sourceTree = "<group>"; };
 		FA0EEA6926FB0B39004C0D43 /* AccountRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountRepository.swift; sourceTree = "<group>"; };
 		FA16C3CF26DE1DA500692CFD /* DealApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DealApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA16C3D226DE1DA500692CFD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -256,6 +273,9 @@
 		FA479C3A271ED9540098C692 /* InvoiceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceRepository.swift; sourceTree = "<group>"; };
 		FA4C582127030B71003F6A72 /* ForgotPassword.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ForgotPassword.storyboard; sourceTree = "<group>"; };
 		FA4C582327030BB2003F6A72 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		FA5730F427339388006A17F1 /* FirebaseMessaging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseMessaging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA57310827339410006A17F1 /* FirebaseMessaging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseMessaging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA57310C27339870006A17F1 /* FirebaseMessaging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseMessaging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA58438127181E240074BD0C /* MyVendorDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyVendorDetailViewModel.swift; sourceTree = "<group>"; };
 		FA5B139E271FFD84003449DA /* VoucherDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoucherDetailViewModel.swift; sourceTree = "<group>"; };
 		FA5BEF2226DE468B00B0AA1B /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
@@ -264,6 +284,10 @@
 		FA5BEF2F26DE468C00B0AA1B /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 		FA5DF71226FDB7C7002497F7 /* Register.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
 		FA5DF71426FDB7E2002497F7 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		FA6000FB2733BC8100852B6F /* FirebaseMessaging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseMessaging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA6000FF2733C01800852B6F /* FirebaseMessaging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseMessaging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA6001152733C8D200852B6F /* FirebaseMessaging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseMessaging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA6001272733CDFB00852B6F /* FirebaseMessaging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseMessaging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA65143C2727E14F00556DC0 /* InvoicesDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InvoicesDetail.storyboard; sourceTree = "<group>"; };
 		FA65143E2727E16D00556DC0 /* InvoicesDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoicesDetailViewController.swift; sourceTree = "<group>"; };
 		FA6514412727E2E000556DC0 /* InvoicesDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InvoicesDetailTableViewCell.xib; sourceTree = "<group>"; };
@@ -411,8 +435,17 @@
 		9491FC92F894F2B5F41FD6DC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FA6001272733CDFB00852B6F /* FirebaseMessaging.framework */,
+				FA6001152733C8D200852B6F /* FirebaseMessaging.framework */,
+				FA6000FF2733C01800852B6F /* FirebaseMessaging.framework */,
+				FA6000FB2733BC8100852B6F /* FirebaseMessaging.framework */,
+				FA57310C27339870006A17F1 /* FirebaseMessaging.framework */,
+				FA57310827339410006A17F1 /* FirebaseMessaging.framework */,
+				FA5730F427339388006A17F1 /* FirebaseMessaging.framework */,
 				FA81B371272D04FF0091B57F /* WebKit.framework */,
 				E73C8301BAA6CE3296C2BDA9 /* Pods_DealApp.framework */,
+				375F7228E45981A11A1D916D /* Pods_ShareNotification.framework */,
+				8657A7A33A9E057FDEB302E9 /* Pods_ImageNotification.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -422,6 +455,8 @@
 			children = (
 				F8D043735E9A648D1480E1AC /* Pods-DealApp.debug.xcconfig */,
 				E3FD4F7943E70B053CB910CE /* Pods-DealApp.release.xcconfig */,
+				3BB0FD0AFFC644DDC9CD5A27 /* Pods-ImageNotification.debug.xcconfig */,
+				0DA0E5E799125D92E5B171BC /* Pods-ImageNotification.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -469,7 +504,6 @@
 		FA0CD54226E62BDB004F958F /* Notification */ = {
 			isa = PBXGroup;
 			children = (
-				FA0CD54C26E639D1004F958F /* NotificationHeaderTableView */,
 				FA0CD54726E63548004F958F /* NotificationTableViewCell */,
 				FA0CD54326E62C8E004F958F /* Notification.storyboard */,
 				FA0CD54526E62C9D004F958F /* NotificationViewController.swift */,
@@ -484,15 +518,6 @@
 				FA0CD54A26E63582004F958F /* NotificationTableViewCell.swift */,
 			);
 			path = NotificationTableViewCell;
-			sourceTree = "<group>";
-		};
-		FA0CD54C26E639D1004F958F /* NotificationHeaderTableView */ = {
-			isa = PBXGroup;
-			children = (
-				FA0CD54D26E63A06004F958F /* NotificationHeaderTableView.xib */,
-				FA0CD54F26E63A17004F958F /* NotificationHeaderTableView.swift */,
-			);
-			path = NotificationHeaderTableView;
 			sourceTree = "<group>";
 		};
 		FA16C3C626DE1DA500692CFD = {
@@ -979,6 +1004,7 @@
 				FA479C3A271ED9540098C692 /* InvoiceRepository.swift */,
 				FA2727A32721727A0016BE7F /* CartRepository.swift */,
 				FA6F7B94272A421800AFBD3E /* VoucherInvoiceRepository.swift */,
+				FA098893273279D9008B563E /* NotificationRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -1204,6 +1230,7 @@
 				FACAC588271D17FD00AE406E /* Voucher.swift */,
 				FA2727A127216D120016BE7F /* Cart.swift */,
 				FA74EFF92727B69500FCD867 /* Invoices.swift */,
+				FA09889127325F34008B563E /* GetNotification.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1261,6 +1288,7 @@
 				FA16C3CC26DE1DA500692CFD /* Frameworks */,
 				FA16C3CD26DE1DA500692CFD /* Resources */,
 				EE3E2FA66D8842E4EF42974B /* [CP] Embed Pods Frameworks */,
+				FA573107273393FC006A17F1 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
@@ -1277,7 +1305,7 @@
 		FA16C3C726DE1DA500692CFD /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1250;
+				LastSwiftUpdateCheck = 1310;
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
 					FA16C3CE26DE1DA500692CFD = {
@@ -1353,7 +1381,6 @@
 				FA2D560E27227A29007C5CF9 /* CartTableViewCell.xib in Resources */,
 				FAABD798270EED86003990FC /* WebView.storyboard in Resources */,
 				FADD605126E380530002FF2D /* PointCenterCollectionViewCell.xib in Resources */,
-				FA0CD54E26E63A06004F958F /* NotificationHeaderTableView.xib in Resources */,
 				FA04FA0B26E77268002DDD09 /* TopUpCollectionViewCell.xib in Resources */,
 				FA16C3DF26DE1DA600692CFD /* LaunchScreen.storyboard in Resources */,
 				FAB6F3D32715730D00CF5C22 /* MyVendor.storyboard in Resources */,
@@ -1490,6 +1517,7 @@
 				FAC10E60272FADE600039FF1 /* FireBaseNotification.swift in Sources */,
 				FACAC589271D17FE00AE406E /* Voucher.swift in Sources */,
 				FAC8756526DFC919006DE739 /* SuggestionCollectionViewCell.swift in Sources */,
+				FA098894273279D9008B563E /* NotificationRepository.swift in Sources */,
 				FA9EB5DD26E8B67D00733EEC /* TopUpTableViewCell.swift in Sources */,
 				FAD4A327271938B200876DA9 /* VendorAddressTableViewCell.swift in Sources */,
 				FA9EB5E726E8D92300733EEC /* PartnerAreaTableViewCell.swift in Sources */,
@@ -1542,6 +1570,7 @@
 				FAA13A21271696A50019FB82 /* VendorInformationViewModel.swift in Sources */,
 				FAC370E126DE2E32003B993D /* UIButton.swift in Sources */,
 				FA3DA2F1270BEE4D00D12E0F /* ProductCategory.swift in Sources */,
+				FA09889227325F34008B563E /* GetNotification.swift in Sources */,
 				FA3DA2FB270C123800D12E0F /* Vendor.swift in Sources */,
 				FAC370EE26DE2E43003B993D /* Double.swift in Sources */,
 				FAC3710926DE3446003B993D /* LoginViewController.swift in Sources */,
@@ -1560,7 +1589,6 @@
 				FAB6F3D027154D3E00CF5C22 /* VendorImageCollectionViewCell.swift in Sources */,
 				FA3802A526E20880003E3FF5 /* InformationViewController.swift in Sources */,
 				FAEE79B726EA0FE1000B7A42 /* Helper.swift in Sources */,
-				FA0CD55026E63A17004F958F /* NotificationHeaderTableView.swift in Sources */,
 				FA3D9041271D1EC3008D1C85 /* VoucherRepository.swift in Sources */,
 				FA04FA0D26E7727A002DDD09 /* TopUpCollectionViewCell.swift in Sources */,
 				FAD9F4EE2705B12600545F0F /* User.swift in Sources */,
@@ -1713,20 +1741,23 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F8D043735E9A648D1480E1AC /* Pods-DealApp.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DealApp/DealApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 763FV6T8RH;
 				INFOPLIST_FILE = DealApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dealapp.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1734,20 +1765,23 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E3FD4F7943E70B053CB910CE /* Pods-DealApp.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DealApp/DealApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 763FV6T8RH;
 				INFOPLIST_FILE = DealApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dealapp.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

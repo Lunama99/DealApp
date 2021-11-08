@@ -32,8 +32,8 @@ class RegisterViewModel {
         }
     }
     
-    func registerVendor(IDCategory: String, Name: String, PaymentDiscountPercent: String, LicenseBase64: String, completion: @escaping((Bool, String?)->Void)) {
-        vendorRepo.registerVendor(IDCategory: IDCategory, Name: Name, PaymentDiscountPercent: PaymentDiscountPercent, LicenseBase64: LicenseBase64) { [weak self] result in
+    func registerVendor(ID: String?, IDCategory: String, Name: String, PaymentDiscountPercent: String, LicenseBase64: String, completion: @escaping((Bool, String?)->Void)) {
+        vendorRepo.registerVendor(ID: ID, IDCategory: IDCategory, Name: Name, PaymentDiscountPercent: PaymentDiscountPercent, LicenseBase64: LicenseBase64) { [weak self] result in
             switch result {
             case .success(let response):
                 do {

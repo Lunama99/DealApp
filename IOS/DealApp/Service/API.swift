@@ -13,7 +13,7 @@ public enum API {
     case GetServerTime
     // Account
     case Register(FullName: String, Sponsor: String?, Email: String, UserName: String, Password: String, Type: String?)
-    case Login(UserName: String, Password: String, RememberMe: Bool)
+    case Login(UserName: String, Password: String, RememberMe: Bool, TokenDevice: String)
     case ForgotPassword(Email: String)
     case ChangePassword(OldPassword: String, NewPassword: String)
     case UpdateUserInfor(User: User)
@@ -32,7 +32,7 @@ public enum API {
     case GetTransactionHistory(Page: Int, Limit: Int, Type: String)
     case GetCoinDeposit
     // Vendor
-    case RegisterVendor(IDCategory: String, Name: String, PaymentDiscountPercent: String, LicenseBase64: String)
+    case RegisterVendor(ID: String?, IDCategory: String, Name: String, PaymentDiscountPercent: String, LicenseBase64: String)
     case GetListVendorRegisted
     case GetListVendor(Page: Int, Limit: Int, orderType: String)
     case UpdateVendorInformation(ID: String, Name: String, Description: String, AvatarBase64: String?, ImageListBase64: [String]?, address: [VendorAddress]?)
@@ -49,6 +49,7 @@ public enum API {
     // Invoice
     case AddInvoiceVoucher(PaymentMethod: Int)
     case GetListInvoice
+    case GetInvoiceByTxTransaction(tx: String)
     // Cart
     case GetListCartUser
     case AddVoucherToCart(Id: String?, IdVoucher: String, Quantity: Int)
@@ -56,6 +57,7 @@ public enum API {
     // VoucherInvoice
     case UpdateStatusVoucher(code: String)
     case RegisterPartner
+    // Notification
 }
 
 extension API: TargetType {
@@ -71,7 +73,7 @@ extension API: TargetType {
         switch self {
         case .ChangePassword, .UpdateUserInfor, .GetUser, .GetWalletAddress, .FormVerifyUser, .GetBalance,
                 .GetTransactionHistory, .RegisterVendor, .GetListVendorRegisted, .UpdateVendorInformation, .GetListVoucherByIDVendor,
-                .AddVoucher, .DeleteVoucher, .GetListCartUser, .AddVoucherToCart, .UpdateStatusItemCart, .AddInvoiceVoucher, .GetListInvoice, .UpdateStatusVoucher, .RegisterPartner:
+                .AddVoucher, .DeleteVoucher, .GetListCartUser, .AddVoucherToCart, .UpdateStatusItemCart, .AddInvoiceVoucher, .GetListInvoice, .UpdateStatusVoucher, .RegisterPartner, .GetListNotification, .GetInvoiceByTxTransaction:
             print("token: \(Helper.shared.userToken ?? "")")
             return ["Authorization": "Bearer \(Helper.shared.userToken ?? "")",
                     "Content-Type": "application/json"]
@@ -118,6 +120,7 @@ extension API: TargetType {
       case .GetListNewVoucher: return .get
       case .ResetPassword: return .put
       case .RegisterPartner: return .post
+      case .GetInvoiceByTxTransaction: return .get
       }
     }
 
@@ -159,6 +162,8 @@ extension API: TargetType {
         case .GetListNewVoucher: return "/Voucher/GetListNewVoucher"
         case .ResetPassword: return "/Account/ResetPassword"
         case .RegisterPartner: return "/Account/RegisterPartner"
+        case .GetInvoiceByTxTransaction:
+            return "/Invoice/GetInvoiceByTxTransaction"
         }
     }
     
@@ -178,15 +183,16 @@ extension API: TargetType {
         if let Type = Type {
             parameters["Type"] = Type
         }
-        
-        return .requestParameters(parameters: parameters,
+          
+          return .requestParameters(parameters: parameters,
                                     encoding: JSONEncoding.default)
-        
-      case .Login(let UserName, let Password, let RememberMe):
-        let parameters: [String: Any] = ["UserName": UserName,
-                          "Password": Password,
-                          "RememberMe": RememberMe]
-        
+          
+      case .Login(let UserName, let Password, let RememberMe, let TokenDevice):
+          let parameters: [String: Any] = ["UserName": UserName,
+                                           "Password": Password,
+                                           "RememberMe": RememberMe,
+                                           "TokenDevice": TokenDevice]
+          
         return .requestParameters(parameters: parameters,
                                   encoding: JSONEncoding.default)
         
@@ -201,6 +207,7 @@ extension API: TargetType {
                                          "PhoneNumber": User.phoneNumber ?? "",
                                          "Country": User.country ?? "",
                                          "City": User.city ?? "",
+                                         "District": User.district ?? "",
                                          "Commune": User.commune ?? "",
                                          "Street": User.street ?? ""]
         
@@ -240,11 +247,16 @@ extension API: TargetType {
                                          "type": Type]
         
         return .requestParameters(parameters: parameters, encoding: JSONEncoding.default)
-      case .RegisterVendor(let IDCategory, let Name, let PaymentDiscountPercent, let licenseBase64):
-        return .requestParameters(parameters: ["IDCategory": IDCategory,
-                                               "Name": Name,
-                                               "PaymentDiscountPercent": PaymentDiscountPercent,
-                                               "licenseBase64": licenseBase64], encoding: JSONEncoding.default)
+      case .RegisterVendor(let ID, let IDCategory, let Name, let PaymentDiscountPercent, let licenseBase64):
+          var parameters: [String: Any] = ["IDCategory": IDCategory,
+                                           "Name": Name,
+                                           "PaymentDiscountPercent": PaymentDiscountPercent,
+                                           "licenseBase64": licenseBase64]
+          if let ID = ID {
+              parameters["ID"] = ID
+          }
+          
+        return .requestParameters(parameters: parameters, encoding: JSONEncoding.default)
       case .UpdateVendorInformation(let ID, let Name, let Description, let AvatarBase64, let ImageListBase64, let Address):
           var parameters: [String: Any] = ["ID": ID,
                                            "Name": Name,
@@ -350,6 +362,8 @@ extension API: TargetType {
           return .requestParameters(parameters: ["newPassword": NewPassword,
                                                  "confirmPassword": ConfirmPassword,
                                                  "token": Token], encoding: JSONEncoding.default)
+      case .GetInvoiceByTxTransaction(let tx):
+          return .requestParameters(parameters: ["tx": tx], encoding: URLEncoding.queryString)
       default:
           return .requestPlain
       }

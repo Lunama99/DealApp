@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class RegisterVendorViewController: BaseViewController {
 
@@ -19,15 +20,31 @@ class RegisterVendorViewController: BaseViewController {
     private var categorySelected: GetAllCategory?
     private var licenseBase64: String?
     
-    var displayTyle: VendorDisplayTyle = .RegisterVendor
+    var vendor: GetListVendorRegister?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        fetchData()
     }
     
     func setupView() {
         showBackButton()
+        
+        if let vendor = vendor {
+            nameTfx.text = vendor.name
+            
+            if let payment = vendor.paymentDiscountPercent {
+                paymentDiscountPercentTfx.text = "\(Int(payment))"
+            }
+            
+            if let licenseImage = vendor.license {
+                SDWebImageManager.shared.loadImage(with: URL(string: licenseImage), options: .highPriority, progress: nil) { (image, data, error, cacheType, isFinished, imageUrl) in
+                    guard let image = image else { return }
+                    self.licenseBase64 = image.pngData()?.base64EncodedString()
+                }
+            }
+        }
         
         nameTfx.didChangeValue = { [weak self] string in
             if string.count > 0 {
@@ -74,16 +91,21 @@ class RegisterVendorViewController: BaseViewController {
         }
     }
     
-    @IBAction func selectCategoryAction(_ sender: Any) {
-        if (viewModel.listCategory.value?.count ?? 0) > 0 {
-            performSegue(withIdentifier: R.segue.registerVendorViewController.showCategory, sender: self)
-        } else {
-            stateView = .loading
-            viewModel.getCategory { [weak self] in
-                self?.stateView = .ready
-                self?.performSegue(withIdentifier: R.segue.registerVendorViewController.showCategory, sender: self)
+    func fetchData() {
+        stateView = .loading
+        viewModel.getCategory { [weak self] in
+            self?.stateView = .ready
+            if let vendorCategoryId = self?.vendor?.idCategory {
+                if let category = self?.viewModel.listCategory.value?.filter({$0.id == vendorCategoryId}).first {
+                    self?.idCategoryTfx.text = category.name
+                    self?.categorySelected = category
+                }
             }
         }
+    }
+    
+    @IBAction func selectCategoryAction(_ sender: Any) {
+        performSegue(withIdentifier: R.segue.registerVendorViewController.showCategory, sender: self)
     }
     
     @IBAction func licenseAction(_ sender: Any) {
@@ -95,18 +117,14 @@ class RegisterVendorViewController: BaseViewController {
     @IBAction func registerAction(_ sender: Any) {
         guard verifyTfx() else { return }
         stateView = .loading
-        viewModel.registerVendor(IDCategory: categorySelected?.id ?? "", Name: nameTfx.text ?? "", PaymentDiscountPercent: paymentDiscountPercentTfx.text ?? "0", LicenseBase64: licenseBase64 ?? "") { [weak self] result, message  in
+        viewModel.registerVendor(ID: vendor?.id, IDCategory: categorySelected?.id ?? "", Name: nameTfx.text ?? "", PaymentDiscountPercent: paymentDiscountPercentTfx.text ?? "0", LicenseBase64: licenseBase64 ?? "") { [weak self] result, message  in
             self?.stateView = .ready
             let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { [weak self] _ in
                 if result {
-                    if self?.displayTyle == .RegisterVendor {
-                        self?.stateView = .loading
-                        self?.viewModel.getUser { [weak self] in
-                            self?.stateView = .ready
-                            self?.navigationController?.popViewController(animated: true)
-                        }
-                    } else {
+                    self?.stateView = .loading
+                    self?.viewModel.getUser { [weak self] in
+                        self?.stateView = .ready
                         self?.navigationController?.popViewController(animated: true)
                     }
                 }
@@ -124,12 +142,5 @@ extension RegisterVendorViewController: UIImagePickerControllerDelegate, UINavig
         captureLicenseBtn.setwWarning(false)
         licenseBase64 = image.pngData()?.base64EncodedString()
         dismiss(animated: true)
-    }
-}
-
-extension RegisterVendorViewController {
-    enum VendorDisplayTyle{
-        case RegisterVendor
-        case AddNewVendor
     }
 }

@@ -12,6 +12,7 @@ class MyVendorViewController: BaseViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var hotDealView: BaseView!
     @IBOutlet weak var vendorView: BaseView!
+    @IBOutlet weak var rejectView: BaseView!
     @IBOutlet weak var customeSearchBar: CustomSearchBar!
     
     private let contentInsetCV = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
@@ -77,7 +78,7 @@ class MyVendorViewController: BaseViewController {
         let currHeight = cell.heightAnchor.constraint(equalToConstant: cell.bounds.height)
         currHeight.isActive = true
         
-        let item = collectionDisplay == .Verified ? viewModel.filterVendorVerified()[indexPath.row] : viewModel.filterVendorPending()[indexPath.row]
+        let item = collectionDisplay == .Verified ? viewModel.filterVendorVerified()[indexPath.row] : collectionDisplay == .Pending ? viewModel.filterVendorPending()[indexPath.row] : viewModel.filterVendorReject()[indexPath.row]
         
         cell.imgView.contentMode = .scaleAspectFill
         cell.imgView.sd_setImage(with: URL(string: item.avatar ?? ""), placeholderImage: R.image.img_placeholder()?.resizeImageWith(newSize: CGSize(width: cell.bounds.width, height: cell.bounds.width)))
@@ -88,11 +89,6 @@ class MyVendorViewController: BaseViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == R.segue.myVendorViewController.showRegisterVendor.identifier,
-           let registerVendorViewController = segue.destination as? RegisterVendorViewController {
-            registerVendorViewController.displayTyle = .AddNewVendor
-        }
-        
         if segue.identifier == R.segue.myVendorViewController.showMyVendorDetail.identifier,
            let myVendorDetailViewController = segue.destination as? MyVendorDetailViewController {
             if let indexPath = collectionView.indexPathsForSelectedItems?.first {
@@ -108,18 +104,36 @@ class MyVendorViewController: BaseViewController {
                 
             }
         }
+        
+        if segue.identifier == R.segue.myVendorViewController.showPreRegister.identifier,
+           let registerVendorViewController = segue.destination as? RegisterVendorViewController {
+            if let indexPath = collectionView.indexPathsForSelectedItems?.first,
+               collectionDisplay == .Reject  {
+                let vendor = viewModel.filterVendorReject()[indexPath.row]
+                registerVendorViewController.vendor = vendor
+            }
+        }
     }
     
     @IBAction func verifiedAction(_ sender: Any) {
         vendorView.backgroundColor = UIColor.init(hexString: "EFF3F6")
         hotDealView.backgroundColor = .white
+        rejectView.backgroundColor = UIColor.init(hexString: "EFF3F6")
         collectionDisplay = .Verified
     }
     
     @IBAction func pendingAction(_ sender: Any) {
         vendorView.backgroundColor = .white
         hotDealView.backgroundColor = UIColor.init(hexString: "EFF3F6")
+        rejectView.backgroundColor = UIColor.init(hexString: "EFF3F6")
         collectionDisplay = .Pending
+    }
+    
+    @IBAction func rejectAction(_ sender: Any) {
+        vendorView.backgroundColor = UIColor.init(hexString: "EFF3F6")
+        hotDealView.backgroundColor = UIColor.init(hexString: "EFF3F6")
+        rejectView.backgroundColor = .white
+        collectionDisplay = .Reject
     }
     
     @IBAction func scanVoucherAction(_ sender: Any) {
@@ -129,7 +143,7 @@ class MyVendorViewController: BaseViewController {
 
 extension MyVendorViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return collectionDisplay == .Verified ? viewModel.filterVendorVerified().count : viewModel.filterVendorPending().count
+        return collectionDisplay == .Verified ? viewModel.filterVendorVerified().count : collectionDisplay == .Pending ? viewModel.filterVendorPending().count : viewModel.filterVendorReject().count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -139,11 +153,16 @@ extension MyVendorViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let item = collectionDisplay == .Verified ? viewModel.filterVendorVerified()[indexPath.row] : viewModel.filterVendorPending()[indexPath.row]
-        if item.avatar == nil {
-            performSegue(withIdentifier: R.segue.myVendorViewController.showVendorInformation, sender: self)
+        let item = collectionDisplay == .Verified ? viewModel.filterVendorVerified()[indexPath.row] : collectionDisplay == .Pending ? viewModel.filterVendorPending()[indexPath.row] : viewModel.filterVendorReject()[indexPath.row]
+        
+        if collectionDisplay == .Reject {
+            performSegue(withIdentifier: R.segue.myVendorViewController.showPreRegister, sender: self)
         } else {
-            performSegue(withIdentifier: R.segue.myVendorViewController.showMyVendorDetail, sender: self)
+            if item.avatar == nil {
+                performSegue(withIdentifier: R.segue.myVendorViewController.showVendorInformation, sender: self)
+            } else {
+                performSegue(withIdentifier: R.segue.myVendorViewController.showMyVendorDetail, sender: self)
+            }
         }
     }
 }
@@ -171,5 +190,6 @@ extension MyVendorViewController {
     enum CollectionDisplay {
         case Verified
         case Pending
+        case Reject
     }
 }

@@ -11,7 +11,7 @@ import UserNotifications
 import FirebaseFirestore
 import FirebaseMessaging
 
-class PushNotificationManager: NSObject, MessagingDelegate, UNUserNotificationCenterDelegate {
+class PushNotificationManager: NSObject, MessagingDelegate, UNUserNotificationCenterDelegate, UIApplicationDelegate {
     
     let userID: String
     
@@ -52,13 +52,23 @@ class PushNotificationManager: NSObject, MessagingDelegate, UNUserNotificationCe
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-            let content = notification.request.content
-            print("\(content.userInfo)")
-            completionHandler([.alert, .sound])
-
-        }
+        let content = notification.request.content
+        print("\(content.userInfo)")
+        completionHandler([.alert, .sound])
+    }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         print(response)
+    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        #if DEVELOPMENT
+            //Develop
+            Messaging.messaging().setAPNSToken(deviceToken as Data, type: .sandbox)
+        #else
+            //Production
+            Messaging.messaging().setAPNSToken(deviceToken as Data, type: .prod)
+        #endif
+
     }
 }

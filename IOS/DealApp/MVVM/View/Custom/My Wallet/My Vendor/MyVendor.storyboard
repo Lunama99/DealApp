@@ -101,15 +101,45 @@
                                             <outletCollection property="gestureRecognizers" destination="Lg2-dK-MTZ" appends="YES" id="Pvw-u1-cyb"/>
                                         </connections>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gmv-cr-1IF" customClass="BaseView" customModule="DealApp" customModuleProvider="target">
+                                        <rect key="frame" x="227.5" y="24" width="75" height="52"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reject" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jjz-U4-maJ">
+                                                <rect key="frame" x="16" y="16" width="43" height="20"/>
+                                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.93725490199999995" green="0.95294117649999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstItem="Jjz-U4-maJ" firstAttribute="leading" secondItem="gmv-cr-1IF" secondAttribute="leading" constant="16" id="2cU-J6-ie1"/>
+                                            <constraint firstAttribute="trailing" secondItem="Jjz-U4-maJ" secondAttribute="trailing" constant="16" id="A4l-pn-Js0"/>
+                                            <constraint firstAttribute="bottom" secondItem="Jjz-U4-maJ" secondAttribute="bottom" constant="16" id="Ncj-pF-YsN"/>
+                                            <constraint firstItem="Jjz-U4-maJ" firstAttribute="top" secondItem="gmv-cr-1IF" secondAttribute="top" constant="16" id="mHx-Hd-Akk"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="VNc-Ag-tPy" appends="YES" id="rVq-Zj-64u"/>
+                                        </connections>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.97254901959999995" green="0.97254901959999995" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstItem="aXx-v5-tsE" firstAttribute="top" secondItem="eOB-N8-Nhn" secondAttribute="top" constant="24" id="7j8-j1-BMf"/>
+                                    <constraint firstAttribute="bottom" secondItem="gmv-cr-1IF" secondAttribute="bottom" constant="16" id="8hc-uB-ZLD"/>
+                                    <constraint firstItem="gmv-cr-1IF" firstAttribute="leading" secondItem="aXx-v5-tsE" secondAttribute="trailing" constant="16" id="aCc-Bm-Yk2"/>
                                     <constraint firstItem="afK-BH-3XD" firstAttribute="leading" secondItem="eOB-N8-Nhn" secondAttribute="leading" constant="20" id="gYt-kO-xIx"/>
                                     <constraint firstItem="aXx-v5-tsE" firstAttribute="leading" secondItem="afK-BH-3XD" secondAttribute="trailing" constant="16" id="lxR-c2-Ut5"/>
                                     <constraint firstAttribute="bottom" secondItem="aXx-v5-tsE" secondAttribute="bottom" constant="16" id="mZy-zK-0IX"/>
                                     <constraint firstAttribute="bottom" secondItem="afK-BH-3XD" secondAttribute="bottom" constant="16" id="uLc-h6-3Xe"/>
                                     <constraint firstItem="afK-BH-3XD" firstAttribute="top" secondItem="eOB-N8-Nhn" secondAttribute="top" constant="24" id="xiC-3E-lzC"/>
+                                    <constraint firstItem="gmv-cr-1IF" firstAttribute="top" secondItem="eOB-N8-Nhn" secondAttribute="top" constant="24" id="ytp-N8-8gH"/>
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0dA-gy-d4h">
@@ -172,9 +202,11 @@
                         <outlet property="collectionView" destination="0dA-gy-d4h" id="2F5-sg-NFe"/>
                         <outlet property="customeSearchBar" destination="hKg-aT-NP6" id="6xz-JP-sZQ"/>
                         <outlet property="hotDealView" destination="afK-BH-3XD" id="tjS-K0-DUX"/>
+                        <outlet property="rejectView" destination="gmv-cr-1IF" id="eDc-FR-mGR"/>
                         <outlet property="vendorView" destination="aXx-v5-tsE" id="1hl-Kr-1Vd"/>
                         <segue destination="96l-sp-Dqe" kind="show" identifier="showMyVendorDetail" id="Vip-hO-3Hv"/>
                         <segue destination="7Nw-4n-E79" kind="show" identifier="showVendorInformation" id="IGZ-D6-7K2"/>
+                        <segue destination="NYz-zc-eta" kind="show" identifier="showPreRegister" id="uKG-Jm-PUA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R0F-ed-6Jp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -186,6 +218,11 @@
                 <tapGestureRecognizer id="Lg2-dK-MTZ">
                     <connections>
                         <action selector="pendingAction:" destination="dqR-c8-tkG" id="J6C-92-dHX"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="VNc-Ag-tPy">
+                    <connections>
+                        <action selector="rejectAction:" destination="dqR-c8-tkG" id="UFO-yC-yHS"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -209,7 +246,17 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lc5-C4-Cd8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="357" y="509"/>
+            <point key="canvasLocation" x="370" y="509"/>
+        </scene>
+        <!--RegisterVendor-->
+        <scene sceneID="jal-xM-VzS">
+            <objects>
+                <viewControllerPlaceholder storyboardName="RegisterVendor" id="NYz-zc-eta" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Qz6-UP-Uiy"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o3G-Hx-cmZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="603" y="509"/>
         </scene>
         <!--MyVendorDetail-->
         <scene sceneID="zeB-PH-1X5">

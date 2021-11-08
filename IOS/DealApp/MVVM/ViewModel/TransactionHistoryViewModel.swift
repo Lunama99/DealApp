@@ -11,6 +11,8 @@ class TransactionHistoryViewModel {
     
     var listTransaction: Observable<[TransactionHistory]> = Observable([])
     private let walletRepo = WalletRepository()
+    private let invoiceRepo = InvoiceRepository()
+    var invoice: GetInvoices?
     var isLoading: Bool = false
     var currentPage: Int? = 1
     
@@ -38,6 +40,22 @@ class TransactionHistoryViewModel {
                     } else {
                         self?.currentPage = nil
                     }
+                } catch {
+                    print("get transaction history failed")
+                }
+            case .failure(_): break
+            }
+        }
+    }
+    
+    func getInvoiceByTxTransaction(tx: String, completion: @escaping(()->Void)) {
+        invoiceRepo.getInvoiceByTxTransaction(tx: tx){ [weak self] result in
+            switch result {
+            case .success(let response):
+                do {
+                    let model = try response.map(GetInvoices.self)
+                    self?.invoice = model
+                    completion()
                 } catch {
                     print("get transaction history failed")
                 }

@@ -21,4 +21,10 @@ class InvoiceRepository: NetworkManager {
             completion(result)
         }
     }
+    
+    func getInvoiceByTxTransaction(tx: String, completion: @escaping (Result<Response, MoyaError>) -> Void) {
+        provider.request(.GetInvoiceByTxTransaction(tx: tx)) { result  in
+            completion(result)
+        }
+    }
 }
